@@ -1,0 +1,37 @@
+﻿body {
+}
+
+#div-pro-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box-pro {
+    height: 350px;
+    width: 300px;
+}
+
+.size-img {
+    height: 200px;
+    width: 250px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.box-description {
+    height: 200px;
+    width: auto;
+    background-color: #eee3cb;
+    text-align: center;
+}
+
+.margin-des {
+        margin-left: 20px;
+        margin-top: 5px;
+ }
+
+.box-pro {
+        margin: auto;
+        margin-top: 10px;
+}

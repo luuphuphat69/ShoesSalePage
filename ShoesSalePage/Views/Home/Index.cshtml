@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="slideshow_container">
+        <div class="mySlides fade">
+            <div class="numbertext">1/3</div>
+            <img src="~/Content/Images/banner1.png" alt="banner_pic1" class="w-100 h-100" />
+            <div class="text">Tất cả loại giày da</div>
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">2/3</div>
+            <img src="~/Content/Images/banner2.jpg" alt="banner_pic2" class="w-100 h-100" />
+            <div class="text">Nơi có giày da chất lượng</div>
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">3/3</div>
+            <img src="~/Content/Images/banner3.jpg" alt="banner_pic3" class="w-100 h-100" />
+            <div class="text">Da thật, uy tín</div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)"> ❮ </a>
+        <a class="next" onclick="plusSlides(1)"> ❯ </a>
+    </div>
+    <br />
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlides(1)"></span>
+        <span class="dot" onclick="currentSlides(2)"></span>
+        <span class="dot" onclick="currentSlides(3)"></span>
+    </div>
+    @Scripts.Render("~/Scripts/Function.js")
+</div>
