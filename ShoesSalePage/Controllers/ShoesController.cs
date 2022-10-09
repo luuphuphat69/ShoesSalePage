@@ -1,22 +1,26 @@
-﻿using System;
-using System.Data.Entity;
-using System.IO;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Net;
 using System.Web.Mvc;
 using ShoesSalePage.Data;
+using System.Linq;
 using ShoesSalePage.Models;
+using PagedList;
 
 namespace ShoesSalePage.Controllers
 {
     public class ShoesController : Controller
     {
-        private ShoesDbContext db = new ShoesDbContext();
+        private readonly ShoesDbContext db = new ShoesDbContext();
 
         // GET: ShoesModels
-        public ActionResult Shop()
-        {  
-            return View(db.Shoes.ToList());
+        public ActionResult Shop(int? page)
+        {
+            var shoes = db.Shoes.OrderBy(p => p.Id);
+            if(page == null)
+                page = 1;
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(shoes.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: ShoesModels/Details/5
