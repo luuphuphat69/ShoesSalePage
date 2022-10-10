@@ -10,6 +10,9 @@ namespace ShoesSalePage.Data
         {
         }
         public DbSet<ShoesModel> Shoes { get; set; }
+        /*public DbSet<Cart> Carts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }*/
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

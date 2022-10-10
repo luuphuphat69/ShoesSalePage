@@ -141,8 +141,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\ShoesModel.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +168,17 @@
     <Content Include="Content\Images\banner3.jpg" />
     <Content Include="Content\Images\ProductImg\shoe1.jpg" />
     <Content Include="Content\Images\ProductImg\shoe10.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe11.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe12.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe13.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe14.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe15.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe16.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe17.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe18.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe19.jpg" />
     <Content Include="Content\Images\ProductImg\shoe2.jpg" />
+    <Content Include="Content\Images\ProductImg\shoe20.jpg" />
     <Content Include="Content\Images\ProductImg\shoe3.jpg" />
     <Content Include="Content\Images\ProductImg\shoe4.jpg" />
     <Content Include="Content\Images\ProductImg\shoe5.jpg" />
@@ -248,11 +259,10 @@
     <Content Include="Views\ShoesModels\Details.cshtml" />
     <Content Include="Views\ShoesModels\Edit.cshtml" />
     <Content Include="Views\ShoesModels\Index.cshtml" />
-    <Content Include="Views\Home\ViewShop.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cart\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
