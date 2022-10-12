@@ -33,6 +33,11 @@ namespace ShoesSalePage
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Cart", action = "Cart", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Details",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Shoes", action = "Details", id = UrlParameter.Optional }
+            );
         }
     }
 }

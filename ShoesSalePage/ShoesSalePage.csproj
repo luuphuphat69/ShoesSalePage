@@ -267,6 +267,7 @@
     <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Shoes\Search.cshtml" />
+    <Content Include="Views\Shoes\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

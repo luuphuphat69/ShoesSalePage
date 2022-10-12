@@ -6,6 +6,7 @@ using System.Linq;
 using ShoesSalePage.Models;
 using PagedList;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoesSalePage.Controllers
 {
