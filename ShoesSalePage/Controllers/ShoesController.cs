@@ -5,6 +5,7 @@ using ShoesSalePage.Data;
 using System.Linq;
 using ShoesSalePage.Models;
 using PagedList;
+using System;
 
 namespace ShoesSalePage.Controllers
 {
@@ -18,11 +19,20 @@ namespace ShoesSalePage.Controllers
             var shoes = db.Shoes.OrderBy(p => p.Id);
             if(page == null)
                 page = 1;
-            int pageSize = 6;
+            int pageSize = 9;
             int pageNumber = (page ?? 1);
             return View(shoes.ToPagedList(pageNumber, pageSize));
         }
-
+        public ActionResult Search(string input)
+        {
+            var item = from s in db.Shoes
+                       select s;
+            if (!String.IsNullOrEmpty(input))
+            {
+                item = item.Where(s => s.Name.Contains(input));
+            }
+            return View(item.ToList());
+        }
         // GET: ShoesModels/Details/5
         public ActionResult Details(int? id)
         {

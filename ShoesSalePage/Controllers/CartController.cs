@@ -6,7 +6,7 @@ namespace ShoesSalePage.Controllers
 {
     public class CartController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Cart()
         {
             return View();
         }

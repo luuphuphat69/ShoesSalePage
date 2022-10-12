@@ -29,6 +29,11 @@ namespace ShoesSalePage.Data
                 new ShoesModel{Id=18, Name="Giày tăng chiều cao nam dáng Derby", Price = 770000, Brand = "Goat", Size = 38, Color = "Black", Image="~/Content/Images/ProductImg/shoe18.jpg", IsAvailable=true},
                 new ShoesModel{Id=19, Name="Giày tây nam công sở cafe", Price = 820000, Brand = "Sunview", Size = 38, Color = "Brown", Image="~/Content/Images/ProductImg/shoe19.jpg", IsAvailable=true},
                 new ShoesModel{Id=20, Name="Giày lười da nam mũi tròn", Price = 770000, Brand = "T-red", Size = 38, Color = "Brown", Image="~/Content/Images/ProductImg/shoe20.jpg", IsAvailable=true},
+                new ShoesModel{Id=21, Name="Giày tây xỏ TX-6227", Price = 610000, Brand = "HongThanh", Size = 38, Color = "Brown", Image="~/Content/Images/NewArrival/shoes21.jpg", IsAvailable=true},
+                new ShoesModel{Id=22, Name="Giày tây xỏ TX-6227", Price = 610000, Brand = "HongThanh", Size = 38, Color = "Black", Image="~/Content/Images/NewArrival/shoes22.jpg", IsAvailable=true},
+                new ShoesModel{Id=23, Name="Giày tây xỏ TX-6229", Price = 630000, Brand = "HongThanh", Size = 38, Color = "Black", Image="~/Content/Images/NewArrival/shoes23.jpg", IsAvailable=true},
+                new ShoesModel{Id=24, Name="Giày cột dây CD-6225", Price = 630000, Brand = "HongThanh", Size = 38, Color = "Black", Image="~/Content/Images/NewArrival/shoes24.jpg", IsAvailable=true},
+                new ShoesModel{Id=25, Name="Giày bò tây xỏ TX-6134", Price = 630000, Brand = "HongThanh", Size = 38, Color = "Brown", Image="~/Content/Images/NewArrival/shoes25.jpg", IsAvailable=true},
             };
             listShoes.ForEach(s => context.Shoes.Add(s));
             context.SaveChanges();

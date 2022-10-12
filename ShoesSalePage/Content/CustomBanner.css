@@ -1,0 +1,44 @@
+﻿body {
+    margin: 0px 0px;
+}
+
+#banner {
+    background-image: url('Images/Banner.jpg');
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+}
+.header {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 36px;
+    -ms-transform: translate(0,-50%); /* IE 9 */
+    -webkit-transform: translate(0,-50%); /* Safari */
+    transform: translate(0,-50%);
+}
+.Button{
+    bottom:40%;
+    left:42%;
+    position:absolute;
+    height: 20px;
+}
+
+#content {
+    padding: 100px 50px;
+    text-align: center;
+    width: 80%;
+    margin: 0px auto;
+}
+
+#content h2 {
+        margin: 0px 0px 30px 0px;
+}
+
+#footer {
+    padding: 30px 0px;
+    text-align: center;
+    background: #ddd;
+}

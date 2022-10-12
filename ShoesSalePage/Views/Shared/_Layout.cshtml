@@ -15,7 +15,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="~/Home/Index">
-                    <img src="~/Icon/shoes.jpg" alt="shoe_icon" width="45" height="45" />
+                    <img src="~/Content/Icon/shoes.jpg" alt="shoe_icon" width="45" height="45" />
                     Nabati
                 </a>
             </div>
@@ -26,14 +26,17 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Shoes/Shop">Cửa hàng</a>
-                    </li>                             
-                    <li class="nav-item active">      
-                        <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Home/SearchOrder">Kiểm tra đơn hàng</a>
-                    </li>                             
-                    <li class="nav-item active">       
-                        <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Home/Cart">
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Cart/Cart">
                             Giỏ hàng
-                            <img src="~/Icon/shopping-cart.png" alt="cart_icon" width="20" height="20"/>
+                            <img src="~/Content/Icon/shopping-cart.png" alt="cart_icon" width="20" height="20" />
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Users/Login">
+                            <img src="~/Content/Icon/user.png" alt="cart_icon" width="20" height="20" />
+                            Đăng nhập
                         </a>
                     </li>
                 </ul>
@@ -42,6 +45,17 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("NewArrival", required: false)
+        @RenderSection("BestOfUs", required: false)
+        <div style="background-color: #47B5FF; text-align:center; height:auto;" >
+            <div>
+                <h2>
+                    TRỞ THÀNH HỘI VIÊN & <br />
+                    HƯỞNG NHIỀU ƯU ĐÃI
+                </h2>
+            </div>
+            <div class=" btn btn-dark text-center"> Đăng ký miễn phí &rarr;</div>
+        </div>
         <hr />
         <footer>
             <div class="row">
@@ -57,8 +71,9 @@
                 </div>
                 <div class="col-md-4">
                     <h2>HỖ TRỢ</h2>
-                    <p>Về các vấn đề khách hàng cần được hỗ trợ/tư vấn hay những thắc mắc về sản phẩm. Xin vui lòng liên hệ đường dây nóng:(84+)35555999 làm việc
-                    từ thứ 2 - thứ 7 (7:30AM - 21:00PM)
+                    <p>
+                        Về các vấn đề khách hàng cần được hỗ trợ/tư vấn hay những thắc mắc về sản phẩm. Xin vui lòng liên hệ đường dây nóng:(84+)35555999 làm việc
+                        từ thứ 2 - thứ 7 (7:30AM - 21:00PM)
                     </p>
                     <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Tìm hiểu thêm &raquo;</a></p>
                 </div>
@@ -66,17 +81,17 @@
                     <h2>LIÊN HỆ</h2>
                     <p>Theo dõi chúng tôi trên</p>
                     <a href="#" class="text-decoration-none">
-                        <img src="~/Icon/facebook.png" alt="facebook_icon" width="20" height="20" />
+                        <img src="~/Content/Icon/facebook.png" alt="facebook_icon" width="20" height="20" />
                         Facebook
                     </a>
                     <br />
                     <a href="#" class="text-decoration-none">
-                        <img src="~/Icon/instagram.png" alt="instagram_icon" width="20" height="20" />
+                        <img src="~/Content/Icon/instagram.png" alt="instagram_icon" width="20" height="20" />
                         Instagram
                     </a>
                     <br />
                     <a href="#" class="text-decoration-none">
-                        <img src="~/Icon/twitter.png" alt="twitter_icon" width="20" height="20" />
+                        <img src="~/Content/Icon/twitter.png" alt="twitter_icon" width="20" height="20" />
                         Twitter
                     </a>
                     <p><a class="btn btn-default" href="~/Home/Contact">Tìm hiểu thêm &raquo;</a></p>
@@ -84,8 +99,13 @@
             </div>
             <p>Copyright &copy; @DateTime.Now.Year - NabatiShoes. All rights reserved</p>
         </footer>
+        <br />
     </div>
-
+    <div class="text-md-center" style="background-color: #06283D; height: 50px;">
+        <a class="text-decoration-none" style="color:azure" href="#">Chính sách bảo mật |</a>
+        <a class="text-decoration-none" style="color:azure" href="#">Điều khoản và điều kiện |</a>
+        <a class="text-decoration-none" style="color:azure" href="#">Xuất bản bởi</a>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

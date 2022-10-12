@@ -136,6 +136,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\ShoesDbContext.cs" />
     <Compile Include="Data\ShoesInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -163,9 +164,17 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\CustomBanner.css" />
+    <Content Include="Content\Icon\user.png" />
+    <Content Include="Content\Images\Banner.jpg" />
     <Content Include="Content\Images\banner1.png" />
     <Content Include="Content\Images\banner2.jpg" />
     <Content Include="Content\Images\banner3.jpg" />
+    <Content Include="Content\Images\NewArrival\shoes21.jpg" />
+    <Content Include="Content\Images\NewArrival\shoes22.jpg" />
+    <Content Include="Content\Images\NewArrival\shoes23.jpg" />
+    <Content Include="Content\Images\NewArrival\shoes24.jpg" />
+    <Content Include="Content\Images\NewArrival\shoes25.jpg" />
     <Content Include="Content\Images\ProductImg\shoe1.jpg" />
     <Content Include="Content\Images\ProductImg\shoe10.jpg" />
     <Content Include="Content\Images\ProductImg\shoe11.jpg" />
@@ -187,15 +196,14 @@
     <Content Include="Content\Images\ProductImg\shoe8.jpg" />
     <Content Include="Content\Images\ProductImg\shoe9.jpg" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Content\ProductStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Icon\facebook.png" />
-    <Content Include="Icon\instagram.png" />
-    <Content Include="Icon\shoes.jpg" />
-    <Content Include="Icon\shopping-cart.png" />
-    <Content Include="Icon\twitter.png" />
+    <Content Include="Content\Icon\facebook.png" />
+    <Content Include="Content\Icon\instagram.png" />
+    <Content Include="Content\Icon\shoes.jpg" />
+    <Content Include="Content\Icon\shopping-cart.png" />
+    <Content Include="Content\Icon\twitter.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -250,9 +258,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Cart.cshtml" />
-    <Content Include="Views\Home\SearchOrder.cshtml" />
-    <Content Include="Views\Home\ShippingInfo.cshtml" />
     <Content Include="Views\Shoes\Shop.cshtml" />
     <Content Include="Views\ShoesModels\Create.cshtml" />
     <Content Include="Views\ShoesModels\Delete.cshtml" />
@@ -260,10 +265,11 @@
     <Content Include="Views\ShoesModels\Edit.cshtml" />
     <Content Include="Views\ShoesModels\Index.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Shoes\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

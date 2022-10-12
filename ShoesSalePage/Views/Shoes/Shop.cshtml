@@ -4,7 +4,15 @@
     ViewBag.Title = "Shop";
 }
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-<link href="~/Content/ProductStyle.css" rel="stylesheet" />
+<div class="m-3">
+    @using (Html.BeginForm("Search", "Shoes"))
+    {
+        <p>
+            Title: @Html.TextBox("Input") 
+            <input type="submit" value="Tìm kiếm"/>
+        </p>
+    }
+</div>
 <div class="container">
     <div class="row">
         @foreach (var item in Model)

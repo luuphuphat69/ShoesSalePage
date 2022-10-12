@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ShoesSalePage.Models.ShoesModel>
+@{
+    ViewBag.Title = "Search";
+}
+<div class="m-3">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Title: @Html.TextBox("Input") 
+            <input type="submit" value="Tìm kiếm" />
+        </p>
+    }
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-4 col-sm-6 p-3">
+            <div class="img-thumbnail">
+                <div class="float-start">
+                    <img src="@Url.Content(item.Image)" alt="Shoes_img" height="100" width="100" />
+                </div>
+                <div>
+                    <p class="fw-bold">@item.Name</p>
+                    <p>@item.Brand</p>
+                    <p class="fw-bold">@item.Price VND</p>
+                </div>
+                <input type="button" value="Thêm vào giỏ hàng" />
+                <input type="button" value="Xem chi tiết" />
+            </div>
+        </div>
+    }
+</div>
+

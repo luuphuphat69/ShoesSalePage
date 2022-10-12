@@ -23,6 +23,16 @@ namespace ShoesSalePage
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Shoes", action = "Shop", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Search",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Shoes", action = "Search", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Cart",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Cart", action = "Cart", id = UrlParameter.Optional }
+            );
         }
     }
 }
