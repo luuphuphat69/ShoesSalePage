@@ -1,5 +1,33 @@
-﻿@{
+﻿@model IEnumerable<ShoesSalePage.Models.Cart>
+@using ShoesSalePage.Models;
+@{
     ViewBag.Title = "Cart";
+    double total = 0;
 }
-
-<h2>Cart</h2>
+<h2>Đơn hàng của bạn</h2>
+<table cellpadding="4" cellspacing="4" border="1">
+    <tr>
+        <td>ID</td>
+        <td>Tên sản phẩm</td>
+        <td>Hãng</td>
+        <td>Số lượng</td>
+        <td>Giá</td>
+        <td>Ngày</td>
+    </tr>
+    @foreach(var item in (List<Cart>)Session["Cart"])
+     {
+        <tr>
+            <td>@item.Shoes.Id</td>
+            <td>@item.Shoes.Name</td>
+            <td>@item.Shoes.Brand</td>
+            <td>@item.Quantity</td>
+            <td>@(item.Shoes.Price * item.Quantity)</td>
+            <td>@item.CreatedDate</td>
+            @{ total += item.Shoes.Price * item.Quantity;}
+            <td>
+                <a class="text-decoration-none" href="@Url.Action("Remove", "Cart", new { id = item.Shoes.Id })">Remove</a>
+            </td>
+        </tr>
+     }
+</table>
+<p class="mt-4">Tổng: @total VND</p>

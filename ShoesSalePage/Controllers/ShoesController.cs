@@ -18,7 +18,7 @@ namespace ShoesSalePage.Controllers
         public ActionResult Shop(int? page)
         {
             var shoes = db.Shoes.OrderBy(p => p.Id);
-            if(page == null)
+            if (page == null)
                 page = 1;
             int pageSize = 9;
             int pageNumber = (page ?? 1);
@@ -48,7 +48,21 @@ namespace ShoesSalePage.Controllers
             }
             return View(shoesModel);
         }
-
+        /*public ActionResult AddToCart()
+        {
+            return RedirectToAction("Buy", "Cart"); // (action, controller)
+        }*/
+        [Route("/removecart/{id:int}")]
+        public ActionResult RemoveCart(int id)
+        {
+            return RedirectToAction("Buy", "Cart");
+        }
+        [HttpPost]
+        [Route("/updatecart")]
+        public ActionResult UpdateCart(int id, int quantity)
+        {
+            return RedirectToAction("Add", "Cart");
+        }
         // GET: ShoesModels/Create
         public ActionResult Create()
         {

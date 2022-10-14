@@ -27,8 +27,9 @@
                         <p>@item.Brand</p>
                         <p class="fw-bold">@item.Price VND</p>
                     </div>
-                    <input class="btn btn-primary" type="button" value="Thêm vào giỏ hàng" />
-                    
+                    <a class="btn btn-primary" href="@Url.Action("Add","Cart", new {id = item.Id})">
+                        Thêm vào giỏ hàng
+                    </a>
                    <a class="btn btn-primary" href="@Url.Action("Details","Shoes", new {id = item.Id})">
                        Chi tiết
                    </a>
