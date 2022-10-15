@@ -5,29 +5,36 @@
     double total = 0;
 }
 <h2>Đơn hàng của bạn</h2>
-<table cellpadding="4" cellspacing="4" border="1">
-    <tr>
-        <td>ID</td>
-        <td>Tên sản phẩm</td>
-        <td>Hãng</td>
-        <td>Số lượng</td>
-        <td>Giá</td>
-        <td>Ngày</td>
-    </tr>
-    @foreach(var item in (List<Cart>)Session["Cart"])
-     {
+<table cellpadding="4" cellspacing="4" border="1" class="flex-column" style="border-collapse:collapse;">
+    <thead>
         <tr>
-            <td>@item.Shoes.Id</td>
-            <td>@item.Shoes.Name</td>
-            <td>@item.Shoes.Brand</td>
-            <td>@item.Quantity</td>
-            <td>@(item.Shoes.Price * item.Quantity)</td>
-            <td>@item.CreatedDate</td>
-            @{ total += item.Shoes.Price * item.Quantity;}
-            <td>
-                <a class="text-decoration-none" href="@Url.Action("Remove", "Cart", new { id = item.Shoes.Id })">Remove</a>
-            </td>
+            <td style="border:1px solid black" class="fw-bold">ID</td>
+            <td style="border:1px solid black" class="fw-bold">Tên sản phẩm</td>
+            <td style="border:1px solid black" class="fw-bold">Hãng</td>
+            <td style="border:1px solid black" class="fw-bold">Số lượng</td>
+            <td style="border:1px solid black" class="fw-bold">Giá</td>
+            <td style="border:1px solid black" class="fw-bold">Ngày</td>
         </tr>
-     }
+    </thead>
+    <tbody>
+        @foreach (var item in (List<Cart>)Session["Cart"])
+        {
+            <tr class="text-center">
+                <td style="border:1px solid black">@item.Shoes.Id</td>
+                <td style="border:1px solid black">@item.Shoes.Name</td>
+                <td style="border:1px solid black">@item.Shoes.Brand</td>
+                <td style="border:1px solid black">@item.Quantity</td>
+                <td style="border:1px solid black">@String.Format("{0:n0}", item.Shoes.Price * item.Quantity) VND</td>
+                <td style="border:1px solid black">@item.CreatedDate</td>
+                @{ total += item.Shoes.Price * item.Quantity;}
+                <td style="border:1px solid black">
+                    <a class="text-decoration-none" href="@Url.Action("Remove", "Cart", new { id = item.Shoes.Id })">Gỡ</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-<p class="mt-4">Tổng: @total VND</p>
+<p class="mt-4 fw-bold">Tổng: @String.Format("{0:n0}", total) VND</p>
+<a class="btn btn-primary mb-4" href="#">
+    Xác nhận đơn hàng
+</a>

@@ -73,7 +73,7 @@
                         <div class="card-body">
                             <h5 class="card-title">@item.Name</h5>
                             <p class="card-text">@item.Brand</p>
-                            <p class="card-text">@item.Price VND</p>
+                            <p class="card-text fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
                             <a href="~/Shoes/Shop" class="btn btn-primary">Mua ngay</a>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div>
                             <p class="fw-bold">@item.Name</p>
                             <p>@item.Brand</p>
-                            <p class="fw-bold">@item.Price VND</p>
+                            <p class="fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
                         </div>
                         <a href="~/Shoes/Shop" class="btn btn-primary">Mua ngay</a>
                     </div>

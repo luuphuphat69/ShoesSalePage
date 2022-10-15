@@ -14,7 +14,7 @@ namespace ShoesSalePage.Controllers
     {
         private readonly ShoesDbContext db = new ShoesDbContext();
 
-        // GET: ShoesModels
+        // GET: Shoes/Shop?page=X
         public ActionResult Shop(int? page)
         {
             var shoes = db.Shoes.OrderBy(p => p.Id);
@@ -24,6 +24,7 @@ namespace ShoesSalePage.Controllers
             int pageNumber = (page ?? 1);
             return View(shoes.ToPagedList(pageNumber, pageSize));
         }
+        // GET: Shoes/Search?input=...
         public ActionResult Search(string input)
         {
             var item = from s in db.Shoes
@@ -34,7 +35,7 @@ namespace ShoesSalePage.Controllers
             }
             return View(item.ToList());
         }
-        // GET: ShoesModels/Details/5
+        // GET: Shoes/Details?id=X
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -47,21 +48,6 @@ namespace ShoesSalePage.Controllers
                 return HttpNotFound();
             }
             return View(shoesModel);
-        }
-        /*public ActionResult AddToCart()
-        {
-            return RedirectToAction("Buy", "Cart"); // (action, controller)
-        }*/
-        [Route("/removecart/{id:int}")]
-        public ActionResult RemoveCart(int id)
-        {
-            return RedirectToAction("Buy", "Cart");
-        }
-        [HttpPost]
-        [Route("/updatecart")]
-        public ActionResult UpdateCart(int id, int quantity)
-        {
-            return RedirectToAction("Add", "Cart");
         }
         // GET: ShoesModels/Create
         public ActionResult Create()

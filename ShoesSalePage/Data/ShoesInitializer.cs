@@ -5,7 +5,7 @@ namespace ShoesSalePage.Data
 {
     public class ShoesInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<ShoesDbContext>
     {
-        protected override void Seed(ShoesDbContext context)
+        protected override void Seed(ShoesDbContext context) // Add data to database
         {
             var listShoes = new List<ShoesModel>()
             {
