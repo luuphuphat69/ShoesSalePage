@@ -165,6 +165,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\CustomBanner.css" />
+    <Content Include="Content\Icon\filter.png" />
     <Content Include="Content\Icon\user.png" />
     <Content Include="Content\Images\Banner.jpg" />
     <Content Include="Content\Images\banner1.png" />
@@ -268,6 +269,7 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Shoes\Search.cshtml" />
     <Content Include="Views\Shoes\Details.cshtml" />
+    <Content Include="Views\Shoes\Filter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

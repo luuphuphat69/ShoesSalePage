@@ -1,12 +1,11 @@
-﻿using System.Data.Entity;
+﻿using PagedList;
+using ShoesSalePage.Data;
+using ShoesSalePage.Models;
+using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using ShoesSalePage.Data;
-using System.Linq;
-using ShoesSalePage.Models;
-using PagedList;
-using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace ShoesSalePage.Controllers
 {
@@ -17,7 +16,7 @@ namespace ShoesSalePage.Controllers
         // GET: Shoes/Shop?page=X
         public ActionResult Shop(int? page)
         {
-            var shoes = db.Shoes.OrderBy(p => p.Id);
+            var shoes = db.Shoes.OrderBy(p => p.Price);
             if (page == null)
                 page = 1;
             int pageSize = 9;
@@ -49,12 +48,15 @@ namespace ShoesSalePage.Controllers
             }
             return View(shoesModel);
         }
-        // GET: ShoesModels/Create
-        public ActionResult Create()
+        public ActionResult Filter(int? page)
         {
-            return View();
+            var filter = db.Shoes.OrderByDescending(p => p.Price);
+            if (page == null)
+                page = 1;
+            int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            return View(filter.ToPagedList(pageNumber, pageSize));
         }
-
         // POST: ShoesModels/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

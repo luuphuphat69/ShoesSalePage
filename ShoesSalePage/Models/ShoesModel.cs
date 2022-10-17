@@ -20,7 +20,7 @@ namespace ShoesSalePage.Models
         [Display(Name = "Shoe Color")]
         public string Color { get; set; }
         public string Image { get; set; }
-        [Display(Name ="Available")]
+        [Display(Name = "Available")]
         [Required]
         public bool IsAvailable { get; set; }
     }

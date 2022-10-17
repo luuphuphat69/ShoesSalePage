@@ -1,25 +1,9 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.IPagedList<ShoesSalePage.Models.ShoesModel>
 @{
-    ViewBag.Title = "Shop";
+    ViewBag.Title = "Filter";
 }
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-<div class="m-3">
-    @using (Html.BeginForm("Search", "Shoes"))
-    {
-        <p>
-            Tìm kiếm sản phẩm: @Html.TextBox("Input")
-            <input type="submit" value="Tìm kiếm" />
-        </p>
-    }
-    <div>
-        <a class="btn btn-outline-primary" href="@Url.Action("Filter", "Shoes")">
-            <img src="~/Content/Icon/filter.png" alt="filter" height="20" width="20" />
-           GIÁ(CAO-THẤP)
-        </a>
-    </div>
-</div>
-<br />
 <div class="container">
     <div class="row">
         @foreach (var item in Model)
@@ -44,7 +28,11 @@
             </div>
         }
         <div>
-            @Html.PagedListPager(Model, pageNumber => Url.Action("Shop", new { page = pageNumber }))
+            @Html.PagedListPager(Model, pageNumber => Url.Action("Filter", new { page = pageNumber }))
+        </div>
+        <div class="mb-4">
+            <a href="~/Shoes/Shop" class="text-decoration-none">-> Trở về cửa hàng <-</a>
         </div>
     </div>
 </div>
+

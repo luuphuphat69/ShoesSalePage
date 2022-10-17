@@ -25,6 +25,11 @@ namespace ShoesSalePage
                 defaults: new { controller = "Shoes", action = "Search", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Filter",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Shoes", action = "Filter", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Cart",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Cart", action = "Cart", id = UrlParameter.Optional }
@@ -33,6 +38,11 @@ namespace ShoesSalePage
                 name: "Details",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Shoes", action = "Details", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "User",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Users", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

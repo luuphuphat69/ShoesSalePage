@@ -28,4 +28,4 @@ namespace ShoesSalePage.Controllers
             return View();
         }
     }
-}   
+}

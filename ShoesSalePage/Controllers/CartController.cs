@@ -2,10 +2,7 @@
 using ShoesSalePage.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.Management;
 using System.Web.Mvc;
-using System.Web.UI;
 
 namespace ShoesSalePage.Controllers
 {
@@ -21,7 +18,7 @@ namespace ShoesSalePage.Controllers
             if (Session["Cart"] == null)
             {
                 List<Cart> list = new List<Cart>();
-                list.Add(new Cart { Shoes = db.Shoes.Find(id), Quantity = 1, CreatedDate = DateTime.Now});
+                list.Add(new Cart { Shoes = db.Shoes.Find(id), Quantity = 1, CreatedDate = DateTime.Now });
                 Session["Cart"] = list;     // Store shoes list to a session
                 Session["Count"] = 1;
             }
@@ -52,12 +49,12 @@ namespace ShoesSalePage.Controllers
         private int CheckExist(int id)
         {
             List<Cart> list = (List<Cart>)Session["Cart"];
-            for(int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].Shoes.Id == id)
-                    return i-1; 
+                    return i - 1;
             }
-            return -1; 
+            return -1;
         }
     }
 }
