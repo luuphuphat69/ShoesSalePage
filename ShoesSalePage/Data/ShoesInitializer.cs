@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ShoesSalePage.Data
 {
-    public class ShoesInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<ShoesDbContext>
+    public class ShoesInitializer : System.Data.Entity.DropCreateDatabaseAlways<ShoesDbContext>
     {
         protected override void Seed(ShoesDbContext context) // Add data to database
         {

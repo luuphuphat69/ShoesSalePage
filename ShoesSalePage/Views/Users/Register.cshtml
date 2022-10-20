@@ -1,0 +1,92 @@
+﻿@model ShoesSalePage.Models.User
+@{
+    ViewBag.Title = "Register";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">ĐĂNG KÝ TÀI KHOẢN</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName)
+                        @Html.TextBoxFor(m => m.FirstName, "", new { @class = "form-control", @placeholder = "Họ" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName)
+                        @Html.TextBoxFor(m => m.LastName, "", new { @class = "form-control", @placeholder = "Tên" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Tên tài khoản" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                        @if (ViewBag.UserNameError != null)
+                        {
+                            <span class="text-bg-danger">@ViewBag.UserNameError</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, "", new { @class = "form-control", @placeholder = "Địa chỉ" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.City)
+                        @Html.TextBoxFor(m => m.City, "", new { @class = "form-control", @placeholder = "Thành phố" })
+                        @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PostalCode)
+                        @Html.TextBoxFor(m => m.PostalCode, "", new { @class = "form-control", @placeholder = "Mã bưu điện" })
+                        @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber)
+                        @Html.TextBoxFor(m => m.PhoneNumber, "", new { @class = "form-control", @placeholder = "Số điện thoại" })
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                        @if (ViewBag.PhoneError != null)
+                        {
+                            <span class="text-bg-danger">@ViewBag.PhoneError</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        @if (ViewBag.MailError != null)
+                        {
+                            <span class="text-bg-danger">@ViewBag.MailError</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPass)
+                        @Html.PasswordFor(m => m.ConfirmPass, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPass, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Đăng ký" onclick="OnAlert()" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    function OnAlert() {
+        alert("Đăng ký thành công!!!");
+    }
+</script>

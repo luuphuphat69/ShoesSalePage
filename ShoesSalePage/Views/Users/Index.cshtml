@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ShoesSalePage.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row justify-content-md-start">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>THÔNG TIN TÀI KHOẢN</h2>
+            </div>
+            <div class="card-body">
+                @if (Session["FullName"] != null)
+                {
+                    <p>Tên: @Session["FullName"].ToString()</p>
+                    <p>Email: @Session["Email"].ToString()</p>
+                    <p>Tài khoản: @Session["UserName"].ToString()</p>
+                    <p>Địa chỉ: @Session["Address"].ToString()</p>
+                    <p>Thành phố: @Session["City"].ToString()</p>
+                    <p>Số điện thoại: @Session["PhoneNumber"].ToString()</p>
+                    <a href="@Url.Action("Logout","Users")" class="btn btn-outline-primary">Logout</a>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

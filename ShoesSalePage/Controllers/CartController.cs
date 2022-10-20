@@ -6,11 +6,16 @@ using System.Web.Mvc;
 
 namespace ShoesSalePage.Controllers
 {
+    /* Note: The ASP.NET Session is a convenient place to store user-specific information 
+       which will expire after they leave the site. While misuse of session state can have performance implications
+       on larger sites, our light use will work well for demonstration purposes.*/
     public class CartController : Controller
     {
         private readonly ShoesDbContext db = new ShoesDbContext();
         public ActionResult Cart()
         {
+            if (Session["Cart"] == null)
+                return RedirectToAction("Shop", "Shoes");
             return View();
         }
         public ActionResult Add(int id)

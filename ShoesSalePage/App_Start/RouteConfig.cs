@@ -44,6 +44,16 @@ namespace ShoesSalePage
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Users", action = "Login", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Regist",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Users", action = "Register", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "LogOut",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Users", action = "Logout", id = UrlParameter.Optional }
+            );
         }
     }
 }

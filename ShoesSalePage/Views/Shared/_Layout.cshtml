@@ -34,12 +34,26 @@
                             (@Session["Count"])
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Users/Login">
-                            <img src="~/Content/Icon/user.png" alt="cart_icon" width="20" height="20" />
-                            Đăng nhập
-                        </a>
-                    </li>
+                    @if (Session["FullName"] != null)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Users/Index">
+                                <img src="~/Content/Icon/user.png" alt="cart_icon" width="20" height="20" />
+                                Hello, @Session["UserName"]
+                            </a>
+                        </li>
+                        <li class="m-2">
+                            @Html.ActionLink("Logout", "Logout", "Users")
+                        </li>
+                    }else
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" style="background-color:#b7c4cf" href="~/Users/Login">
+                                <img src="~/Content/Icon/user.png" alt="cart_icon" width="20" height="20" />
+                                Đăng nhập
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
