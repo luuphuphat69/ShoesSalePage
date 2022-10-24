@@ -139,6 +139,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Data\OrdersDbContext.cs" />
     <Compile Include="Data\ShoesDbContext.cs" />
     <Compile Include="Data\ShoesInitializer.cs" />
     <Compile Include="Data\UsersDbContext.cs" />
@@ -146,11 +147,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ShoesModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\OrdersDb.mdf" />
+    <Content Include="App_Data\OrdersDb_log.ldf">
+      <DependentUpon>OrdersDb.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\ShoesDbTable.mdf" />
     <Content Include="App_Data\ShoesDbTable_log.ldf">
       <DependentUpon>ShoesDbTable.mdf</DependentUpon>

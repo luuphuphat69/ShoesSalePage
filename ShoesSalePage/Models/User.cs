@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace ShoesSalePage.Models
 {

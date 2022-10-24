@@ -38,6 +38,15 @@
 <a class="btn btn-outline-primary mb-4" href="~/Shoes/Shop">
     Tiếp tục mua hàng
 </a>
-<a class="btn btn-outline-danger mb-4" href="#">
+<a class="btn btn-outline-danger mb-4" href="@Url.Action("ConfirmOrder", "Cart")" onclick="OnAlert()">
     Xác nhận đơn hàng
 </a>
+@if (ViewBag.Message != null)
+ {
+    <p>@ViewBag.Message</p>
+ }
+<script type="text/javascript">
+    function OnAlert() {
+        alert("Nabati đã tiếp nhận đơn hàng, sau 24h sẽ có nhân viên gọi điện cho bạn!!!. Mã đơn hàng của bạn là @Session["OrderID"]");
+    }
+</script>

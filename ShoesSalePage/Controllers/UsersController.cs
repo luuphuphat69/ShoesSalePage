@@ -10,7 +10,7 @@ namespace ShoesSalePage.Controllers
 {
     public class UsersController : Controller
     {
-        private UsersDbContext db = new UsersDbContext();
+        private readonly UsersDbContext db = new UsersDbContext();
 
         // GET: Users
         public ActionResult Index()
@@ -32,13 +32,14 @@ namespace ShoesSalePage.Controllers
         [HttpPost]
         public ActionResult Register(User users)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //check if user click sumit or not?
             {
+                // check if email, phonenumber, username is exist ?
                 var check = db.Users.FirstOrDefault(s => s.Email == users.Email || s.PhoneNumber == users.PhoneNumber || s.UserName == users.UserName);
                 if (check == null)
                 {
                     users.Password = GetMD5(users.Password);
-                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.Configuration.ValidateOnSaveEnabled = false; // Disable entity validation
                     db.Users.Add(users);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -53,7 +54,7 @@ namespace ShoesSalePage.Controllers
             }
             return View();
         }
-        public static string GetMD5(string str)
+        public static string GetMD5(string str) // mã hóa str thành chuỗi dữ liệu 128 bit 
         {
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] fromData = Encoding.UTF8.GetBytes(str);
@@ -77,8 +78,8 @@ namespace ShoesSalePage.Controllers
         {
             if (ModelState.IsValid)
             {
-                var f_password = GetMD5(password);
-                var data = db.Users.Where(s => s.UserName.Equals(userName) && s.Password.Equals(f_password)).ToList();
+                var _password = GetMD5(password);
+                var data = db.Users.Where(s => s.UserName.Equals(userName) && s.Password.Equals(_password)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
