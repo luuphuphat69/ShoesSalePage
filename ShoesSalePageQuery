@@ -1,0 +1,45 @@
+CREATE TABLE Admins(
+	[AdminID]		INT PRIMARY KEY NOT NULL,
+	[AdminName]		CHAR(100)		NOT NULL,
+	[FullName]		NCHAR(100)		NOT NULL,
+	[AdminPassword] CHAR(100)		NOT NULL,
+	[PhoneNumber]	CHAR(10)		NULL, 
+)
+CREATE TABLE Users(
+	[UserId]      INT PRIMARY KEY NOT NULL,
+    [FirstName]   NCHAR (50)	  NOT NULL,
+    [LastName]    NCHAR (50)	  NOT NULL,
+    [Email]       CHAR (100)	  NOT NULL,
+    [CreatedDate] DATETIME		  NULL,
+    [UserName]    CHAR (100)	  NOT NULL,
+    [Password]    CHAR (100)	  NOT NULL,
+    [ConfirmPass] CHAR (100)	  NULL,
+    [Address]     NCHAR (50)	  NOT NULL,
+    [City]        NCHAR (50)	  NOT NULL,
+    [PostalCode]  CHAR (10)		  NULL,
+    [PhoneNumber] CHAR (11)		  NOT NULL,
+)
+CREATE TABLE Products(
+	[ProductId]   INT PRIMARY KEY NOT NULL,
+    [Name]        NVARCHAR		  (MAX) NOT NULL,
+    [Price]       FLOAT			  NOT NULL,
+    [Size]        INT             NOT NULL,
+    [Brand]       NVARCHAR        (MAX) NOT NULL,
+    [Color]       NVARCHAR        (MAX) NULL,
+    [Image]       NVARCHAR        (MAX) NULL,
+    [IsAvailable] BIT             NOT NULL,
+)
+CREATE TABLE Orders(
+	[OrderID] INT PRIMARY KEY NOT NULL,
+	[UserID]  INT			  NOT NULL,
+	FOREIGN KEY (UserID) REFERENCES Users(UserId)
+)
+CREATE TABLE Cart(
+	[CartID]	  INT PRIMARY KEY NOT NULL,
+	[Quantity]	  INT NOT NULL,
+	[CreatedDate] DATETIME NULL,
+	[OrderID]	  INT NOT NULL,
+	[ProductID]	  INT NOT NULL,
+	FOREIGN KEY (ProductID) REFERENCES Products(ProductId),
+	FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+)
