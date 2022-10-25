@@ -11,20 +11,29 @@ namespace ShoesSalePage.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Order
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public Product()
         {
             this.Carts = new HashSet<Cart>();
         }
-    
-        public int OrderID { get; set; }
-        public int UserID { get; set; }
+        [Key]
+        public int ProductId { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public double Price { get; set; }
+        public int Size { get; set; }
+        [Required]
+        public string Brand { get; set; }
+        public string Color { get; set; }
+        public string Image { get; set; }
+        public bool IsAvailable { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
-        public virtual User User { get; set; }
     }
 }

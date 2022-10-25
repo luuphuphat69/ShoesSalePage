@@ -1,0 +1,28 @@
+﻿@model ShoesSalePage.Models.Admin
+@{ 
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<form action="/Admin/Login", method="post">
+    @Html.AntiForgeryToken()
+    <!-- Account input -->
+    <div class="form-group form-outline mb-4">
+        <label for="accountInput">Tài Khoản:</label>
+        <input id="accountInput" name="AdminName" type="text" placeholder="Tài khoản"/>
+        @Html.ValidationMessageFor(m => m.AdminName, "", new {@class = "text-danger"})
+    </div>
+    <!-- Password input -->
+    <div class="form-group form-outline mb-4">
+        <label for="passwordInput">Mật khẩu:</label>
+        <input id="passwordInput" name="password" type="text" placeholder="Mật khẩu" />
+        @Html.ValidationMessageFor(m => m.AdminName, "", new {@class = "text-danger"})
+    </div>
+    <div class="text-center text-lg-start mt-4 pt-2">
+        <div class="form-group">
+            <input type="submit" name="submit" class="btn btn-outline-primary" value="Login" />
+        </div>
+        <p class="small fw-bold mt-2 pt-1 mb-0">
+            Don't have an account? <a href="~/Admin/Register" class="link-danger">Register</a>
+        </p>
+    </div>
+</form>

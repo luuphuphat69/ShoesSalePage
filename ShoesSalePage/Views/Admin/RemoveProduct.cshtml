@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ShoesSalePage.Models.Product>
+@using ShoesSalePage.Models
+<table cellpadding="4" cellspacing="4" border="1" class="flex-column" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+            <td style="border:1px solid black" class="fw-bold">ID</td>
+            <td style="border:1px solid black" class="fw-bold">Tên sản phẩm</td>
+            <td style="border:1px solid black" class="fw-bold">Hãng</td>
+            <td style="border:1px solid black" class="fw-bold">Giá</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td style="border:1px solid black">@item.ProductId</td>
+                <td style="border:1px solid black">@item.Name</td>
+                <td style="border:1px solid black">@item.Brand</td>
+                <td style="border:1px solid black">@item.Price</td>
+                <td style="border:1px solid black">
+                    <a class="text-decoration-none" href="@Url.Action("Remove", "Admin", new { productId = item.ProductId })">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

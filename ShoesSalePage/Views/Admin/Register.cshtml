@@ -1,0 +1,47 @@
+﻿@model ShoesSalePage.Models.Admin
+@{
+    Layout = "~/Views/Shared/_RegisterLayout.cshtml";
+}
+@using (Html.BeginForm("Register", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">ĐĂNG KÝ TÀI KHOẢN</div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.AdminName)
+                @Html.TextBoxFor(m => m.AdminName, "", new { @class = "form-control", @placeholder = "Tên tài khoản" })
+                @Html.ValidationMessageFor(m => m.AdminName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FullName)
+                @Html.TextBoxFor(m => m.FullName, "", new { @class = "form-control", @placeholder = "Họ và tên" })
+                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AdminPassword)
+                @Html.TextBoxFor(m => m.AdminPassword, "", new { @class = "form-control", @placeholder = "Mật khẩu" })
+                @Html.ValidationMessageFor(m => m.AdminPassword, "", new { @class = "text-danger" })
+                @if (ViewBag.UserNameError != null)
+                {
+                    <span class="text-bg-danger">@ViewBag.UserNameError</span>
+                }
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPass)
+                @Html.TextBoxFor(m => m.ConfirmPass, "", new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" })
+                @Html.ValidationMessageFor(m => m.ConfirmPass, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNumber)
+                @Html.TextBoxFor(m => m.PhoneNumber, "", new { @class = "form-control", @placeholder = "Số điện thoại" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" name="submit" class="btn btn-outline-danger" value="Đăng ký" onclick="OnAlert()" />
+            </div>
+        </div>
+    </div>
+}
