@@ -1,5 +1,6 @@
 ﻿using ShoesSalePage.Models;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -11,12 +12,12 @@ namespace ShoesSalePage.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly ShoesSalePageEntities db = new ShoesSalePageEntities();
+        private readonly ShoesSalePageEnityEntities db = new ShoesSalePageEnityEntities();
         // GET: Admin
         public ActionResult Index()
         {
             if (Session["AdminID"] != null)
-                return View();
+                return View(db.Products.ToList());
             else
                 return RedirectToAction("Login");
         }
@@ -57,21 +58,20 @@ namespace ShoesSalePage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string AdminName, string password)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var _password = GetMD5(password);
-                var data = db.Admins.Where(s => s.AdminName.Equals(AdminName) && s.AdminPassword.Equals(_password)).ToList();
-                if (data != null)
+                var data = db.Admins.FirstOrDefault(s => s.AdminName.Equals(AdminName) && s.AdminPassword.Equals(_password));
+                if (data == null)
                 {
-                    Session["AdminID"] = data.FirstOrDefault().AdminID;
-                    Session["FullName"] = data.FirstOrDefault().FullName;
-                    Session["AdminName"] = data.FirstOrDefault().AdminName;
-                    Session["PhoneNumber"] = data.FirstOrDefault().PhoneNumber;
-                    return RedirectToAction("Index");
+                    return View();
                 }
                 else
-                    ViewBag.Error = "Login failed. Try again";
-                    return View();
+                    Session["AdminID"] = data.AdminID;
+                    Session["FullName"] = data.FullName;
+                    Session["AdminName"] = data.AdminName;
+                    Session["PhoneNumber"] = data.PhoneNumber;
+                    return RedirectToAction("Index");
             }
             return View();
         }
@@ -113,32 +113,74 @@ namespace ShoesSalePage.Controllers
                 ViewBag.AddError = "Sản phẩm đã tồn tại";
             return View();
         }
-        public ActionResult RemoveProduct(int productId)
+        // GET: _Products/Details/5
+        public ActionResult Details(int? id)
         {
-            var check = db.Products.FirstOrDefault(s => s.ProductId == productId);
-            if (check != null)
+            if (id == null)
             {
-                db.Products.Remove(check);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Admin");
-            } else
-                ViewBag.RemoveError = "Sản phẩm không tồn tại";
-            return View();
-        }
-        public ActionResult EditProduct(Product model)
-        {
-            var check = db.Products.FirstOrDefault(s => s.ProductId == model.ProductId);
-            if (check != null)
-            {
-                check.ProductId = model.ProductId;
-                check.Name = model.Name;
-                check.Price = model.Price;
-                check.Color = model.Color;
-                check.Brand = model.Brand;
-                check.IsAvailable = model.IsAvailable;
-                return View("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View();
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+        // GET: _Products/Edit/5
+        public ActionResult EditProduct(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        // POST: _Products/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProduct([Bind(Include = "ProductId,Name,Price,Size,Brand,Color,Image,IsAvailable")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+        // GET: _Products/Delete/5
+        public ActionResult RemoveProduct(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        // POST: _Products/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveProduct(int id)
+        {
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

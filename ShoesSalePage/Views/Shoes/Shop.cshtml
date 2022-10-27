@@ -1,5 +1,5 @@
 ﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<ShoesSalePage.Models.ShoesModel>
+@model PagedList.IPagedList<ShoesSalePage.Models.Product>
 @{
     ViewBag.Title = "Shop";
 }
@@ -34,10 +34,10 @@
                         <p>@item.Brand</p>
                         <p class="fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
                     </div>
-                    <a class="btn btn-primary" href="@Url.Action("Add","Cart", new {id = item.Id})">
+                    <a class="btn btn-primary" href="@Url.Action("Add","Cart", new {id = item.ProductId})">
                         Thêm vào giỏ hàng
                     </a>
-                    <a class="btn btn-primary" href="@Url.Action("Details","Shoes", new {id = item.Id})">
+                    <a class="btn btn-primary" href="@Url.Action("Details","Shoes", new {id = item.ProductId})">
                         Chi tiết
                     </a>
                 </div>

@@ -15,39 +15,9 @@ namespace ShoesSalePage
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "Shop",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Shoes", action = "Shop", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Search",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Shoes", action = "Search", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Filter",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Shoes", action = "Filter", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Cart",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Cart", action = "Cart", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Details",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Shoes", action = "Details", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
                 name: "User",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Users", action = "Login", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "LogOut",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Users", action = "Logout", id = UrlParameter.Optional }
             );
             //
             routes.MapRoute(
@@ -64,6 +34,21 @@ namespace ShoesSalePage
                 name: "AddProduct",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Admin", action = "AddProduct", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Search",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Cart",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Carts", action = "Cart", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Logout",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Users", action = "Logout", id = UrlParameter.Optional }
             );
         }
     }

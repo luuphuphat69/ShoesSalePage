@@ -136,39 +136,42 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>ShoesSalePageModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs">
-      <DependentUpon>ShoesSalePageModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>ShoesSalePageModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>ShoesSalePageModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShoesSalePageModel.Context.cs">
+    <Compile Include="Models\ShoesSalePageEnityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShoesSalePageModel.Context.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShoesSalePageModel.cs">
+    <Compile Include="Models\ShoesSalePageEnityModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShoesSalePageModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShoesSalePageModel.Designer.cs">
+    <Compile Include="Models\ShoesSalePageEnityModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShoesSalePageModel.edmx</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>ShoesSalePageModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -201,6 +204,8 @@
     <Content Include="Content\Images\NewArrival\shoes23.jpg" />
     <Content Include="Content\Images\NewArrival\shoes24.jpg" />
     <Content Include="Content\Images\NewArrival\shoes25.jpg" />
+    <Content Include="Content\Images\ProductImg\item1.jpg" />
+    <Content Include="Content\Images\ProductImg\item2.jpg" />
     <Content Include="Content\Images\ProductImg\shoe1.jpg" />
     <Content Include="Content\Images\ProductImg\shoe10.jpg" />
     <Content Include="Content\Images\ProductImg\shoe11.jpg" />
@@ -221,7 +226,9 @@
     <Content Include="Content\Images\ProductImg\shoe7.jpg" />
     <Content Include="Content\Images\ProductImg\shoe8.jpg" />
     <Content Include="Content\Images\ProductImg\shoe9.jpg" />
+    <Content Include="Content\Images\ProductImg\shoes21.jpg" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\carousel.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -230,15 +237,15 @@
     <Content Include="Content\Icon\shoes.jpg" />
     <Content Include="Content\Icon\shopping-cart.png" />
     <Content Include="Content\Icon\twitter.png" />
-    <Content Include="Models\ShoesSalePageModel.Context.tt">
+    <Content Include="Models\ShoesSalePageEnityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoesSalePageModel.edmx</DependentUpon>
-      <LastGenOutput>ShoesSalePageModel.Context.cs</LastGenOutput>
+      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
+      <LastGenOutput>ShoesSalePageEnityModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ShoesSalePageModel.tt">
+    <Content Include="Models\ShoesSalePageEnityModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoesSalePageModel.edmx</DependentUpon>
-      <LastGenOutput>ShoesSalePageModel.cs</LastGenOutput>
+      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
+      <LastGenOutput>ShoesSalePageEnityModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -268,12 +275,12 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\ShoesSalePageModel.edmx">
+    <EntityDeploy Include="Models\ShoesSalePageEnityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShoesSalePageModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShoesSalePageEnityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ShoesSalePageModel.edmx.diagram">
-      <DependentUpon>ShoesSalePageModel.edmx</DependentUpon>
+    <Content Include="Models\ShoesSalePageEnityModel.edmx.diagram">
+      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Function.js" />
@@ -297,12 +304,10 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shoes\Shop.cshtml" />
-    <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Shoes\Search.cshtml" />
     <Content Include="Views\Shoes\Details.cshtml" />
@@ -317,6 +322,13 @@
     <Content Include="Views\Admin\RemoveProduct.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
     <Content Include="Views\Admin\EditProduct.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+    <Content Include="Views\Products\Shop.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Search.cshtml" />
+    <Content Include="Views\Carts\Cart.cshtml" />
+    <Content Include="Views\Shared\_ShopLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -328,7 +340,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Products\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

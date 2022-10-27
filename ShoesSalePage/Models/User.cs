@@ -11,7 +11,9 @@ namespace ShoesSalePage.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,18 +21,32 @@ namespace ShoesSalePage.Models
         {
             this.Orders = new HashSet<Order>();
         }
-    
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; } = DateTime.Now;
+        [Required]
         public string UserName { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        [NotMapped]
+        [Required]
+        [Compare("Password", ErrorMessage = "Password not match")]
         public string ConfirmPass { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string City { get; set; }
         public string PostalCode { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
