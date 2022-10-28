@@ -29,6 +29,7 @@ namespace ShoesSalePage.Models
         public int OrderID { get; set; }
         public int ProductID { get; set; }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         public int OrderID { get; set; } // Foreign Key
 =======
@@ -49,6 +50,8 @@ namespace ShoesSalePage.Models
 
 =======
 >>>>>>> Test
+=======
+>>>>>>> Stashed changes
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
     }

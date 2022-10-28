@@ -18,6 +18,7 @@ namespace ShoesSalePage.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+<<<<<<< Updated upstream
     public partial class Order
 >>>>>>> Test
     {
@@ -37,6 +38,8 @@ namespace ShoesSalePage.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+=======
+>>>>>>> Stashed changes
     public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -46,8 +49,11 @@ namespace ShoesSalePage.Models
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+<<<<<<< Updated upstream
 =======
 >>>>>>> Test
+=======
+>>>>>>> Stashed changes
         public int OrderID { get; set; }
         public int UserID { get; set; }
     

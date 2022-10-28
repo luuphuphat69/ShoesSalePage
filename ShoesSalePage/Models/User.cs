@@ -18,6 +18,7 @@ namespace ShoesSalePage.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+<<<<<<< Updated upstream
     public partial class User
 >>>>>>> Test
     {
@@ -58,6 +59,8 @@ namespace ShoesSalePage.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+=======
+>>>>>>> Stashed changes
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -88,6 +91,7 @@ namespace ShoesSalePage.Models
         [Required]
         public string Address { get; set; }
         [Required]
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -126,6 +130,11 @@ namespace ShoesSalePage.Models
 =======
         [Required]
 >>>>>>> Test
+=======
+        public string City { get; set; }
+        public string PostalCode { get; set; }
+        [Required]
+>>>>>>> Stashed changes
         public string PhoneNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
