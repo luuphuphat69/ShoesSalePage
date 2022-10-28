@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ShoesSalePage.Models.Product>
+@{
+    ViewBag.Title = "Search";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-4 col-sm-6 p-3">
+                <div class="img-thumbnail">
+                    <div class="float-start">
+                        <img src="@Url.Content(item.Image)" alt="Shoes_img" height="100" width="100" />
+                    </div>
+                    <div>
+                        <p class="fw-bold">@item.Name</p>
+                        <p>@item.Brand</p>
+                        <p class="fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
+                    </div>
+                    <a class="btn btn-primary" href="@Url.Action("Add","Cart", new {id = item.ProductId})">
+                        Thêm vào giỏ hàng
+                    </a>
+                    <a class="btn btn-primary" href="@Url.Action("Details","Products", new {id = item.ProductId})">
+                        Chi tiết
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
