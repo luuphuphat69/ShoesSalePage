@@ -86,14 +86,21 @@ namespace ShoesSalePage.Models
         [Required]
         public string Address { get; set; }
         [Required]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         public string City { get; set; }
         [Display(Name = "Mã bưu điện")]
         public string PostalCode { get; set; }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         [Required(ErrorMessage = "Số điện thoại không được để trống")]
         [StringLength(11)]
         [Display(Name = "Số điện thoại")]
+=======
+        [Required]
+>>>>>>> Stashed changes
 =======
         [Required]
 >>>>>>> Stashed changes

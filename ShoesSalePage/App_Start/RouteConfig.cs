@@ -20,6 +20,7 @@ namespace ShoesSalePage
                 defaults: new { controller = "Users", action = "Login", id = UrlParameter.Optional }
             );
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             routes.MapRoute(
                 name: "Regist",
                 url: "{controller}/{action}/{id}",
@@ -28,6 +29,8 @@ namespace ShoesSalePage
             routes.MapRoute(
                 name: "LogOut",
 =======
+=======
+>>>>>>> Stashed changes
             //
             routes.MapRoute(
                 name: "Login",
@@ -56,6 +59,9 @@ namespace ShoesSalePage
             );
             routes.MapRoute(
                 name: "Logout",
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Users", action = "Logout", id = UrlParameter.Optional }

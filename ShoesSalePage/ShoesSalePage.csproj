@@ -268,7 +268,10 @@
     <Content Include="Content\Icon\shopping-cart.png" />
     <Content Include="Content\Icon\twitter.png" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     <Content Include="Models\ShoesSalePageEnityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
@@ -309,7 +312,10 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     <EntityDeploy Include="Models\ShoesSalePageEnityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShoesSalePageEnityModel.Designer.cs</LastGenOutput>
@@ -367,6 +373,9 @@
     <Content Include="Views\Products\Search.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
     <Content Include="Views\Shared\_ShopLayout.cshtml" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
