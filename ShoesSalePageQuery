@@ -43,3 +43,49 @@ CREATE TABLE Cart(
 	FOREIGN KEY (ProductID) REFERENCES Products(ProductId),
 	FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 )
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(1, N'Giày da nam công sở NL83', 490000, 38, 'Sunview', 'Black', '~/Content/Images/ProductImg/shoe1.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(2, N'Giày da nam công sở NL82', 190000, 38, 'Raisins', 'Black', '~/Content/Images/ProductImg/shoe2.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(3, N'Giày da nam EL81', 290000, 38, 'Elly', 'Brown', '~/Content/Images/ProductImg/shoe3.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(4, N'Giày da nam EL80', 390000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe4.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(5, N'Giày da nam bóng NL85', 490000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe5.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(6, N'Giày da nam công sở NL84', 590000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe6.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(7, N'Giày da nam công sở NL89', 430000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe7.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(8, N'Giày da nam công sở LS69', 430000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe8.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(9, N'Giày tây da nam đen bóng LW37', 1200000, 38, 'Hobits', 'Black', '~/Content/Images/ProductImg/shoe9.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(10, N'Giày da nam buộc dây NL12', 450000, 38, 'BingChillin', 'Black', '~/Content/Images/ProductImg/shoe10.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(11, N'Giày da nam NL12', 660000, 38, 'BingChillin', 'Black', '~/Content/Images/ProductImg/shoe11.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(12, N'Giày da nam da bò Chelsea Boot', 780000, 38, 'T-red', 'Black', '~/Content/Images/ProductImg/shoe12.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(13, N'Giày lười nam GNTA686-N', 750000, 38, 'Hobits', 'Black', '~/Content/Images/ProductImg/shoe13.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(14, N'Giày tây nam vân da', 915000, 38, 'GOAT', 'Black', '~/Content/Images/ProductImg/shoe14.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(15, N'Giày lười nam da bò GNTA666-N', 830000, 38, 'GOAT', 'Black', '~/Content/Images/ProductImg/shoe15.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(16, N'Giày lười nam dập lỗ viền', 820000, 38, 'HongThanh', 'Black', '~/Content/Images/ProductImg/shoe16.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(17, N'Giày da bò nam quai ngang', 790000, 38, 'Raisins', 'Black', '~/Content/Images/ProductImg/shoe17.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(18, N'Giày tăng chiều cao nam dáng Derby', 770000, 38, 'GOAT', 'Black', '~/Content/Images/ProductImg/shoe18.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(19, N'Giày tây nam công sở cafe', 820000, 38, 'Sunview', 'Black', '~/Content/Images/ProductImg/shoe19.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(20, N'Giày tây xỏ TX-6227', 610000, 38, 'HongThanh', 'Black', '~/Content/Images/ProductImg/shoe20.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(21, N'Giày da nữ One Life', 2190000, 38, 'One Life', 'Black', '~/Content/Images/ProductImg/shoe21.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(22, N'Thắt lưng Golden Royal', 1490000, 38, 'Golden Royal', 'Black', '~/Content/Images/ProductImg/item1.jpg', 1);
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', '~/Content/Images/ProductImg/item2.jpg', 1)
