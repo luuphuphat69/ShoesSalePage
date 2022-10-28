@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Nabati - @ViewBag.Title</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="~/Content/carousel.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
+            <div class="container-fluid">
+                <img src="~/Content/Icon/shoes.jpg" height="50" width="50" />
+                <a class="navbar-brand" href="~/Home/Index">Nabati</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="~/Home/Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="~/Products/Shop">Cửa hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="~/Carts/Cart">
+                                Giỏ hàng
+                                (@Session["Count"])
+                            </a>
+                        </li>
+                    </ul>
+                    @using (Html.BeginForm("Search", "Products", FormMethod.Get, new {@class = "d-flex"}))
+                    {
+                        <input class="form-control me-2" type="search" placeholder="Search" name="input" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <a class="nav-link active p-md-2" href="~/Users/Login">
+                            <img src="~/Content/Icon/user.png" height="30" width="30" />
+                        </a>
+                    }
+                        <a href="@Url.Action("Logout", "Users")">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+        @RenderSection("NewArrival", required: false)
+        @RenderSection("BestOfUs", required: false)
+        <div style="background-color: #47B5FF; text-align:center; height:auto;">
+            <div>
+                <h2>
+                    TRỞ THÀNH HỘI VIÊN & <br />
+                    HƯỞNG NHIỀU ƯU ĐÃI
+                </h2>
+            </div>
+            <div class=" btn btn-dark text-center">
+                <a href="~/Users/Register" class="text-decoration-none" style="color:aliceblue">
+                    Đăng ký miễn phí &rarr;
+                </a>
+            </div>
+        </div>
+        <hr />
+    </main>
+    <footer>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>VỀ CỬA HÀNG</h2>
+                <p>
+                    Ra mắt năm 2015, cửa hàng Nabati được xây dựng nhằm cung cấp cho người dùng những trải nghiệm dễ dàng,
+                    an toàn và nhanh chóng khi mua sắm trực tuyến thông qua hệ thống hỗ trợ thanh toán và vận hành vững mạnh.
+                    Chúng tôi có niềm tin mạnh mẽ rằng trải nghiệm mua sắm trực tuyến phải đơn giản, dễ dàng và mang đến cảm xúc vui thích.
+                    Niềm tin này truyền cảm hứng và thúc đẩy chúng tôi mỗi ngày tại Nabati.
+                </p>
+                <p><a class="btn btn-default" href="#">Tìm hiểu thêm &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>HỖ TRỢ</h2>
+                <p>
+                    Về các vấn đề khách hàng cần được hỗ trợ/tư vấn hay những thắc mắc về sản phẩm. Xin vui lòng liên hệ đường dây nóng:(84+)35555999 làm việc
+                    từ thứ 2 - thứ 7 (7:30AM - 21:00PM)
+                </p>
+                <p><a class="btn btn-default" href="#">Tìm hiểu thêm &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>LIÊN HỆ</h2>
+                <p>Theo dõi chúng tôi trên</p>
+                <a href="#" class="text-decoration-none">
+                    <img src="~/Content/Icon/facebook.png" alt="facebook_icon" width="20" height="20" />
+                    Facebook
+                </a>
+                <br />
+                <a href="#" class="text-decoration-none">
+                    <img src="~/Content/Icon/instagram.png" alt="instagram_icon" width="20" height="20" />
+                    Instagram
+                </a>
+                <br />
+                <a href="#" class="text-decoration-none">
+                    <img src="~/Content/Icon/twitter.png" alt="twitter_icon" width="20" height="20" />
+                    Twitter
+                </a>
+                <p><a class="btn btn-default" href="~/Home/Contact">Tìm hiểu thêm &raquo;</a></p>
+            </div>
+        </div>
+        <p>Copyright &copy; @DateTime.Now.Year - NabatiShoes. All rights reserved</p>
+    </footer>
+    <br />
+    <div class="text-md-center" style="background-color: #06283D; height: 50px;">
+        <a class="text-decoration-none" style="color:azure" href="#">Chính sách bảo mật |</a>
+        <a class="text-decoration-none" style="color:azure" href="#">Điều khoản và điều kiện |</a>
+        <a class="text-decoration-none" style="color:azure" href="#">Xuất bản bởi</a>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

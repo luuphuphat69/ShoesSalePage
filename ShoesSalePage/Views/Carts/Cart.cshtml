@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ShoesSalePage.Models.Cart>
+@using ShoesSalePage.Models;
+@{
+    ViewBag.Title = "Cart";
+    double total = 0;
+}
+<div class="card">
+    <div class="card-header bg-black"></div>
+    <div class="card-body">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xl-12">
+                    <ul class="list-unstyled float-end">
+                        <li style="font-size: 30px; color: red;">Nabati</li>
+                        <li>828, Su Van Hanh, Dict 10, HCM city</li>
+                        <li>0355550971</li>
+                        <li>Nabati@mail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <h3 class="text-uppercase text-center mt-3" style="font-size: 40px;">Hóa đơn</h3>
+                <p>@Session["OrderID"]</p>
+            </div>
+
+            <div class="row mx-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Hãng</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Ngày mua</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in (List<Cart>)Session["Cart"])
+                        {
+                            <tr class="text-center">
+                                <td style="border:1px solid black">@item.Product.ProductId</td>
+                                <td style="border:1px solid black">@item.Product.Name</td>
+                                <td style="border:1px solid black">@item.Product.Brand</td>
+                                <td style="border:1px solid black">@item.Quantity</td>
+                                <td style="border:1px solid black">@String.Format("{0:n0}", item.Product.Price * item.Quantity) VND</td>
+                                <td style="border:1px solid black">@item.CreatedDate</td>
+                                @{ total += item.Product.Price * item.Quantity;}
+                                <td style="border:1px solid black">
+                                    <a class="text-decoration-none" href="@Url.Action("RemoveCart", "Carts", new { id = item.Product.ProductId })">Gỡ</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="row">
+                <div class="col-xl-8">
+                    <ul class="list-unstyled float-end me-0">
+                        <li>
+                            <span class="me-3 float-start">Tổng:</span><i class="fas fa-dollar-sign"></i> @String.Format("{0:n0}", total) VND
+                        </li>
+                        <li> 
+                            <span class="me-5">Giảm giá:</span>00,00 VND</li>
+                        <li>
+                            <span class="float-start" style="margin-right: 35px;">Phí vận chuyển: </span>00,00 VND
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xl-8" style="margin-left:60px">
+                    <p class="float-end"
+                       style="font-size: 30px; color: red; font-weight: 400;font-family: Arial, Helvetica, sans-serif;">
+                        Total:
+                        <span><i class="fas fa-dollar-sign"></i> @String.Format("{0:n0}", total) VND</span>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="row mt-2 mb-5">
+                <p class="fw-bold">Ngày: <span class="text-muted">@DateTime.Now</span></p>
+                <p class="fw-bold mt-3">Chữ ký:</p>
+            </div>
+
+        </div>
+    </div>
+    <a class="btn btn-outline-primary mb-4" href="~/Products/Shop">
+        Tiếp tục mua hàng
+    </a>
+    <a class="btn btn-outline-danger mb-4" href="@Url.Action("ConfirmOrder", "Cart")" onclick="OnAlert()">
+        Xác nhận đơn hàng
+    </a>
+</div>
+<script type="text/javascript">
+    function OnAlert() {
+        alert("Nabati đã tiếp nhận đơn hàng, sau 24h sẽ có nhân viên gọi điện cho bạn!!!. Mã đơn hàng của bạn là @Session["OrderID"]");
+    }
+</script>

@@ -1,27 +1,60 @@
-﻿@model IEnumerable<ShoesSalePage.Models.User>
+﻿@model ShoesSalePage.Models.User
 
 @{
     ViewBag.Title = "Index";
 }
-<div class="row justify-content-md-start">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                <h2>THÔNG TIN TÀI KHOẢN</h2>
-            </div>
-            <div class="card-body">
-                @if (Session["FullName"] != null)
-                {
-                    <p>Tên: @Session["FullName"].ToString()</p>
-                    <p>Email: @Session["Email"].ToString()</p>
-                    <p>Tài khoản: @Session["UserName"].ToString()</p>
-                    <p>Địa chỉ: @Session["Address"].ToString()</p>
-                    <p>Thành phố: @Session["City"].ToString()</p>
-                    <p>Số điện thoại: @Session["PhoneNumber"].ToString()</p>
-                    <a href="@Url.Action("Logout","Users")" class="btn btn-outline-primary">Logout</a>
-                }
-            </div>
-        </div>
-
-    </div>
-</div>
+<table class="table mt-3">
+    <tr>
+        <th>
+            Full Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            @Session["UserFullName"]
+        </td>
+        <td>
+            @Session["UserEmail"]
+        </td>
+        <td>
+            @Session["UserCreatedDate"]
+        </td>
+        <td>
+            @Session["UserName"]
+        </td>
+        <td>
+            @Session["UserAddress"]
+        </td>
+        <td>
+            @Session["UserCity"]
+        </td>
+        <td>
+            @Session["UserPostalCode"]
+        </td>
+        <td>
+            @Session["UserPhoneNumber"]
+        </td>
+    </tr>
+</table>
