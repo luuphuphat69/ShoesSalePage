@@ -19,21 +19,36 @@ namespace ShoesSalePage
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Users", action = "Login", id = UrlParameter.Optional }
             );
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             routes.MapRoute(
-                name: "Regist",
+                name: "Search",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Users", action = "Register", id = UrlParameter.Optional }
+                defaults: new { controller = "Shoes", action = "Search", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Filter",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Shoes", action = "Filter", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Cart",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Cart", action = "Cart", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Details",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Shoes", action = "Details", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "User",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Users", action = "Login", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "LogOut",
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Admin", action = "AddProduct", id = UrlParameter.Optional }
+            );
             //
             routes.MapRoute(
                 name: "Login",
@@ -49,28 +64,6 @@ namespace ShoesSalePage
                 name: "AddProduct",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Admin", action = "AddProduct", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Search",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Cart",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Carts", action = "Cart", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Logout",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Users", action = "Logout", id = UrlParameter.Optional }
             );
         }
     }

@@ -88,6 +88,9 @@ namespace ShoesSalePage.Models
         [Required]
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -99,9 +102,13 @@ namespace ShoesSalePage.Models
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         [Required(ErrorMessage = "Số điện thoại không được để trống")]
         [StringLength(11)]
         [Display(Name = "Số điện thoại")]
+=======
+        [Required]
+>>>>>>> Stashed changes
 =======
         [Required]
 >>>>>>> Stashed changes
