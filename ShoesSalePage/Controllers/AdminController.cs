@@ -33,7 +33,7 @@ namespace ShoesSalePage.Controllers
             if (ModelState.IsValid)
             {
                 var check = db.Admins.FirstOrDefault(s => s.PhoneNumber == admin.PhoneNumber);
-                if(check == null)
+                if (check == null)
                 {
                     admin.AdminPassword = GetMD5(admin.AdminPassword);
                     db.Configuration.ValidateOnSaveEnabled = false; // Disable entity validation
@@ -68,10 +68,10 @@ namespace ShoesSalePage.Controllers
                 }
                 else
                     Session["AdminID"] = data.AdminID;
-                    Session["FullName"] = data.FullName;
-                    Session["AdminName"] = data.AdminName;
-                    Session["PhoneNumber"] = data.PhoneNumber;
-                    return RedirectToAction("Index");
+                Session["FullName"] = data.FullName;
+                Session["AdminName"] = data.AdminName;
+                Session["PhoneNumber"] = data.PhoneNumber;
+                return RedirectToAction("Index");
             }
             return View();
         }

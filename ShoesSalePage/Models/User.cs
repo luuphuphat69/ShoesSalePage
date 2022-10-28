@@ -9,24 +9,19 @@
 
 namespace ShoesSalePage.Models
 {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    public class User
-=======
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-<<<<<<< Updated upstream
     public partial class User
->>>>>>> Test
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             this.Orders = new HashSet<Order>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
@@ -49,92 +44,14 @@ namespace ShoesSalePage.Models
         public string ConfirmPass { get; set; }
         [Required]
         public string Address { get; set; }
-<<<<<<< HEAD
-        [Required(ErrorMessage = "Thành phố không được để trống")]
+
+        [Required]
         [StringLength(50)]
-        [Display(Name = "Thành phố")]
-=======
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-=======
->>>>>>> Stashed changes
-    public partial class User
-    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; } = DateTime.Now;
-        [Required]
-        public string UserName { get; set; }
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-        [NotMapped]
-        [Required]
-        [Compare("Password", ErrorMessage = "Password not match")]
-        public string ConfirmPass { get; set; }
-        [Required]
-        public string Address { get; set; }
-        [Required]
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
-        [Required]
->>>>>>> Test
-        public string City { get; set; }
-        public string PostalCode { get; set; }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        [Required(ErrorMessage = "Số điện thoại không được để trống")]
-        [StringLength(11)]
-        [Display(Name = "Số điện thoại")]
-=======
-        [Required]
->>>>>>> Stashed changes
-=======
-        [Required]
->>>>>>> Stashed changes
-=======
-        [Required]
->>>>>>> Stashed changes
-=======
-        [Required]
->>>>>>> Stashed changes
-=======
-        [Required]
->>>>>>> Test
-=======
+        [Display(Name = "Th�nh ph?")]
         public string City { get; set; }
         public string PostalCode { get; set; }
         [Required]
->>>>>>> Stashed changes
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

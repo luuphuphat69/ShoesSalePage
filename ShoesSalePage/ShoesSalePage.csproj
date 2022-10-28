@@ -135,28 +135,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    <Compile Include="Controllers\CartController.cs" />
-=======
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CartsController.cs" />
-<<<<<<< Updated upstream
->>>>>>> Test
-=======
->>>>>>> Stashed changes
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-<<<<<<< HEAD
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\ShoesModel.cs" />
-    <Compile Include="Models\User.cs" />
-=======
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -165,42 +143,36 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-=======
->>>>>>> Test
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs">
-      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShoesSalePageEnityModel.Context.cs">
+    <Compile Include="Models\ShoesSalePageEnity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShoesSalePageEnityModel.Context.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShoesSalePageEnityModel.cs">
+    <Compile Include="Models\ShoesSalePageEnity.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShoesSalePageEnityModel.Designer.cs">
+    <Compile Include="Models\ShoesSalePageEnity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>ShoesSalePageEnityModel.tt</DependentUpon>
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> Test
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -265,37 +237,16 @@
     <Content Include="Content\Icon\shoes.jpg" />
     <Content Include="Content\Icon\shopping-cart.png" />
     <Content Include="Content\Icon\twitter.png" />
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Test
-=======
->>>>>>> Stashed changes
-    <Content Include="Models\ShoesSalePageEnityModel.Context.tt">
+    <Content Include="Models\ShoesSalePageEnity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
-      <LastGenOutput>ShoesSalePageEnityModel.Context.cs</LastGenOutput>
+      <DependentUpon>ShoesSalePageEnity.edmx</DependentUpon>
+      <LastGenOutput>ShoesSalePageEnity.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ShoesSalePageEnityModel.tt">
+    <Content Include="Models\ShoesSalePageEnity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
-      <LastGenOutput>ShoesSalePageEnityModel.cs</LastGenOutput>
+      <DependentUpon>ShoesSalePageEnity.edmx</DependentUpon>
+      <LastGenOutput>ShoesSalePageEnity.cs</LastGenOutput>
     </Content>
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> Test
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -324,34 +275,13 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Test
-=======
->>>>>>> Stashed changes
-    <EntityDeploy Include="Models\ShoesSalePageEnityModel.edmx">
+    <EntityDeploy Include="Models\ShoesSalePageEnity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShoesSalePageEnityModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShoesSalePageEnity.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ShoesSalePageEnityModel.edmx.diagram">
-      <DependentUpon>ShoesSalePageEnityModel.edmx</DependentUpon>
+    <Content Include="Models\ShoesSalePageEnity.edmx.diagram">
+      <DependentUpon>ShoesSalePageEnity.edmx</DependentUpon>
     </Content>
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> Test
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Function.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -384,11 +314,6 @@
     <Content Include="Views\Shoes\Filter.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Test
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
@@ -404,22 +329,19 @@
     <Content Include="Views\Products\Search.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
     <Content Include="Views\Shared\_ShopLayout.cshtml" />
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Test
-=======
->>>>>>> Stashed changes
+    <Content Include="Views\Carts\Create.cshtml" />
+    <Content Include="Views\Carts\Delete.cshtml" />
+    <Content Include="Views\Carts\Details.cshtml" />
+    <Content Include="Views\Carts\Edit.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -429,18 +351,10 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
->>>>>>> Stashed changes
-=======
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
->>>>>>> Test
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -12,7 +12,7 @@ namespace ShoesSalePage.Controllers
 {
     public class CartsController : Controller
     {
-        private ShoesSalePageEnityEntities db = new ShoesSalePageEnityEntities();
+        private readonly ShoesSalePageEnityEntities db = new ShoesSalePageEnityEntities();
 
         // GET: Carts
         public ActionResult Cart()

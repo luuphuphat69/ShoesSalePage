@@ -1,12 +1,17 @@
 ﻿@model ShoesSalePage.Models.User
-
 @{
     ViewBag.Title = "Index";
 }
-<table class="table mt-3">
+<table class="table mt-4">
     <tr>
         <th>
-            Full Name
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -16,6 +21,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmPass)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Address)
@@ -31,6 +42,7 @@
         </th>
         <th></th>
     </tr>
+    <tr>
     <tr>
         <td>
             @Session["UserFullName"]
