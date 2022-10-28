@@ -269,7 +269,10 @@
     <Content Include="Content\Icon\twitter.png" />
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     <Content Include="Models\ShoesSalePageEnityModel.Context.tt">
@@ -313,7 +316,10 @@
     <Content Include="Content\bootstrap-grid.css.map" />
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     <EntityDeploy Include="Models\ShoesSalePageEnityModel.edmx">
@@ -374,6 +380,9 @@
     <Content Include="Views\Carts\Cart.cshtml" />
     <Content Include="Views\Shared\_ShopLayout.cshtml" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

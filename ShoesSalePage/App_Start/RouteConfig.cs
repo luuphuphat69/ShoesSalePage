@@ -21,6 +21,7 @@ namespace ShoesSalePage
             );
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             routes.MapRoute(
                 name: "Regist",
                 url: "{controller}/{action}/{id}",
@@ -29,6 +30,8 @@ namespace ShoesSalePage
             routes.MapRoute(
                 name: "LogOut",
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             //
@@ -60,6 +63,9 @@ namespace ShoesSalePage
             routes.MapRoute(
                 name: "Logout",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

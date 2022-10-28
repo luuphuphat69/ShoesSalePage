@@ -30,7 +30,7 @@ namespace ShoesSalePage.Models
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public int OrderID { get; set; }
         public int ProductID { get; set; }
-    
+
         public virtual Order Order { get; set; }
     }
 }
