@@ -1,34 +1,20 @@
-﻿@model IEnumerable<ShoesSalePage.Models.Product>
+﻿@model PagedList.IPagedList<ShoesSalePage.Models.Product>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Index";
 }
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <table class="table align-middle mt-4 mb-4 bg-white">
     <thead class="bg-light">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsAvailable)
-            </th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Brand</th>
+            <th>Color</th>
+            <th>Image</th>
+            <th>IsAvailable</th>
             <th></th>
         </tr>
     </thead>
@@ -70,4 +56,7 @@
             }
         </tbody>
 </table>
+<div>
+    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { page = pageNumber }))
+</div>
 <a href="@Url.Action("AddProduct", "Admin")" class="btn btn-outline-dark">Create New</a>

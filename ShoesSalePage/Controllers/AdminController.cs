@@ -1,4 +1,5 @@
-﻿using ShoesSalePage.Models;
+﻿using PagedList;
+using ShoesSalePage.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -14,10 +15,17 @@ namespace ShoesSalePage.Controllers
     {
         private readonly ShoesSalePageEnityEntities db = new ShoesSalePageEnityEntities();
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (Session["AdminID"] != null)
-                return View(db.Products.ToList());
+            {
+                var product = db.Products.OrderBy(x => x.ProductId);
+                if (page == null)
+                    page = 1;
+                int pageSize = 9;
+                int pageNumber = page ?? 1;
+                return View(product.ToPagedList(pageNumber, pageSize));
+            }
             else
                 return RedirectToAction("Login");
         }

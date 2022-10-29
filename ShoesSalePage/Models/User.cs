@@ -47,7 +47,7 @@ namespace ShoesSalePage.Models
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Thành ph?")]
+        [Display(Name = "City")]
         public string City { get; set; }
         public string PostalCode { get; set; }
         [Required]

@@ -1,0 +1,45 @@
+﻿@model PagedList.IPagedList<ShoesSalePage.Models.Product>
+@using PagedList.Mvc
+@{ 
+    ViewBag.Title = "Men";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="50" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <img src="@Url.Content(item.Image)" alt="Images" style="width:100%; height:100%" />
+                        </svg>
+
+                        <div class="card-body">
+                            <p class="card-text">@item.Name</p>
+                            <p class="card-text">@item.Brand</p>
+                            <p class="card-text fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="@Url.Action("AddToCart","Products", new {id = item.ProductId})" type="button" class="btn btn-sm btn-outline-secondary">Thêm vào giỏ hàng</a>
+                                    <a href="@Url.Action("Details","Products", new {id = item.ProductId})" type="button" class="btn btn-sm btn-outline-secondary">Chi tiết</a>
+                                </div>
+                                @if (item.IsAvailable)
+                                {
+                                    <small class="text-muted">Còn hàng</small>
+                                }
+                                else
+                                {
+                                    <small class="text-muted">Hết hàng</small>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div>
+            @Html.PagedListPager(Model, pageNumber => Url.Action("Men", new { page = pageNumber }))
+        </div>
+    </div>
+</div>
