@@ -23,12 +23,6 @@
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfirmPass)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
@@ -45,7 +39,13 @@
     <tr>
     <tr>
         <td>
-            @Session["UserFullName"]
+            @Session["UserID"]
+        </td>
+        <td>
+            @Session["UserFirstName"]
+        </td>
+        <td>
+            @Session["UserLastName"]
         </td>
         <td>
             @Session["UserEmail"]

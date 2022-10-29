@@ -3,72 +3,52 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsAvailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsAvailable)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="card text-black">
+                    <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+                    <img src="@Url.Content(Model.Image)"
+                         class="card-img-top" alt="Product" />
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h5 class="card-title">Chi tiết sản phẩm</h5>
+                            <p class="text-muted mb-4">@Model.Name</p>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <span>Tên sản phẩm:</span>
+                                <span>@Model.Name</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Hãng:</span>
+                                <span>@Model.Brand</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Giá:</span>
+                                <span>@String.Format("{0:n0}", Model.Price) VND</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Size:</span>
+                                <span>
+                                    <select>
+                                        <option>38</option>
+                                        <option>39</option>
+                                        <option>40</option>
+                                        <option>41</option>
+                                        <option>42</option>
+                                        <option>43</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="text-center">
+                                <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

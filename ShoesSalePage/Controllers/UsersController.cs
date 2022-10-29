@@ -70,6 +70,8 @@ namespace ShoesSalePage.Controllers
                 {
                     Session["UserID"] = data.UserId;
                     Session["UserFullName"] = data.FirstName + data.LastName;
+                    Session["UserFirstName"] = data.FirstName;
+                    Session["UserLastName"] = data.LastName;
                     Session["UserName"] = data.UserName;
                     Session["UserEmail"] = data.Email;
                     Session["UserCreatedDate"] = data.CreatedDate;
