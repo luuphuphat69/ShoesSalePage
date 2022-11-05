@@ -83,5 +83,14 @@ namespace ShoesSalePage.Controllers
             }
             return -1;
         }
+        public ActionResult AllPrice()
+        {
+            return RedirectToAction("Shop", "Products");
+        }
+        public ActionResult FirstRange()
+        {
+            var products = db.Products.Where(p => p.Price >= 100000 && p.Price <= 500000);
+            return RedirectToAction("Shop", "Products", products);
+        }
     }
 }

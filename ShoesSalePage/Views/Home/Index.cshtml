@@ -34,7 +34,7 @@
         </div>
         <div class="carousel-item">
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" /></svg>
-            <img src="~/Content/Images/banner2.jpg" />
+            <img src="~/Content/Images/banner2.jpg"/>
             <div class="container">
                 <div class="carousel-caption text-end">
                     <h1>Người bạn của mọi nhà</h1>
@@ -56,28 +56,28 @@
 <div class="container marketing">
     <!-- Three columns of text below the carousel -->
     <div class="row">
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false" ><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-            <h2>Heading</h2>
-            <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-            <h2>Heading</h2>
-            <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-            <h2>Heading</h2>
-            <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="~/Category/Men"><img src="~/Content/Images/ProductImg/shoe3.jpg" class="rounded-circle img-fluid border"></a>
+            <h5 class="text-center mt-3 mb-3">Men</h5>
+            <p class="text-center">
+                <i>Giay nam pro</i>
+            </p>
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="~/Category/Woman"><img src="~/Content/Images/ProductImg/shoe19.jpg" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">Woman</h2>
+            <p class="text-center">
+                <i>Giay nu xinh</i>
+            </p>
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="~/Category/Accessories"><img src="~/Content/Images/ProductImg/item5.jpg" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
+            <p class="text-center">
+                <i>Phu kien pro</i>
+            </p>
+        </div>
+    </div>
     <!-- START THE FEATURETTES -->
 
     <hr class="featurette-divider">
@@ -104,7 +104,7 @@
         <div class="col-md-5 order-md-1">
             <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <a xlink:href="~/Category/Woman">
-                    <image xlink:href="~/Content/Images/ProductImg/shoes21.jpg" width="500" height="500"/>
+                    <image xlink:href="~/Content/Images/ProductImg/shoe20.jpg" width="500" height="500"/>
                 </a>
             </svg>
 
@@ -136,11 +136,11 @@
     <div class="container">
     <h2>HÀNG MỚI VỀ</h2>
         <div class="row">
-            @foreach (var item in Model.Where(p => p.ProductId > 1))
+            @foreach (var item in Model.Where(p => p.ProductId > 1 && p.ProductId <=10))
             {
                 <div class="col-xl-4 col-sm-6 p-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="@Url.Content(item.Image)" class="card-img-top" alt="New Arrival">
+                        <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" class="card-img-top" alt="New Arrival">
                         <div class="card-body">
                             <h5 class="card-title">@item.Name</h5>
                             <p class="card-text">@item.Brand</p>
@@ -163,7 +163,7 @@
                 <div class="col-xl-4 col-sm-6 p-3">
                     <div class="img-thumbnail">
                         <div class="float-start">
-                            <img src="@Url.Content(item.Image)" alt="Shoes_img" height="100" width="100" />
+                            <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" alt="Shoes_img" height="100" width="100" />
                         </div>
                         <div>
                             <p class="fw-bold">@item.Name</p>

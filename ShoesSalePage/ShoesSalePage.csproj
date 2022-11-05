@@ -138,6 +138,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AddProductStyleSheet.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -193,7 +195,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\CustomBanner.css" />
     <Content Include="Content\Icon\filter.png" />
     <Content Include="Content\Icon\user.png" />
     <Content Include="Content\Images\Banner.jpg" />
@@ -206,7 +207,15 @@
     <Content Include="Content\Images\NewArrival\shoes24.jpg" />
     <Content Include="Content\Images\NewArrival\shoes25.jpg" />
     <Content Include="Content\Images\ProductImg\item1.jpg" />
+    <Content Include="Content\Images\ProductImg\item10.jpg" />
     <Content Include="Content\Images\ProductImg\item2.jpg" />
+    <Content Include="Content\Images\ProductImg\item3.jpg" />
+    <Content Include="Content\Images\ProductImg\item4.jpg" />
+    <Content Include="Content\Images\ProductImg\item5.jpg" />
+    <Content Include="Content\Images\ProductImg\item6.jpg" />
+    <Content Include="Content\Images\ProductImg\item7.jpg" />
+    <Content Include="Content\Images\ProductImg\item8.jpg" />
+    <Content Include="Content\Images\ProductImg\item9.jpg" />
     <Content Include="Content\Images\ProductImg\shoe1.jpg" />
     <Content Include="Content\Images\ProductImg\shoe10.jpg" />
     <Content Include="Content\Images\ProductImg\shoe11.jpg" />
@@ -227,9 +236,9 @@
     <Content Include="Content\Images\ProductImg\shoe7.jpg" />
     <Content Include="Content\Images\ProductImg\shoe8.jpg" />
     <Content Include="Content\Images\ProductImg\shoe9.jpg" />
-    <Content Include="Content\Images\ProductImg\shoes21.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\carousel.css" />
+    <Content Include="Content\ShopStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -322,18 +331,9 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Products\Shop.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Search.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
     <Content Include="Views\Shared\_ShopLayout.cshtml" />
-    <Content Include="Views\Carts\Create.cshtml" />
-    <Content Include="Views\Carts\Delete.cshtml" />
-    <Content Include="Views\Carts\Details.cshtml" />
-    <Content Include="Views\Carts\Edit.cshtml" />
-    <Content Include="Views\Carts\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -341,6 +341,8 @@
     <Content Include="Views\Category\Men.cshtml" />
     <Content Include="Views\Category\Woman.cshtml" />
     <Content Include="Views\Category\Accessories.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Shared\_MenuBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -352,6 +354,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Filter\" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
