@@ -56,19 +56,11 @@ namespace ShoesSalePage.Controllers
                 if (Session["UserID"] != null)
                 {
                     Order order = new Order();
-                    List<Cart> carts = (List<Cart>)Session["Cart"];
-                    order.Carts = carts;
+                    order.UserID = (int)Session["UserID"];
                     db.Orders.Add(order);
-                    db.SaveChanges();
-                    Session["Cart"] = null;
-                    Session["Count"] = null;
-                    var id = from s in db.Orders
-                             select s.OrderID;
-                    Session["OrderID"] = id.ToString();
-                    return RedirectToAction("Shop", "Products");
                 }
             }
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Login", "Users");
         }
     }
 }

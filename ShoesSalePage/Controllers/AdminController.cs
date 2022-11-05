@@ -1,12 +1,15 @@
 ﻿using PagedList;
 using ShoesSalePage.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace ShoesSalePage.Controllers
@@ -75,7 +78,7 @@ namespace ShoesSalePage.Controllers
                     return View();
                 }
                 else
-                    Session["AdminID"] = data.AdminID;
+                Session["AdminID"] = data.AdminID;
                 Session["FullName"] = data.FullName;
                 Session["AdminName"] = data.AdminName;
                 Session["PhoneNumber"] = data.PhoneNumber;
@@ -108,17 +111,29 @@ namespace ShoesSalePage.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddProduct(Product product)
+        public ActionResult AddProduct(Product product, HttpPostedFileBase file)
         {
             var check = db.Products.FirstOrDefault(s => s.ProductId == product.ProductId);
             if (check == null)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Admin");
+                if (ModelState.IsValid)
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Guid.NewGuid().ToString().Replace("-", "") + "_" + Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/ProductImg/"), fileName);
+
+                        file.SaveAs(path);
+                        product.Image = file.FileName;
+                    }
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Admin");
+                }
             }
             else
                 ViewBag.AddError = "Sản phẩm đã tồn tại";
+
             return View();
         }
         // GET: _Products/Details/5
@@ -135,7 +150,7 @@ namespace ShoesSalePage.Controllers
             }
             return View(product);
         }
-        // GET: _Products/Edit/5
+        // GET: _Products/EditProduct/5
         public ActionResult EditProduct(int? id)
         {
             if (id == null)
@@ -155,10 +170,19 @@ namespace ShoesSalePage.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditProduct([Bind(Include = "ProductId,Name,Price,Size,Brand,Color,Image,IsAvailable")] Product product)
+        public ActionResult EditProduct([Bind(Include = "ProductId,Name,Price,Size,Brand,Color,Image,IsAvailable")] Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Guid.NewGuid().ToString().Replace("-", "") + "_" + Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/ProductImg/"), fileName);
+
+                    file.SaveAs(path);
+                    product.Image = file.FileName;
+                }
+                //db.Products.Add(product);
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -185,10 +209,14 @@ namespace ShoesSalePage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RemoveProduct(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                Product product = db.Products.Find(id);
+                db.Products.Remove(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

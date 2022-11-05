@@ -1,5 +1,4 @@
 ﻿@model ShoesSalePage.Models.Product
-
 @{
     ViewBag.Title = "Details";
 }
@@ -9,7 +8,7 @@
             <div class="col-md-8 col-lg-6 col-xl-4">
                 <div class="card text-black">
                     <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
-                    <img src="@Url.Content(Model.Image)"
+                    <img src="~/Content/Images/ProductImg/@Url.Content(Model.Image)"
                          class="card-img-top" alt="Product" />
                     <div class="card-body">
                         <div class="text-center">
@@ -43,7 +42,7 @@
                                 </span>
                             </div>
                             <div class="text-center">
-                                <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Mua ngay</a>
+                                <a href="@Url.Action("AddToCart", "Products", new {id = Model.ProductId})" type="button" class="btn btn-sm btn-outline-secondary">Mua ngay</a>
                             </div>
                         </div>
                     </div>
