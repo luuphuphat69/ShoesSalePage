@@ -6,7 +6,7 @@ CREATE TABLE Admins(
 	[PhoneNumber]	CHAR(10)		NULL, 
 )
 CREATE TABLE Users(
-	[UserId]    INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    [UserId]    INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     [FirstName]   NCHAR (50)	  NOT NULL,
     [LastName]    NCHAR (50)	  NOT NULL,
     [Email]       CHAR (100)	  NOT NULL,
@@ -23,69 +23,110 @@ CREATE TABLE Products(
 	[ProductId]   INT PRIMARY KEY NOT NULL,
     [Name]        NVARCHAR		  (MAX) NOT NULL,
     [Price]       FLOAT			  NOT NULL,
-    [Size]        INT             NOT NULL,
-    [Brand]       NVARCHAR        (MAX) NOT NULL,
-    [Color]       NVARCHAR        (MAX) NULL,
-    [Image]       NVARCHAR        (MAX) NULL,
-    [IsAvailable] BIT             NOT NULL,
+    [Size]        INT             	  NOT NULL,
+    [Brand]       NVARCHAR        	  (MAX) NOT NULL,
+    [Color]       NVARCHAR        	  (MAX) NULL,
+    [Image]       NVARCHAR        	  (MAX) NULL,
+    [IsAvailable] BIT             	  NOT NULL,
+    [CategoryId] INT,
+    [SubCategoryId] INT,
+    FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId),
+    FOREIGN KEY (SubCategoryId) REFERENCES SubCategory(SubCategoryId)
 )
 CREATE TABLE Orders(
 	[OrderID] INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	[UserID]  INT			  NOT NULL,
+	[CartID]  INT			  NOT NULL,
+	FOREIGN KEY (CartID) REFERENCES Cart(CartID),
 	FOREIGN KEY (UserID) REFERENCES Users(UserId)
 )
 CREATE TABLE Cart(
 	[CartID]	  INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	[Quantity]	  INT NOT NULL,
 	[CreatedDate] DATETIME NULL,
-	[OrderID]	  INT NOT NULL,
 	[ProductID]	  INT NOT NULL,
+	[Size]		  CHAR,
 	FOREIGN KEY (ProductID) REFERENCES Products(ProductId),
 	FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 )
+CREATE TABLE Size(
+	[SizeId]	INT PRIMARY KEY IDENTITY(1,1),
+	[Size]		CHAR(10),
+)
+CREATE TABLE Category(
+	[CategoryId]	INT PRIMARY KEY IDENTITY(1,1),
+	[CategoryName]	NCHAR(20) NOT NULL,
+)
+CREATE TABLE SubCategory(
+	[SubCategoryId] INT PRIMARY KEY IDENTITY(1,1),
+	[SubCategoryName] NCHAR(20) NOT NULL,
+	[CategoryId]	INT,
+	FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId)
+)
+CREATE TABLE Stock(
+	[StockId] INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[ProductId] INT,
+	[Size] CHAR,
+	[Stock] INT,
+	FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
+)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(1, N'Giày da nam công sở NL83', 490000, 38, 'Sunview', 'Black', '~/Content/Images/ProductImg/shoe1.jpg', 1);
+VALUES(1, N'Giày da nam công sở NL83', 490000, 38, 'Sunview', 'Black', 'shoe1.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(2, N'Giày da nam công sở NL82', 190000, 38, 'Raisins', 'Black', '~/Content/Images/ProductImg/shoe2.jpg', 1);
+VALUES(2, N'Giày da nam công sở NL82', 190000, 38, 'Raisins', 'Black', 'shoe2.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(3, N'Giày da nam EL81', 290000, 38, 'Elly', 'Brown', '~/Content/Images/ProductImg/shoe3.jpg', 1);
+VALUES(3, N'Giày da nam EL81', 290000, 38, 'Elly', 'Brown', 'shoe3.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(4, N'Giày da nam EL80', 390000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe4.jpg', 1);
+VALUES(4, N'Giày da nam EL80', 390000, 38, 'Elly', 'Black', shoe4.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(5, N'Giày da nam bóng NL85', 490000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe5.jpg', 1);
+VALUES(5, N'Giày da nam bóng NL85', 490000, 38, 'Elly', 'Black', 'shoe5.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(6, N'Giày da nam công sở NL84', 590000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe6.jpg', 1);
+VALUES(6, N'Giày da nam công sở NL84', 590000, 38, 'Elly', 'Black', 'shoe6.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(7, N'Giày da nam công sở NL89', 430000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe7.jpg', 1);
+VALUES(7, N'Giày da nam công sở NL89', 430000, 38, 'Elly', 'Black', 'shoe7.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(8, N'Giày da nam công sở LS69', 430000, 38, 'Elly', 'Black', '~/Content/Images/ProductImg/shoe8.jpg', 1);
+VALUES(8, N'Giày da nam công sở LS69', 430000, 38, 'Elly', 'Black', 'shoe8.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(9, N'Giày tây da nam đen bóng LW37', 1200000, 38, 'Hobits', 'Black', '~/Content/Images/ProductImg/shoe9.jpg', 1);
+VALUES(9, N'Giày tây da nam đen bóng LW37', 1200000, 38, 'Hobits', 'Black', 'shoe9.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(10, N'Giày da nam buộc dây NL12', 450000, 38, 'BingChillin', 'Black', '~/Content/Images/ProductImg/shoe10.jpg', 1);
+VALUES(10, N'Giày da nam buộc dây NL12', 450000, 38, 'BingChillin', 'Black', 'shoe10.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(11, N'Giày da nam NL12', 660000, 38, 'BingChillin', 'Black', '~/Content/Images/ProductImg/shoe11.jpg', 1);
+VALUES(11, N'Giày da nam NL12', 660000, 38, 'BingChillin', 'Black', 'shoe11.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(12, N'Giày da nam da bò Chelsea Boot', 780000, 38, 'T-red', 'Black', '~/Content/Images/ProductImg/shoe12.jpg', 1);
+VALUES(12, N'Giày da nam da bò Chelsea Boot', 780000, 38, 'T-red', 'Black', 'shoe12.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(13, N'Giày lười nam GNTA686-N', 750000, 38, 'Hobits', 'Black', '~/Content/Images/ProductImg/shoe13.jpg', 1);
+VALUES(13, N'Giày lười nam GNTA686-N', 750000, 38, 'Hobits', 'Black', 'shoe13.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(14, N'Giày tây nam vân da', 915000, 38, 'GOAT', 'Black', '~/Content/Images/ProductImg/shoe14.jpg', 1);
+VALUES(14, N'Giày tây nam vân da', 915000, 38, 'GOAT', 'Black', 'shoe14.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(15, N'Giày lười nam da bò GNTA666-N', 830000, 38, 'GOAT', 'Black', '~/Content/Images/ProductImg/shoe15.jpg', 1);
+VALUES(15, N'Giày lười nam da bò GNTA666-N', 830000, 38, 'GOAT', 'Black', 'shoe15.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(16, N'Giày lười nam dập lỗ viền', 820000, 38, 'HongThanh', 'Black', '~/Content/Images/ProductImg/shoe16.jpg', 1);
+VALUES(16, N'Giày lười nam dập lỗ viền', 820000, 38, 'HongThanh', 'Black', 'shoe16.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(17, N'Giày da bò nam quai ngang', 790000, 38, 'Raisins', 'Black', '~/Content/Images/ProductImg/shoe17.jpg', 1);
+VALUES(17, N'Giày da bò nam quai ngang', 790000, 38, 'Raisins', 'Black', 'shoe17.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(18, N'Giày tăng chiều cao nam dáng Derby', 770000, 38, 'GOAT', 'Black', '~/Content/Images/ProductImg/shoe18.jpg', 1);
+VALUES(18, N'Giày tăng chiều cao nam dáng Derby', 770000, 38, 'GOAT', 'Black', 'shoe18.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(19, N'Giày tây nam công sở cafe', 820000, 38, 'Sunview', 'Black', '~/Content/Images/ProductImg/shoe19.jpg', 1);
+VALUES(19, N'Giày tây nam công sở cafe', 820000, 38, 'Sunview', 'Black', 'shoe19.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(20, N'Giày tây xỏ TX-6227', 610000, 38, 'HongThanh', 'Black', '~/Content/Images/ProductImg/shoe20.jpg', 1);
+VALUES(20, N'Giày tây xỏ TX-6227', 610000, 38, 'HongThanh', 'Black', 'shoe20.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(21, N'Giày da nữ One Life', 2190000, 38, 'One Life', 'Black', '~/Content/Images/ProductImg/shoe21.jpg', 1);
+VALUES(22, N'Thắt lưng Golden Royal', 1490000, 38, 'Golden Royal', 'Black', 'item1.jpg', 1);
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(22, N'Thắt lưng Golden Royal', 1490000, 38, 'Golden Royal', 'Black', '~/Content/Images/ProductImg/item1.jpg', 1);
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item2.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', '~/Content/Images/ProductImg/item2.jpg', 1)
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item3.jpg', 1)
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item4.jpg', 1)
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item5.jpg', 1)
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item6.jpg', 1)
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item7.jpg', 1)
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item8.jpg', 1)
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item9.jpg', 1)
+INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
+VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item10.jpg', 1)
