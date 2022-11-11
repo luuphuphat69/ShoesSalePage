@@ -5,10 +5,8 @@
     double total = 0;
 }
 <div class="card">
-    <div class="card-header bg-black"></div>
     <div class="card-body">
         <div class="container">
-            
             <div class="row">
                 <div class="col-xl-12">
                     <ul class="list-unstyled float-end">
@@ -33,6 +31,7 @@
                             <th scope="col">Tên</th>
                             <th scope="col">Hãng</th>
                             <th scope="col">Số lượng</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Giá</th>
                             <th scope="col">Ngày mua</th>
                         </tr>
@@ -45,6 +44,16 @@
                                 <td style="border:1px solid black">@item.Product.Name</td>
                                 <td style="border:1px solid black">@item.Product.Brand</td>
                                 <td style="border:1px solid black">@item.Quantity</td>
+                                <td style="border:1px solid black">
+                                    @if(item.Size != null)
+                                     {
+                                         @item.Size
+                                     }
+                                     else
+                                     {
+                                         @item.Product.Size
+                                     }
+                                </td>
                                 <td style="border:1px solid black">@String.Format("{0:n0}", item.Product.Price * item.Quantity) VND</td>
                                 <td style="border:1px solid black">@item.CreatedDate</td>
                                 @{ total += item.Product.Price * item.Quantity;}

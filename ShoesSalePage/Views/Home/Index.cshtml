@@ -3,177 +3,228 @@
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" /></svg>
-            <img src="~/Content/Images/Banner.jpg" alt="banner"/>
-            <div class="container">
-                <div class="carousel-caption text-start">
-                    <h1>Nghĩ khác biệt</h1>
-                    <p>Nabati luôn đi tìm kiếm sự khác biệt, giữa hiện đại và truyền thống</p>
-                    <p><a class="btn btn-lg btn-primary" href="~/Users/Register">Đăng ký ngay</a></p>
+<div class="site-blocks-cover" style="background-image: url('../Content/Images/hero_1.jpg');">
+    <div class="container">
+        <div class="row align-items-start align-items-md-center justify-content-end">
+            <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
+                <h1 class="mb-2">Finding Your Perfect Shoes</h1>
+                <div class="intro-text text-center text-md-left">
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
+                    <p>
+                        <a href="~/Products/Shop" class="btn btn-sm btn-primary">Shop Now</a>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" /></svg>
-            <img src="~/Content/Images/banner1.png" />
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Kết nối mọi người</h1>
-                    <p>Không chỉ nam hay nữ. Mà mọi người đều có thể tin chọn Nabati</p>
-                    <p><a class="btn btn-lg btn-primary" href="~/Products/Shop">Tìm hiểu thêm</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" /></svg>
-            <img src="~/Content/Images/banner2.jpg"/>
-            <div class="container">
-                <div class="carousel-caption text-end">
-                    <h1>Người bạn của mọi nhà</h1>
-                    <p>Luôn đặt uy tín, trách nhiệm lên hàng đầu. Nabati sẵn sàng phục vụ</p>
-                    <p><a class="btn btn-lg btn-primary" href="~/Products/Shop">Tìm hiểu thêm</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-<div class="container marketing">
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="~/Category/Men"><img src="~/Content/Images/ProductImg/shoe3.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">Men</h5>
-            <p class="text-center">
-                <i>Giay nam pro</i>
-            </p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="~/Category/Woman"><img src="~/Content/Images/ProductImg/shoe19.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Woman</h2>
-            <p class="text-center">
-                <i>Giay nu xinh</i>
-            </p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="~/Category/Accessories"><img src="~/Content/Images/ProductImg/item5.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
-            <p class="text-center">
-                <i>Phu kien pro</i>
-            </p>
-        </div>
-    </div>
-    <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-    <h1>Bạn đang tìm kiếm những gì?</h1>
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">Giày Nam <span class="text-muted">- Lịch lãm, Quý phái</span></h2>
-            <p class="lead">Bạn đang tìm kiếm những đôi giày nam tính, lịch lãm và quý phái cho người thân, bạn bè hay chỉ là cho bản thân bạn</p>
-        </div>
-        <div class="col-md-5">
-            <a href="~/Category/Men">
-                <img src="~/Content/Images/banner1.png" alt="Men"/>
-            </a>
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Giày nữ <span class="text-muted">- Nữ tính, Trẻ trung, Năng động</span></h2>
-            <p class="lead">Bạn đang tìm kiếm những đôi giày nữ tính, trẻ trung cho những người phụ nữ của bạn, người thân hay chỉ là cho bản thân bạn</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <a xlink:href="~/Category/Woman">
-                    <image xlink:href="~/Content/Images/ProductImg/shoe20.jpg" width="500" height="500"/>
-                </a>
-            </svg>
-
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">Phụ kiện <span class="text-muted">- Trẻ trung, xinh xắn, tiện lợi</span></h2>
-            <p class="lead">Bạn đang cần những phụ kiện để trông thật đẹp hơn</p>
-        </div>
-        <div class="col-md-5">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <a xlink:href="~/Category/Accessories">
-                    <image xlink:href="~/Content/Images/ProductImg/item2.jpg" width="500" height="500" />
-                </a>
-            </svg>
-
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-    <div class="row featurette">
     </div>
 </div>
-@section NewArrival{
+<div class="site-blocks-cover" style="background-image: url('../Content/Images/hero_2.jpg');">
     <div class="container">
-    <h2>HÀNG MỚI VỀ</h2>
-        <div class="row">
-            @foreach (var item in Model.Where(p => p.ProductId > 1 && p.ProductId <=10))
-            {
-                <div class="col-xl-4 col-sm-6 p-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" class="card-img-top" alt="New Arrival">
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            <p class="card-text">@item.Brand</p>
-                            <p class="card-text fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
-                            <a href="~/Products/Shop" class="btn btn-primary">Mua ngay</a>
-                        </div>
-                    </div>
+        <div class="row align-items-start align-items-md-center justify-content-start">
+            <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
+                <h1 class="mb-2">Finding Your Perfect Shoes</h1>
+                <div class="intro-text text-center text-md-left">
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
+                    <p>
+                        <a href="~/Products/Shop" class="btn btn-sm btn-primary">Shop Now</a>
+                    </p>
                 </div>
-            }
+            </div>
         </div>
     </div>
-    <hr />
-}
-@section BestOfUs{
+</div>
+<!--Ad Section-->
+<div class="site-section site-section-sm site-blocks-1">
     <div class="container">
-    <h2>TỐT NHẤT CỦA CHÚNG TÔI</h2>
         <div class="row">
-            @foreach (var item in Model.Where(p => p.ProductId >= 1 && p.ProductId <= 9))
-            {
-                <div class="col-xl-4 col-sm-6 p-3">
-                    <div class="img-thumbnail">
-                        <div class="float-start">
-                            <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" alt="Shoes_img" height="100" width="100" />
-                        </div>
-                        <div>
-                            <p class="fw-bold">@item.Name</p>
-                            <p>@item.Brand</p>
-                            <p class="fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
-                        </div>
-                        <a href="~/Products/Shop" class="btn btn-primary">Mua ngay</a>
-                    </div>
+            <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4">
+                <div class="icon mr-4 align-self-start">
+                    <span class="icon-truck"></span>
                 </div>
-            }
+                <div class="text">
+                    <h2 class="text-uppercase">Free Shipping</h2>
+                    <p class="fw-bold">
+                        Miễn phí giao hàng cho tất cả các đơn hàng từ 1.300.000 VNĐ trở lên.
+
+                        Cho các đơn hàng còn lại, phí giao hàng tiêu chuẩn được áp dụng.
+
+                        Hãy kiểm tra <a href="#">Điều Khoản & Điều Kiện</a> giao hàng của chúng tôi để biết thêm chi tiết.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4">
+                <div class="icon mr-4 align-self-start">
+                    <span class="icon-refresh2"></span>
+                </div>
+                <div class="text">
+                    <h2 class="text-uppercase">Free Returns</h2>
+                    <p class="fw-bold">
+                        Nếu bạn hoàn toàn không hài lòng với sản phẩm đã mua, bạn có thể được hoàn lại tiền.
+
+                        Xin lưu ý rằng việc trả hàng và hoàn tiền sẽ không được áp dụng cho một số sản phẩm nhất định.
+
+                        Các sản phẩm không được áp dụng chính sách trả hàng và hoàn tiền sẽ được đánh dấu "Không trả hàng, không hoàn tiền" trên trang sản phẩm.
+
+                        Hãy kiểm tra <a href="#">Chính Sách Trả Lại Hàng</a> của chúng tôi để biết thêm chi tiết.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4">
+                <div class="icon mr-4 align-self-start">
+                    <span class="icon-help"></span>
+                </div>
+                <div class="text">
+                    <h2 class="text-uppercase">Customer Support</h2>
+                    <p class="fw-bold">Nếu bạn muốn trả hàng và hoàn tiền cho (các) sản phẩm đã nhận, xin vui lòng hoàn thành Phiếu Yêu Cầu Trả Hàng <a href="#">tại đây</a> và đội ngũ Dịch vụ khách hàng của chúng tôi sẽ gửi hướng dẫn và tài liệu liên quan qua email trong vòng 5 ngày làm việc tiếp theo.</p>
+                </div>
+            </div>
         </div>
     </div>
-}
+</div>
+<!--End Section-->
+<!--Category Section-->
+<div class="site-section site-blocks-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <a class="block-2-item" href="~/Products/Shop?Cate=Woman">
+                    <figure class="image">
+                        <img src="~/Content/Images/ProductImg/item10.jpg" alt="women" class="img-fluid">
+                    </figure>
+                    <div class="text">
+                        <span class="text-uppercase">Collections</span>
+                        <h3>Women</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+                <a class="block-2-item" href="~/Products/Shop?Cate=Accessories">
+                    <figure class="image">
+                        <img src="~/Content/Images/ProductImg/item1.jpg" alt="Item" class="img-fluid">
+                    </figure>
+                    <div class="text">
+                        <span class="text-uppercase">Collections</span>
+                        <h3>Accessories</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+                <a class="block-2-item" href="~/Products/Shop?Cate=Men">
+                    <figure class="image">
+                        <img src="~/Content/Images/ProductImg/shoe1.jpg" alt="" class="img-fluid">
+                    </figure>
+                    <div class="text">
+                        <span class="text-uppercase">Collections</span>
+                        <h3>Men</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Section-->
+<!--New Product Section-->
+<div class="site-section block-3 site-blocks-2 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 site-section-heading text-center pt-4">
+                <h2>New Products</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nonloop-block-3 owl-carousel">
+                    @foreach (var item in Model.Where(p => p.ProductId >= 12 && p.ProductId <= 14))
+                    {
+                        <div class="item">
+                            <div class="block-4 text-center">
+                                <figure class="block-4-image">
+                                    <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" alt="Image placeholder" class="img-fluid">
+                                </figure>
+                                <div class="block-4-text p-4">
+                                    <h3><a href="~/Products/Details?id=@item.ProductId">@item.Name</a></h3>
+                                    <p class="mb-0">@item.Brand</p>
+                                    <p class="text-primary font-weight-bold">@String.Format("{0:n0}", item.Price) VND</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Section-->
+<!--What's hot Section-->
+<div class="site-section block-3 site-blocks-2 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 site-section-heading text-center pt-4">
+                <h2>What's hot</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nonloop-block-3 owl-carousel">
+                    @foreach (var item in Model.Where(p => p.ProductId >= 21 && p.ProductId <= 26))
+                    {
+                        <div class="item">
+                            <div class="block-4 text-center">
+                                <figure class="block-4-image">
+                                    <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" alt="Image placeholder" class="img-fluid">
+                                </figure>
+                                <div class="block-4-text p-4">
+                                    <h3><a href="~/Products/Details?id=@item.ProductId">@item.Name</a></h3>
+                                    <p class="mb-0">@item.Brand</p>
+                                    <p class="text-primary font-weight-bold">@String.Format("{0:n0}", item.Price) VND</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Section-->
+<!--BigSale Section-->
+<div class="site-section block-8">
+    <div class="container">
+        <div class="row justify-content-center  mb-5">
+            <div class="col-md-7 site-section-heading text-center pt-4">
+                <h2>Big Sale!</h2>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-12 col-lg-7 mb-5">
+                <a href="#"><img src="~/Content/Images/banner1.png" alt="Image placeholder" class="img-fluid rounded"></a>
+            </div>
+            <div class="col-md-12 col-lg-5 text-center pl-md-5">
+                <h2><a href="#" class="text-decoration-none">50% less in all items</a></h2>
+                <p class="post-meta mb-4">By <a href="#">KhauTrangYTe</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
+                <p class="fw-bold" style="color:black">SALE 10.10 BẮT ĐẦU: HƯỞNG ƯU ĐÃI ĐẾN 50% MẶT HÀNG OUTLET</p>
+                <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Section-->
+<!--Activate owl carousel-->
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 5
+            }
+        }
+    })
+</script>

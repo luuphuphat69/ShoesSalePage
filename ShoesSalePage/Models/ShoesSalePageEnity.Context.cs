@@ -27,8 +27,13 @@ namespace ShoesSalePage.Models
     
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

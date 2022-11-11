@@ -16,19 +16,13 @@ namespace ShoesSalePage.Models
 
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            this.Carts = new HashSet<Cart>();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
         public int UserID { get; set; }
+        public int CartID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual Cart Cart { get; set; }
         public virtual User User { get; set; }
     }
 }

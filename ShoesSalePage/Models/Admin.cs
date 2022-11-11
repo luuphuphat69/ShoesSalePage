@@ -37,5 +37,8 @@ namespace ShoesSalePage.Models
         [Display(Name = "Confirm password")]
         [DataType(DataType.Password)]
         public string ConfirmPass { get; set; }
+        public Nullable<int> RoleId { get; set; }
+    
+        public virtual Role Role { get; set; }
     }
 }

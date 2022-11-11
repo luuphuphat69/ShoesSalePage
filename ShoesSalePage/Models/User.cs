@@ -53,8 +53,10 @@ namespace ShoesSalePage.Models
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
+        public Nullable<int> RoleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

@@ -1,73 +1,115 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>NABATI - @ViewBag.Title</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Nabati - @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
-    <!-- Bootstrap core CSS -->
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="~/Content/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/icomoon/style.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
-            <div class="container-fluid">
-                <img src="~/Content/Icon/shoes.jpg" height="50" width="50" />
-                <a class="navbar-brand" href="~/Home/Index">Nabati</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="~/Home/Index">Trang chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="~/Products/Shop">Cửa hàng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="~/Carts/Cart">
-                                Giỏ hàng
-                                (@Session["Count"])
-                            </a>
-                        </li>
-                    </ul>
-                    @using (Html.BeginForm("Search", "Products", FormMethod.Get, new {@class = "d-flex"}))
-                    {
-                        <input class="form-control me-2" type="search" placeholder="Search" name="input" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                        <a class="nav-link active p-md-2" href="~/Users/Login">
-                            <img src="~/Content/Icon/user.png" height="30" width="30" />
-                        </a>
-                    }
-                        <a href="@Url.Action("Logout", "Users")">Logout</a>
+    <div class="site-wrap">
+        <header class="site-navbar" role="banner">
+            <div class="site-navbar-top">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div>
+                            <img src="~/Content/Icon/shoes.jpg" height="50" width="50" />
+                        </div>
+                        <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+
+                            @using (Html.BeginForm("Search", "Products", FormMethod.Get, new { @class = "site-block-top-search" }))
+                            {
+                                <span class="icon icon-search2"></span>
+                                <input class="form-control me-2" type="search" placeholder="Search" name="input" aria-label="Search" />
+                            }
+                        </div>
+
+                        <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+                            <div class="site-logo">
+                                <a href="~/Home/Index" class="js-logo-clone">NABATI</a>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4 order-3 order-md-3 text-right ">
+                            <div class="site-top-icons float-end">
+                                <ul>
+                                    <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                                    <li>
+                                        <a href="~/Carts/Cart" class="site-cart">
+                                            <span class="icon icon-shopping_cart"></span>
+                                            <span class="count">@Session["Count"]</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="~/Users/Login"><span class="icon icon-person"></span>@Session["UserName"]</a></li>
+                                    <li><a href="@Url.Action("Logout", "Users")">LogOut</a></li>
+                                    <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <main>
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+                <div class="container">
+                    <ul class="site-menu js-clone-nav d-none d-md-block">
+                        <li class="has-children active">
+                            <a href="#">Phân loại</a>
+                            <ul class="dropdown">
+                                <li class="has-children">
+                                    <a href="@Url.Action("Shop","Products", new {Cate = "Men"})">Giày nam</a>
+                                    <ul class="dropdown">
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 1})">Giày Lười</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 2})">Giày Da</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 3})">Giày Boot</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 4})">Giày Tây</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 5})">Giày Công Sở</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="@Url.Action("Shop","Products", new {Cate = "Woman"})">Giày nữ</a>
+                                    <ul class="dropdown">
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 6})">Giày Búp Bê</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 7})">Giày Cao Gót</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 8})">Giày Lười Nữ</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 9})">Giày Sandal</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="@Url.Action("Shop","Products", new {Cate = "Accessories"})">Phụ Kiện</a>
+                                    <ul class="dropdown">
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 10})">Thắt lưng</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 11})">Ví Da</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 12})">Mắt Kính</a></li>
+                                        <li><a href="@Url.Action("Shop","Products", new {subCateId = 13})">Túi xách</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="~/Products/Shop">Cửa Hàng</a></li>
+                        <li><a href="~/Home/Index">Trang Chủ</a></li>
+                        <li><a href="#">Hàng mới về</a></li>
+                        <li><a href="~/Home/Contact">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
         @RenderBody()
-        @RenderSection("NewArrival", required: false)
-        @RenderSection("BestOfUs", required: false)
         <div style="background-color: #47B5FF; text-align:center; height:auto;">
             <div>
-                <h2>
+                <h2 style="color:black" class="fw-bold">
                     TRỞ THÀNH HỘI VIÊN & <br />
                     HƯỞNG NHIỀU ƯU ĐÃI
                 </h2>
@@ -78,55 +120,80 @@
                 </a>
             </div>
         </div>
-        <hr />
-    </main>
-    <footer>
-        <div class="row">
-            <div class="col-md-4">
-                <h2>VỀ CỬA HÀNG</h2>
-                <p>
-                    Ra mắt năm 2015, cửa hàng Nabati được xây dựng nhằm cung cấp cho người dùng những trải nghiệm dễ dàng,
-                    an toàn và nhanh chóng khi mua sắm trực tuyến thông qua hệ thống hỗ trợ thanh toán và vận hành vững mạnh.
-                    Chúng tôi có niềm tin mạnh mẽ rằng trải nghiệm mua sắm trực tuyến phải đơn giản, dễ dàng và mang đến cảm xúc vui thích.
-                    Niềm tin này truyền cảm hứng và thúc đẩy chúng tôi mỗi ngày tại Nabati.
-                </p>
-                <p><a class="btn btn-default" href="#">Tìm hiểu thêm &raquo;</a></p>
+        <footer class="site-footer border-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="footer-heading mb-4">Navigations</h3>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <ul class="list-unstyled">
+                                    <li><a class="text-decoration-none" href="#">Sell online</a></li>
+                                    <li><a class="text-decoration-none" href="#">Features</a></li>
+                                    <li><a class="text-decoration-none" href="#">Shopping cart</a></li>
+                                    <li><a class="text-decoration-none" href="#">Store builder</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <ul class="list-unstyled">
+                                    <li><a class="text-decoration-none" href="#">Mobile commerce</a></li>
+                                    <li><a class="text-decoration-none" href="#">Dropshipping</a></li>
+                                    <li><a class="text-decoration-none" href="#">Website development</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <ul class="list-unstyled">
+                                    <li><a class="text-decoration-none" href="#">Point of sale</a></li>
+                                    <li><a class="text-decoration-none" href="#">Hardware</a></li>
+                                    <li><a class="text-decoration-none" href="#">Software</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <h3 class="footer-heading mb-4">Promo</h3>
+                        <a href="#" class="block-6 text-decoration-none">
+                            <img src="~/Content/Images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
+                            <h3 class="font-weight-light  mb-0">Finding Your Perfect Shoes</h3>
+                            <p>Promo from Nov 15 &mdash; 25, 2022</p>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="block-5 mb-5">
+                            <h3 class="footer-heading mb-4">Contact Info</h3>
+                            <ul class="list-unstyled">
+                                <li class="address">828 Su Van Hanh, Dist 10, Ho Chi Minh city</li>
+                                <li class="phone"><a href="tel://23923929210">+81 5555 0971</a></li>
+                                <li class="email">Nabati999@gmail.com</li>
+                            </ul>
+                        </div>
+
+                        <div class="block-7">
+                            <form action="#" method="post">
+                                <label for="email_subscribe" class="footer-heading">Góp ý</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
+                                    <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="col-md-12">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | NABATI
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+
+                </div>
             </div>
-            <div class="col-md-4">
-                <h2>HỖ TRỢ</h2>
-                <p>
-                    Về các vấn đề khách hàng cần được hỗ trợ/tư vấn hay những thắc mắc về sản phẩm. Xin vui lòng liên hệ đường dây nóng:(84+)35555999 làm việc
-                    từ thứ 2 - thứ 7 (7:30AM - 21:00PM)
-                </p>
-                <p><a class="btn btn-default" href="#">Tìm hiểu thêm &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>LIÊN HỆ</h2>
-                <p>Theo dõi chúng tôi trên</p>
-                <a href="#" class="text-decoration-none">
-                    <img src="~/Content/Icon/facebook.png" alt="facebook_icon" width="20" height="20" />
-                    Facebook
-                </a>
-                <br />
-                <a href="#" class="text-decoration-none">
-                    <img src="~/Content/Icon/instagram.png" alt="instagram_icon" width="20" height="20" />
-                    Instagram
-                </a>
-                <br />
-                <a href="#" class="text-decoration-none">
-                    <img src="~/Content/Icon/twitter.png" alt="twitter_icon" width="20" height="20" />
-                    Twitter
-                </a>
-                <p><a class="btn btn-default" href="~/Home/Contact">Tìm hiểu thêm &raquo;</a></p>
-            </div>
-        </div>
-        <p>Copyright &copy; @DateTime.Now.Year - NabatiShoes. All rights reserved</p>
-    </footer>
-    <br />
-    <div class="text-md-center" style="background-color: #06283D; height: 50px;">
-        <a class="text-decoration-none" style="color:azure" href="#">Chính sách bảo mật |</a>
-        <a class="text-decoration-none" style="color:azure" href="#">Điều khoản và điều kiện |</a>
-        <a class="text-decoration-none" style="color:azure" href="#">Xuất bản bởi</a>
+        </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

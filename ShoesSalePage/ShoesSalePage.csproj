@@ -138,7 +138,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -151,10 +150,16 @@
     <Compile Include="Models\Cart.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShoesSalePageEnity.Context.cs">
@@ -172,6 +177,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShoesSalePageEnity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Size.cs">
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stock.cs">
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubCategory.cs">
+      <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
@@ -179,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AddProductStyleSheet.css" />
+    <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -195,12 +210,20 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\icomoon\demo-files\demo.css" />
+    <Content Include="Content\icomoon\demo-files\demo.js" />
+    <Content Include="Content\icomoon\demo.html" />
+    <Content Include="Content\icomoon\fonts\icomoon.svg" />
+    <Content Include="Content\icomoon\Read Me.txt" />
+    <Content Include="Content\icomoon\style.css" />
     <Content Include="Content\Icon\filter.png" />
     <Content Include="Content\Icon\user.png" />
     <Content Include="Content\Images\Banner.jpg" />
     <Content Include="Content\Images\banner1.png" />
     <Content Include="Content\Images\banner2.jpg" />
     <Content Include="Content\Images\banner3.jpg" />
+    <Content Include="Content\Images\hero_1.jpg" />
+    <Content Include="Content\Images\hero_2.jpg" />
     <Content Include="Content\Images\NewArrival\shoes21.jpg" />
     <Content Include="Content\Images\NewArrival\shoes22.jpg" />
     <Content Include="Content\Images\NewArrival\shoes23.jpg" />
@@ -236,9 +259,29 @@
     <Content Include="Content\Images\ProductImg\shoe7.jpg" />
     <Content Include="Content\Images\ProductImg\shoe8.jpg" />
     <Content Include="Content\Images\ProductImg\shoe9.jpg" />
+    <Content Include="Content\Images\undraw_posting_photo.svg" />
+    <Content Include="Content\Images\undraw_profile.svg" />
+    <Content Include="Content\Images\undraw_profile_1.svg" />
+    <Content Include="Content\Images\undraw_profile_2.svg" />
+    <Content Include="Content\Images\undraw_profile_3.svg" />
+    <Content Include="Content\Images\undraw_rocket.svg" />
+    <Content Include="Content\sb-admin-2.css" />
+    <Content Include="Content\sb-admin-2.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\owl.carousel.min.css" />
+    <Content Include="Content\owl.theme.default.css" />
+    <Content Include="Content\owl.theme.default.min.css" />
+    <Content Include="Content\owl.theme.green.css" />
+    <Content Include="Content\owl.theme.green.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\carousel.css" />
     <Content Include="Content\ShopStyle.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\webfonts\fa-solid-900.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -285,6 +328,10 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\icomoon\fonts\icomoon.eot" />
+    <Content Include="Content\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Content\icomoon\fonts\icomoon.woff" />
+    <Content Include="Content\icomoon\selection.json" />
     <EntityDeploy Include="Models\ShoesSalePageEnity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShoesSalePageEnity.Designer.cs</LastGenOutput>
@@ -292,18 +339,38 @@
     <Content Include="Models\ShoesSalePageEnity.edmx.diagram">
       <DependentUpon>ShoesSalePageEnity.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Function.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\sb-admin-2.js" />
+    <Content Include="Scripts\sb-admin-2.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -333,7 +400,6 @@
     <Content Include="Views\Products\Shop.cshtml" />
     <Content Include="Views\Products\Search.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
-    <Content Include="Views\Shared\_ShopLayout.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -342,7 +408,8 @@
     <Content Include="Views\Category\Woman.cshtml" />
     <Content Include="Views\Category\Accessories.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Shared\_MenuBar.cshtml" />
+    <Content Include="Views\Carts\ThankYou.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
