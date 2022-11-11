@@ -52,6 +52,8 @@ namespace ShoesSalePage.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            if (Session["UserID"] != null)
+                return RedirectToAction("Index", "Users");
             return View();
         }
         [HttpPost]
@@ -83,6 +85,8 @@ namespace ShoesSalePage.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            if (Session["UserID"] != null)
+                return RedirectToAction("Index", "Home");
             return View();
         }
         public static string GetMD5(string str) // mã hóa str thành chuỗi dữ liệu 128 bit 

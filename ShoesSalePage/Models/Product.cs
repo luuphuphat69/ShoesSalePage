@@ -19,6 +19,7 @@ namespace ShoesSalePage.Models
         public Product()
         {
             this.Carts = new HashSet<Cart>();
+            this.Stocks = new HashSet<Stock>();
         }
 
         [Key]
@@ -34,8 +35,14 @@ namespace ShoesSalePage.Models
         public string Image { get; set; }
         [Required]
         public bool IsAvailable { get; set; }
+        public Nullable<int> CategoryId { get; set; }
+        public Nullable<int> SubCategoryId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Stock> Stocks { get; set; }
     }
 }

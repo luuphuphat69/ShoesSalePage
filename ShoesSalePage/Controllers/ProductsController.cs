@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using System.Net;
+using System.Web.UI;
+using System.EnterpriseServices;
 
 namespace ShoesSalePage.Controllers
 {
@@ -17,13 +19,63 @@ namespace ShoesSalePage.Controllers
         {
             return View();
         }
-        public ActionResult Shop(int? page)
+        public ActionResult Shop(int? page, string Cate, int? subCateId, string filter)
         {
+            int pageSize, pageNumber;
             var product = db.Products.OrderBy(x => x.Price);
+            if (Cate != null)
+            {
+                Session["Cate"] = Cate;
+                product = db.Products.Where(p => p.Category.CategoryName.Equals(Cate)).OrderBy(p => p.ProductId);
+                if(filter == "low_to_high")
+                {
+                    Session["Filter"] = "low_to_high";
+                    product = db.Products.Where(p => p.Category.CategoryName.Equals(Cate)).OrderBy(p => p.Price);
+                }else if(filter == "high_to_low")
+                {
+                    Session["Filter"] = "high_to_low";
+                    product = db.Products.Where(p => p.Category.CategoryName.Equals(Cate)).OrderByDescending(p => p.Price);
+                }
+                if (page == null)
+                    page = 1;
+                pageSize = 9;
+                pageNumber = page ?? 1;
+                return View(product.ToPagedList(pageNumber, pageSize));
+            }
+            if (subCateId != null)
+            {
+                Session["subCate"] = subCateId;
+                product = db.Products.Where(p => p.SubCategory.SubCategoryId == subCateId).OrderBy(p => p.ProductId);
+                if (filter == "low_to_high")
+                {
+                    Session["Filter"] = "low_to_high";
+                    product = db.Products.Where(p => p.SubCategory.SubCategoryId == subCateId).OrderBy(p => p.Price);
+                }
+                else if (filter == "high_to_low")
+                {
+                    Session["Filter"] = "high_to_low";
+                    product = db.Products.Where(p => p.SubCategory.SubCategoryId == subCateId).OrderByDescending(p => p.Price);
+                }
+                if (page == null)
+                    page = 1;   
+                pageSize = 9;
+                pageNumber = page ?? 1;
+                return View(product.ToPagedList(pageNumber, pageSize));
+            }
+            if (filter == "low_to_high")
+            {
+                Session["Filter"] = "low_to_high";
+                product = db.Products.OrderBy(p => p.Price);
+            }else if (filter == "high_to_low"){
+                Session["Filter"] = "high_to_low";
+                product = db.Products.OrderByDescending(p => p.Price);
+            }
+            Session["Cate"] = null;
+            Session["subCate"] = null;
             if (page == null)
                 page = 1;
-            int pageSize = 9;
-            int pageNumber = page ?? 1;
+            pageSize = 9;
+            pageNumber = page ?? 1;
             return View(product.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Search(string input)
@@ -73,6 +125,33 @@ namespace ShoesSalePage.Controllers
             }
             return RedirectToAction("Shop", "Products");
         }
+        public ActionResult DetailsAddToCart(int id, string size, int quantity)
+        {
+            var check = db.Stocks.Where(x => x.ProductId == id && x.Size.Equals(size) && quantity <= x.Stock1);
+            if (check == null)
+                return RedirectToAction("Shop", "Products");
+            if (Session["Cart"] == null && check != null)
+            {
+                List<Cart> list = new List<Cart>();
+                list.Add(new Cart { Product = db.Products.Find(id), Size = size, Quantity = quantity, CreatedDate = DateTime.Now }) ;
+                Session["Cart"] = list;     // Store cart list to a session
+                Session["Count"] = quantity;
+            }
+            else if (Session["Cart"] != null && check != null)
+            {
+                List<Cart> list = (List<Cart>)Session["Cart"];
+                int index = CheckExist(id);
+                if (index != -1)
+                {
+                    list[index].Quantity+= quantity;
+                }
+                else
+                    list.Add(new Cart { Product = db.Products.Find(id), Size = size, Quantity = quantity, CreatedDate = DateTime.Now });
+                Session["Cart"] = list;
+                Session["Count"] = Convert.ToInt32(Session["Count"]) + quantity;
+            }
+            return RedirectToAction("Shop", "Products");
+        }
         public int CheckExist(int id)
         {
             List<Cart> list = (List<Cart>)Session["Cart"];
@@ -82,15 +161,6 @@ namespace ShoesSalePage.Controllers
                     return i - 1;
             }
             return -1;
-        }
-        public ActionResult AllPrice()
-        {
-            return RedirectToAction("Shop", "Products");
-        }
-        public ActionResult FirstRange()
-        {
-            var products = db.Products.Where(p => p.Price >= 100000 && p.Price <= 500000);
-            return RedirectToAction("Shop", "Products", products);
         }
     }
 }

@@ -20,7 +20,8 @@ namespace ShoesSalePage.Controllers
         public ActionResult Men(int? page)
         {
             int pageSize = 9;
-            var menWear = db.Products.Where(s => s.Name.Contains("nam")).OrderBy(p => p.ProductId);
+            //var menWear = db.Products.Where(s => s.Name.Contains("nam")).OrderBy(p => p.ProductId);
+            var menWear = db.Products.Where(s => s.CategoryId == 1).OrderBy(p => p.ProductId);
             if (page == null)
                 page = 1;
             int pageNumber = page ?? 1;
@@ -28,7 +29,8 @@ namespace ShoesSalePage.Controllers
         }
         public ActionResult Woman(int? page)
         {
-            var womanWear = db.Products.Where(s => s.Name.Contains("nữ")).OrderBy(p=>p.ProductId);
+            //var womanWear = db.Products.Where(s => s.Name.Contains("nữ")).OrderBy(p=>p.ProductId);
+            var womanWear = db.Products.Where(s => s.CategoryId == 2).OrderBy(p => p.ProductId);
             if (page == null)
                 page = 1;
             int pageSize = 9;
@@ -37,13 +39,14 @@ namespace ShoesSalePage.Controllers
         }
         public ActionResult Accessories(int? page)
         {
-            var menWear = db.Products.Where(s => s.Name.Contains("Thắt lưng")|| s.Name.Contains("Túi"))
-                                     .OrderBy(p => p.ProductId);
+            /*var asc = db.Products.Where(s => s.Name.Contains("Giày") == false)
+                                     .OrderBy(p => p.ProductId);*/
+            var asc = db.Products.Where(s => s.CategoryId == 3).OrderBy(p => p.ProductId);
             if (page == null)
                 page = 1;
             int pageSize = 9;
             int pageNumber = page ?? 1;
-            return View(menWear.ToPagedList(pageNumber, pageSize));
+            return View(asc.ToPagedList(pageNumber, pageSize));
         }
     }
 }

@@ -58,9 +58,16 @@ namespace ShoesSalePage.Controllers
                     Order order = new Order();
                     order.UserID = (int)Session["UserID"];
                     db.Orders.Add(order);
+                    Session["Cart"] = null;
+                    Session["Count"] = null;
+                    return RedirectToAction("ThankYou");
                 }
             }
             return RedirectToAction("Login", "Users");
+        }
+        public ActionResult ThankYou()
+        {
+            return View();
         }
     }
 }

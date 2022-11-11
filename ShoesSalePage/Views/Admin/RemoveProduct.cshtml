@@ -1,77 +1,66 @@
 ﻿@model ShoesSalePage.Models.Product
-
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <h3 class="mt-4">Are you sure you want to delete this?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsAvailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsAvailable)
-        </dd>
-
-    </dl>
-
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="card text-black">
+                    <img src="~/Content/Images/ProductImg/@Url.Content(Model.Image)"
+                         class="card-img-top" alt="Product" />
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h5 class="card-title">Chi tiết sản phẩm</h5>
+                            <p class="text-muted mb-4">@Model.Name</p>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <span>Tên sản phẩm:</span>
+                                <span>@Model.Name</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Hãng:</span>
+                                <span>@Model.Brand</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Giá:</span>
+                                <span>@String.Format("{0:n0}", Model.Price) VND</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Size:</span>
+                                <span>
+                                    @foreach (var item in Model.Stocks)
+                                    {
+                                        <strong>@item.Size </strong>
+                                    }
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Số lượng:</span>
+                                <span>
+                                    @foreach (var item in Model.Stocks)
+                                    {
+                                        <strong>Size: @item.Size - Số lượng: @item.Stock1</strong>
+                                        <br />
+                                    }
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     @using (Html.BeginForm("RemoveProduct", "Admin", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
-</div>

@@ -63,6 +63,8 @@ namespace ShoesSalePage.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            if (Session["AdminId"] != null)
+                return RedirectToAction("Index", "Admin");
             return View();
         }
         [HttpPost]
@@ -111,6 +113,7 @@ namespace ShoesSalePage.Controllers
             return View();
         }
         [HttpPost]
+       // [Authorize(Roles = "Admin")]
         public ActionResult AddProduct(Product product, HttpPostedFileBase file)
         {
             var check = db.Products.FirstOrDefault(s => s.ProductId == product.ProductId);
@@ -151,6 +154,7 @@ namespace ShoesSalePage.Controllers
             return View(product);
         }
         // GET: _Products/EditProduct/5
+        [HttpGet]
         public ActionResult EditProduct(int? id)
         {
             if (id == null)
@@ -170,6 +174,7 @@ namespace ShoesSalePage.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+       // [Authorize(Roles = "Admin")]
         public ActionResult EditProduct([Bind(Include = "ProductId,Name,Price,Size,Brand,Color,Image,IsAvailable")] Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
@@ -189,7 +194,7 @@ namespace ShoesSalePage.Controllers
             }
             return View(product);
         }
-        // GET: _Products/Delete/5
+        // GET: _Products/Delete/5]
         public ActionResult RemoveProduct(int? id)
         {
             if (id == null)
@@ -207,6 +212,7 @@ namespace ShoesSalePage.Controllers
         // POST: _Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Admin")]
         public ActionResult RemoveProduct(int id)
         {
             if (ModelState.IsValid)

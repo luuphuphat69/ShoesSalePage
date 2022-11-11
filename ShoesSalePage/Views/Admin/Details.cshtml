@@ -1,11 +1,12 @@
 ﻿@model ShoesSalePage.Models.Product
-
+@{ 
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 <section style="background-color: #eee;">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-4">
                 <div class="card text-black">
-                    <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
                     <img src="~/Content/Images/ProductImg/@Url.Content(Model.Image)"
                          class="card-img-top" alt="Product" />
                     <div class="card-body">
@@ -29,14 +30,20 @@
                             <div class="d-flex justify-content-between">
                                 <span>Size:</span>
                                 <span>
-                                    <select>
-                                        <option>38</option>
-                                        <option>39</option>
-                                        <option>40</option>
-                                        <option>41</option>
-                                        <option>42</option>
-                                        <option>43</option>
-                                    </select>
+                                    @foreach (var item in Model.Stocks)
+                                    {
+                                        <strong>@item.Size </strong>
+                                    }
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Số lượng:</span>
+                                <span>
+                                    @foreach (var item in Model.Stocks)
+                                    {
+                                        <strong>Size: @item.Size - Số lượng: @item.Stock1</strong>
+                                        <br />
+                                    }
                                 </span>
                             </div>
                         </div>
