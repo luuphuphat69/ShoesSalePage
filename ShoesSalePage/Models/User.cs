@@ -16,12 +16,6 @@ namespace ShoesSalePage.Models
 
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
@@ -55,8 +49,6 @@ namespace ShoesSalePage.Models
         public string PhoneNumber { get; set; }
         public Nullable<int> RoleId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual Role Role { get; set; }
     }
 }

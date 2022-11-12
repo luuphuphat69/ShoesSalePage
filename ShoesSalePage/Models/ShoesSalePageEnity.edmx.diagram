@@ -4,26 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="828e6b0ff09f41e6afd586f5b7ec1ae7" Name="Diagram1" ZoomLevel="73">
+      <Diagram DiagramId="828e6b0ff09f41e6afd586f5b7ec1ae7" Name="Diagram1" ZoomLevel="92">
         <EntityTypeShape EntityType="ShoesSalePageEnityModel.Admin" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShoesSalePageEnityModel.Cart" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoesSalePageEnityModel.Category" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShoesSalePageEnityModel.Order" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoesSalePageEnityModel.Product" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoesSalePageEnityModel.Role" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShoesSalePageEnityModel.Size" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoesSalePageEnityModel.Stock" Width="1.5" PointX="7.5" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoesSalePageEnityModel.SubCategory" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoesSalePageEnityModel.User" Width="1.5" PointX="7.875" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ShoesSalePageEnityModel.FK_RoleId" ManuallyRouted="false" />
-        <AssociationConnector Association="ShoesSalePageEnityModel.FK__Cart__ProductID__656C112C" ManuallyRouted="false" />
-        <AssociationConnector Association="ShoesSalePageEnityModel.FK__Orders__CartID__693CA210" ManuallyRouted="false" />
         <AssociationConnector Association="ShoesSalePageEnityModel.FK__Products__Catego__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="ShoesSalePageEnityModel.FK__SubCatego__Categ__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="ShoesSalePageEnityModel.FK__Orders__UserID__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="ShoesSalePageEnityModel.FK__Products__SubCat__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="ShoesSalePageEnityModel.FK__Stock__ProductId__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="ShoesSalePageEnityModel.FK_RoleIds" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShoesSalePageEnityModel.Order" Width="1.5" PointX="7.75" PointY="5.875" />
+        <EntityTypeShape EntityType="ShoesSalePageEnityModel.Cart" Width="1.5" PointX="10" PointY="5.5" />
+        <AssociationConnector Association="ShoesSalePageEnityModel.FK__Cart__OrderId__71D1E811" />
+        <EntityTypeShape EntityType="ShoesSalePageEnityModel.Size" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
