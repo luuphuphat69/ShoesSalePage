@@ -55,12 +55,19 @@ namespace ShoesSalePage.Controllers
 
                 if (Session["UserID"] != null)
                 {
+                    Cart cart = new Cart();
+                    foreach(var item in (List<Cart>)Session["Cart"])
+                    {
+                        cart.Product = item.Product;
+                    }
+                    db.Carts.Add(cart);
+
                     Order order = new Order();
+                    order.Cart = cart;
                     order.UserID = (int)Session["UserID"];
                     db.Orders.Add(order);
-                    Session["Cart"] = null;
-                    Session["Count"] = null;
-                    return RedirectToAction("ThankYou");
+
+                    db.SaveChanges();
                 }
             }
             return RedirectToAction("Login", "Users");

@@ -159,6 +159,7 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
@@ -410,6 +411,9 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Carts\ThankYou.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Products\SizeFilter.cshtml" />
+    <Content Include="Views\Products\ColorFilter.cshtml" />
+    <Content Include="Views\Shared\_SideBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -421,7 +425,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Filter\" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
