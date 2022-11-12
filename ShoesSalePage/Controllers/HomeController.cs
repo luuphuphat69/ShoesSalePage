@@ -15,5 +15,13 @@ namespace ShoesSalePage.Controllers
         {
             return View(db.Products.ToList());
         }
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

@@ -8,6 +8,8 @@ using PagedList;
 using System.Net;
 using System.Web.UI;
 using System.EnterpriseServices;
+using System.Data;
+using System.Drawing.Printing;
 
 namespace ShoesSalePage.Controllers
 {
@@ -25,15 +27,15 @@ namespace ShoesSalePage.Controllers
             var product = db.Products.OrderBy(x => x.Price);
             if (Cate != null)
             {
-                Session["Cate"] = Cate;
+                ViewBag.Cate = Cate;
                 product = db.Products.Where(p => p.Category.CategoryName.Equals(Cate)).OrderBy(p => p.ProductId);
                 if(filter == "low_to_high")
                 {
-                    Session["Filter"] = "low_to_high";
+                    ViewBag.Filter = "low_to_high";
                     product = db.Products.Where(p => p.Category.CategoryName.Equals(Cate)).OrderBy(p => p.Price);
                 }else if(filter == "high_to_low")
                 {
-                    Session["Filter"] = "high_to_low";
+                    ViewBag.Filter = "high_to_low";
                     product = db.Products.Where(p => p.Category.CategoryName.Equals(Cate)).OrderByDescending(p => p.Price);
                 }
                 if (page == null)
@@ -44,16 +46,16 @@ namespace ShoesSalePage.Controllers
             }
             if (subCateId != null)
             {
-                Session["subCate"] = subCateId;
+                ViewBag.SubCate = subCateId;
                 product = db.Products.Where(p => p.SubCategory.SubCategoryId == subCateId).OrderBy(p => p.ProductId);
                 if (filter == "low_to_high")
                 {
-                    Session["Filter"] = "low_to_high";
+                    ViewBag.Filter = "low_to_high";
                     product = db.Products.Where(p => p.SubCategory.SubCategoryId == subCateId).OrderBy(p => p.Price);
                 }
                 else if (filter == "high_to_low")
                 {
-                    Session["Filter"] = "high_to_low";
+                    ViewBag.Filter = "high_to_low";
                     product = db.Products.Where(p => p.SubCategory.SubCategoryId == subCateId).OrderByDescending(p => p.Price);
                 }
                 if (page == null)
@@ -64,10 +66,10 @@ namespace ShoesSalePage.Controllers
             }
             if (filter == "low_to_high")
             {
-                Session["Filter"] = "low_to_high";
+                ViewBag.Filter = "low_to_high";
                 product = db.Products.OrderBy(p => p.Price);
             }else if (filter == "high_to_low"){
-                Session["Filter"] = "high_to_low";
+                ViewBag.Filter = "high_to_low";
                 product = db.Products.OrderByDescending(p => p.Price);
             }
             Session["Cate"] = null;
@@ -161,6 +163,50 @@ namespace ShoesSalePage.Controllers
                     return i - 1;
             }
             return -1;
+        }
+        public ActionResult SizeFilter(int? page, string size)
+        {
+            int pageSize, pageNumber;
+            int _size;
+            int.TryParse(size, out _size);
+            var product =  (from s in db.Stocks
+                           where s.Size == _size
+                           join u in db.Products on s.ProductId
+                           equals u.ProductId
+                           select new ProductViewModel
+                           {
+                               Name = u.Name,
+                               Id = u.ProductId,
+                               Size = s.Size,
+                               Price = u.Price,
+                               Brand = u.Brand,
+                               Color = u.Color,
+                               Image = u.Image,
+                               IsAvailable = u.IsAvailable,
+                           }).ToList();
+            if (page == null || product != null)
+            {
+                page = 1;
+                pageSize = 9;
+                pageNumber = page ?? 1;
+                return View(product.ToPagedList(pageNumber, pageSize));
+            }
+            return RedirectToAction("Shop", "Products");
+        }
+        public ActionResult ColorFilter(int? page, string color)
+        {
+            ViewBag.Color = color;
+            int pageSize, pageNumber;
+            var product = db.Products.Where(p => p.Color.Equals(color)).OrderBy(p => p.ProductId);
+            if(product != null)
+            {
+                if (page == null)
+                    page = 1;
+                pageSize = 9;
+                pageNumber = page ?? 1;
+                return View(product.ToPagedList(pageNumber, pageSize));
+            }
+            return RedirectToAction("Shop", "Products");
         }
     }
 }
