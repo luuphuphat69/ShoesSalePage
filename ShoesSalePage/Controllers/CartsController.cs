@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -52,22 +54,46 @@ namespace ShoesSalePage.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 if (Session["UserID"] != null)
                 {
-                    Cart cart = new Cart();
-                    foreach(var item in (List<Cart>)Session["Cart"])
+                    try
                     {
-                        cart.Product = item.Product;
+                        List<Cart> listCart = (List<Cart>)Session["Cart"];
+                        Order order = new Order();
+                        order.UserId = (int)Session["UserID"];
+                        db.Orders.Add(order);
+                        db.SaveChanges();
+
+                        foreach (Cart item in listCart)
+                        {
+                            Cart cart = new Cart();
+                            cart.ProductID = item.Product.ProductId;
+                            cart.Quantity = item.Quantity;
+                            cart.Size = item.Size;
+                            cart.CreatedDate = item.CreatedDate;
+                            cart.OrderId = order.OrderId;
+
+                            db.Carts.Add(cart);
+                            db.SaveChanges();
+                        }
+                        Session["Cart"] = null;
+                        Session["Count"] = null;
+                        return RedirectToAction("ThankYou", "Carts");
                     }
-                    db.Carts.Add(cart);
-
-                    Order order = new Order();
-                    order.Cart = cart;
-                    order.UserID = (int)Session["UserID"];
-                    db.Orders.Add(order);
-
-                    db.SaveChanges();
+                    catch (DbEntityValidationException e) //((System.Data.Entity.Validation.DbEntityValidationException)$exception).EntityValidationErrors.First().ValidationErrors.First().ErrorMessage
+                    {   
+                        foreach (var eve in e.EntityValidationErrors)
+                        {
+                            Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                        throw;
+                    }
                 }
             }
             return RedirectToAction("Login", "Users");
