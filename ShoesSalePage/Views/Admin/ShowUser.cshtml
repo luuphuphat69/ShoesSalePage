@@ -1,0 +1,51 @@
+﻿@model PagedList.IPagedList<ShoesSalePage.Models.UserViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ShowUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<table class="table align-middle mt-4 mb-4 bg-white">
+    <thead class="bg-light">
+        <tr>
+            <th>ID</th>
+            <th>Account Name</th>
+            <th>Fullname</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserPhoneNumber)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="text-md-center">
+        @Html.PagedListPager(Model, pageNumber => Url.Action("ShowUser", new { page = pageNumber }))
+    </div>
+
+
+

@@ -20,7 +20,8 @@ namespace ShoesSalePage.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StockId { get; set; }
         public Nullable<int> ProductId { get; set; }
-        public Nullable<int> Size { get; set; }
+        public string Size { get; set; }
+        public string Color { get; set; }
         public Nullable<int> Stock1 { get; set; }
     
         public virtual Product Product { get; set; }

@@ -6,7 +6,7 @@
 @using (Html.BeginForm("Login", "Users", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <!-- Email input -->
+    <!-- User Name input -->
     <div class="form-group">
         @Html.LabelFor(m => m.UserName)
         @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Tên tài khoản" })

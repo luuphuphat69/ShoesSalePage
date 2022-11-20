@@ -64,6 +64,7 @@ namespace ShoesSalePage.Controllers
                         db.Orders.Add(order);
                         db.SaveChanges();
 
+                        Stock stock = new Stock();
                         foreach (Cart item in listCart)
                         {
                             Cart cart = new Cart();
@@ -72,10 +73,15 @@ namespace ShoesSalePage.Controllers
                             cart.Size = item.Size;
                             cart.CreatedDate = item.CreatedDate;
                             cart.OrderId = order.OrderId;
-
                             db.Carts.Add(cart);
+
+                            string size = ChangeSize(item.Size);
+                            stock = db.Stocks.Where(p => p.ProductId == item.Product.ProductId && p.Size.Equals(size)).FirstOrDefault();
+                            stock.Stock1 -= item.Quantity;
+                            
                             db.SaveChanges();
                         }
+
                         Session["Cart"] = null;
                         Session["Count"] = null;
                         return RedirectToAction("ThankYou", "Carts");
@@ -101,6 +107,38 @@ namespace ShoesSalePage.Controllers
         public ActionResult ThankYou()
         {
             return View();
+        }
+        public string ChangeSize(string size)
+        {
+            string _size = "";
+            switch (size.Trim())
+            {
+                case "36":
+                    _size = "1";
+                break;
+                case "37":
+                    _size = "2";
+                    break;
+                case "38":
+                    _size = "3";
+                    break;
+                case "39":
+                    _size = "4";
+                    break;
+                case "40":
+                    _size = "5";
+                    break;
+                case "41":
+                    _size = "6";
+                    break;
+                case "42":
+                    _size = "7";
+                    break;
+                case "43":
+                    _size = "8";
+                    break;
+            }
+            return _size;
         }
     }
 }

@@ -10,6 +10,8 @@ using System.Web.UI;
 using System.EnterpriseServices;
 using System.Data;
 using System.Drawing.Printing;
+using Microsoft.SqlServer.Server;
+using System.Data.SqlTypes;
 
 namespace ShoesSalePage.Controllers
 {
@@ -80,15 +82,33 @@ namespace ShoesSalePage.Controllers
             pageNumber = page ?? 1;
             return View(product.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Search(string input)
+        public ActionResult Search(int? page, string input, string filter)
         {
+            ViewBag.Search = input;
             var item = from s in db.Products
                        select s;
-            if (!String.IsNullOrEmpty(input))
+            List<string> words = input.Split(' ').ToList();
+            if (!String.IsNullOrEmpty(input))   
             {
-                item = item.Where(s => s.Name.Contains(input));
+                foreach(var word in words)
+                {     
+                    item = item.Where(s => s.Name.Contains(word)).OrderBy(p=>p.ProductId);
+                    if(filter == "low_to_high")
+                    {
+                        ViewBag.Filter = "low_to_high";
+                        item = item.Where(s => s.Name.Contains(word)).OrderBy(p => p.Price);
+                    }else if(filter == "high_to_low")
+                    {
+                        ViewBag.Filter = "high_to_low";
+                        item = item.Where(s => s.Name.Contains(word)).OrderByDescending(p => p.Price);
+                    }
+                }
             }
-            return View(item.ToList());
+            if (page == null)
+                page = 1;
+            int pageSize = 9;
+            int pageNumber = page ?? 1;
+            return View(item.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Details(int? id)
         {
@@ -152,7 +172,7 @@ namespace ShoesSalePage.Controllers
                 Session["Cart"] = list;
                 Session["Count"] = Convert.ToInt32(Session["Count"]) + quantity;
             }
-            return RedirectToAction("Shop", "Products");
+            return RedirectToAction("Details", "Products", new {id = id});
         }
         public int CheckExist(int id)
         {
@@ -167,12 +187,11 @@ namespace ShoesSalePage.Controllers
         public ActionResult SizeFilter(int? page, string size)
         {
             int pageSize, pageNumber;
-            int _size;
-            int.TryParse(size, out _size);
             var product =  (from s in db.Stocks
-                           where s.Size == _size
+                           where s.Size.Equals(size)
                            join u in db.Products on s.ProductId
                            equals u.ProductId
+                           orderby u.ProductId
                            select new ProductViewModel
                            {
                                Name = u.Name,
@@ -193,20 +212,32 @@ namespace ShoesSalePage.Controllers
             }
             return RedirectToAction("Shop", "Products");
         }
-        public ActionResult ColorFilter(int? page, string color)
+        public ActionResult ColorFilter(int? page, string color, string filter)
         {
             ViewBag.Color = color;
             int pageSize, pageNumber;
             var product = db.Products.Where(p => p.Color.Equals(color)).OrderBy(p => p.ProductId);
             if(product != null)
             {
-                if (page == null)
-                    page = 1;
-                pageSize = 9;
-                pageNumber = page ?? 1;
-                return View(product.ToPagedList(pageNumber, pageSize));
+                if(filter == "low_to_high")
+                {
+                    ViewBag.Filter = filter;
+                    product = db.Products.Where(p => p.Color.Equals(color)).OrderBy(p => p.Price);
+                }else if(filter == "high_to_low")
+                {
+                    ViewBag.Filter = filter;
+                    product = db.Products.Where(p => p.Color.Equals(color)).OrderByDescending(p => p.Price);
+                }
             }
-            return RedirectToAction("Shop", "Products");
+            if (page == null)
+                page = 1;
+            pageSize = 9;
+            pageNumber = page ?? 1;
+            return View(product.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult SizeChart()
+        {
+            return PartialView("_SizeChart");
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
@@ -19,7 +21,11 @@ namespace ShoesSalePage.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View();
+            if (Session["UserID"] == null)
+                return RedirectToAction("Login", "Users");
+            int id = (int)Session["UserID"];
+            var user = db.Users.FirstOrDefault(p => p.UserId == id);
+            return View(user);
         }
         [HttpGet]
         public ActionResult Register()
@@ -39,7 +45,7 @@ namespace ShoesSalePage.Controllers
                     db.Configuration.ValidateOnSaveEnabled = false; // Disable entity validation
                     db.Users.Add(user);
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Users");
+                    return RedirectToAction("Login", "Users");
                 }
                 else
                 {
@@ -80,7 +86,7 @@ namespace ShoesSalePage.Controllers
                     Session["UserPhoneNumber"] = data.PhoneNumber;
                     Session["UserCity"] = data.City;
                     Session["UserAddress"] = data.Address;
-                    Session["UserPostalCode"] = data.PostalCode;
+                    Session["UserLocation"] = data.Address + data.City;
                     Session["UserCreatedDate"] = data.CreatedDate;
                 }
                 return RedirectToAction("Index");

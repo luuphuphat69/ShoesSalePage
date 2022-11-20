@@ -1,30 +1,74 @@
-﻿@model IEnumerable<ShoesSalePage.Models.Product>
+﻿@model PagedList.IPagedList<ShoesSalePage.Models.Product>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Search";
 }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-xl-4 col-sm-6 p-3">
-                <div class="img-thumbnail">
-                    <div class="float-start">
-                        <img src="@Url.Content(item.Image)" alt="Shoes_img" height="100" width="100" />
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-9 order-2">
+                <div class="row mb-5">
+                    <div class="row">
+                        <div class="col-md-12 mb-5">
+                            <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
+                            <div class="d-flex">
+                                <div class="dropdown mr-1 ml-md-auto">
+                                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Filter
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                        @if (ViewBag.Search != null)
+                                        {
+                                            <a class="dropdown-item" href="@Url.Action("Search", "Products", new {input = ViewBag.Search, filter = "low_to_high"})">Price, low to high</a>
+                                            <a class="dropdown-item" href="@Url.Action("Search", "Products", new {input = ViewBag.Search, filter = "high_to_low"})">Price, high to low</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="fw-bold">@item.Name</p>
-                        <p>@item.Brand</p>
-                        <p class="fw-bold">@String.Format("{0:n0}", item.Price) VND</p>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="block-4 text-center border">
+                                <figure class="block-4-image">
+                                    <a href="~/Products/Details?id=@item.ProductId"><img src="~/Content/Images/ProductImg/@item.Image" alt="Image placeholder" class="img-fluid"></a>
+                                </figure>
+                                <div class="block-4-text p-4">
+                                    <h3><a href="~/Products/Details?id=@item.ProductId">@item.Name</a></h3>
+                                    <p class="mb-0 text-danger">@item.Brand</p>
+                                    <p class="text-primary font-weight-bold">@String.Format("{0:n0}", item.Price) VND</p>
+                                    @if (item.IsAvailable)
+                                    {
+                                        <p>Còn hàng</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Hết hàng</p>
+                                    }
+                                    <a class="text-decoration-none float-start" href="@Url.Action("Details", "Products", new {id = item.ProductId})"><i class="fas fa-eye text-primary mr-1"></i>View details</a>
+                                    <a class="text-decoration-none float-end" href="@Url.Action("AddToCart", "Products", new {id = item.ProductId})"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="site-block-27">
+                            <ul>
+                                <li>
+                                    @Html.PagedListPager(Model, pageNumber => Url.Action("Search", "Products", new { page = pageNumber, input = ViewBag.Search, filter = ViewBag.Filter }))
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <a class="btn btn-primary" href="@Url.Action("Add","Cart", new {id = item.ProductId})">
-                        Thêm vào giỏ hàng
-                    </a>
-                    <a class="btn btn-primary" href="@Url.Action("Details","Products", new {id = item.ProductId})">
-                        Chi tiết
-                    </a>
                 </div>
             </div>
-        }
+            @Html.Partial("_SideBar")
+        </div>
     </div>
 </div>

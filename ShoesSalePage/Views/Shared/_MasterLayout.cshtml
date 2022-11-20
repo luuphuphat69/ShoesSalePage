@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
 
-    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    @*<link rel="stylesheet" href="~/Content/magnific-popup.css">*@
     <link rel="stylesheet" href="~/Content/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
     <link rel="stylesheet" href="~/Content/owl.theme.default.min.css">
@@ -24,8 +24,10 @@
             <div class="site-navbar-top">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div>
-                            <img src="~/Content/Icon/shoes.jpg" height="50" width="50" />
+                        <div class="position-absolute end-0">
+                            <a href="~/Home/Index">
+                                <img src="~/Content/Icon/shoes.jpg" height="50" width="50" />
+                            </a>
                         </div>
                         <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
 
@@ -36,25 +38,25 @@
                             }
                         </div>
 
-                        <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+                        <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center position-relative">
                             <div class="site-logo">
-                                <a href="~/Home/Index" class="js-logo-clone">NABATI</a>
+                                <a href="~/Home/Index" class="text-decoration-none js-logo-clone">NABATI</a>
                             </div>
                         </div>
 
                         <div class="col-6 col-md-4 order-3 order-md-3 text-right ">
                             <div class="site-top-icons float-end">
                                 <ul>
-                                    <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                     <li>
                                         <a href="~/Carts/Cart" class="site-cart">
                                             <span class="icon icon-shopping_cart"></span>
                                             <span class="count">@Session["Count"]</span>
                                         </a>
                                     </li>
-                                    <li><a href="~/Users/Login"><span class="icon icon-person"></span>@Session["UserName"]</a></li>
-                                    <li><a href="@Url.Action("Logout", "Users")">LogOut</a></li>
-                                    <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                                    <li>
+                                        <a href="~/Users/Login"><span class="icon icon-person position-relative"></span>@Session["UserName"]</a>
+                                    </li>
+                                    <li><a href="@Url.Action("Logout", "Users")" class="position-relative">LogOut</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -100,8 +102,8 @@
                         </li>
                         <li><a href="~/Products/Shop">Cửa Hàng</a></li>
                         <li><a href="~/Home/Index">Trang Chủ</a></li>
-                        <li><a href="#">Hãng</a></li>
-                        <li><a href="~/Home/Contact">Liên hệ</a></li>
+                        <li><a href="~/Home/About">Về chúng tôi</a></li>
+                        <li><a href="#ContactInfo">Liên hệ</a></li>
                     </ul>
                 </div>
             </nav>
@@ -160,7 +162,7 @@
                             <p>Promo from Nov 15 &mdash; 25, 2022</p>
                         </a>
                     </div>
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-3" id="ContactInfo">
                         <div class="block-5 mb-5">
                             <h3 class="footer-heading mb-4">Contact Info</h3>
                             <ul class="list-unstyled">

@@ -20,21 +20,10 @@
                                         Filter
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                        @if (ViewBag.Cate != null)
+                                        @if (ViewBag.Color != null)
                                         {
-                                            <a class="dropdown-item" href="@Url.Action("Shop", "Products", new {Cate = ViewBag.Cate, filter = "low_to_high"})">Category - Price, low to high</a>
-                                            <a class="dropdown-item" href="@Url.Action("Shop", "Products", new {Cate = ViewBag.Cate, filter = "high_to_low"})">Category - Price, high to low</a>
-                                        }
-                                        @if (ViewBag.SubCate != null)
-                                        {
-
-                                            <a class="dropdown-item" href="@Url.Action("Shop", "Products", new {subCateId = ViewBag.SubCate, filter = "low_to_high"})">SubCategory - Price, low to high</a>
-                                            <a class="dropdown-item" href="@Url.Action("Shop", "Products", new {subCateId = ViewBag.SubCate, filter = "high_to_low"})">SubCategory - Price, high to low</a>
-                                        }
-                                        @if (ViewBag.Cate == null && ViewBag.SubCate == null)
-                                        {
-                                            <a class="dropdown-item" href="@Url.Action("Shop", "Products", new {filter = "low_to_high"})">Price, low to high</a>
-                                            <a class="dropdown-item" href="@Url.Action("Shop", "Products", new {filter = "high_to_low"})">Price, high to low</a>
+                                            <a class="dropdown-item" href="@Url.Action("ColorFilter", "Products", new {color = ViewBag.Color, filter = "low_to_high"})">Price, low to high</a>
+                                            <a class="dropdown-item" href="@Url.Action("ColorFilter", "Products", new {color = ViewBag.Color, filter = "high_to_low"})">Price, high to low</a>
                                         }
                                     </div>
                                 </div>
@@ -72,7 +61,7 @@
                         <div class="site-block-27">
                             <ul>
                                 <li>
-                                    @Html.PagedListPager(Model, pageNumber => Url.Action("ColorFilter", "Products", new { page = pageNumber, color = ViewBag.Color }))
+                                    @Html.PagedListPager(Model, pageNumber => Url.Action("ColorFilter", "Products", new { page = pageNumber, color = ViewBag.Color, filter = ViewBag.Filter }))
                                 </li>
                             </ul>
                         </div>

@@ -27,7 +27,7 @@ namespace ShoesSalePage.Models
         public string Name { get; set; }
         [Required]
         public double Price { get; set; }
-        public int Size { get; set; }
+        public string Size { get; set; }
         [Required]
         public string Brand { get; set; }
         public string Color { get; set; }
