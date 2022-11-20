@@ -2,71 +2,70 @@
 @{
     ViewBag.Title = "Index";
 }
-<table class="table mt-4">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th></th>
-    </tr>
-    <tr>
-    <tr>
-        <td>
-            @Session["UserID"]
-        </td>
-        <td>
-            @Session["UserFirstName"]
-        </td>
-        <td>
-            @Session["UserLastName"]
-        </td>
-        <td>
-            @Session["UserEmail"]
-        </td>
-        <td>
-            @Session["UserCreatedDate"]
-        </td>
-        <td>
-            @Session["UserName"]
-        </td>
-        <td>
-            @Session["UserAddress"]
-        </td>
-        <td>
-            @Session["UserCity"]
-        </td>
-        <td>
-            @Session["UserPostalCode"]
-        </td>
-        <td>
-            @Session["UserPhoneNumber"]
-        </td>
-    </tr>
-</table>
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card">
+                    <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                                 alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                 style="width: 150px; z-index: 1">
+                        </div>
+                        <div class="ms-3" style="margin-top: 130px;">
+                            <h5>@Session["UserFullName"]</h5>
+                            <p>@Session["UserLocation"]</p>
+                        </div>
+                    </div>
+                    <div class="card-body p-4 text-black mt-4">
+                        <div class="mb-5">
+                            <div class="p-4" style="background-color: #f8f9fa;">
+                                <div class="col-md-9">
+                                    <div class="card-body p-4">
+                                        <h6>Information</h6>
+                                        <hr class="mt-0 mb-4">
+                                        <div class="row pt-1">
+                                            <div class="col-6 mb-3">
+                                                <h6>Full Name</h6>
+                                                <p class="text-muted">@Model.FirstName@Model.LastName</p>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <h6>Email</h6>
+                                                <p class="text-muted">@Model.Email</p>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <h6>Phone</h6>
+                                                <p class="text-muted">@Model.PhoneNumber</p>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <h6>Address</h6>
+                                                <p class="text-muted">@Model.Address,@Model.City</p>
+                                            </div>
+                                        </div>
+                                        <h6>Account</h6>
+                                        <hr class="mt-0 mb-4">
+                                        <div class="row pt-1">
+                                            <div class="col-6 mb-3">
+                                                <h6>Account ID</h6>
+                                                <p class="text-muted">@Model.UserId</p>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <h6>Account</h6>
+                                                <p class="text-muted">@Model.UserName</p>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <h6>Created Date</h6>
+                                                <p class="text-muted">@Model.CreatedDate</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

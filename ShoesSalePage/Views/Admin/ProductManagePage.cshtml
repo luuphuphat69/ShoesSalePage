@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<a href="@Url.Action("AddProduct", "Admin")" class="btn btn-outline-dark">Create New</a>
 <table class="table align-middle mt-4 mb-4 bg-white">
     <thead class="bg-light">
         <tr>
@@ -16,7 +17,7 @@
             <th>Color</th>
             <th>Image</th>
             <th>IsAvailable</th>
-            <th></th>   
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -57,7 +58,6 @@
         }
         </tbody>
     </table>
-    <div>
-        @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { page = pageNumber }))
+    <div class="text-md-center">
+        @Html.PagedListPager(Model, pageNumber => Url.Action("ProductManagePage", "Admin", new { page = pageNumber }))
     </div>
-    <a href="@Url.Action("AddProduct", "Admin")" class="btn btn-outline-dark">Create New</a>

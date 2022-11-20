@@ -150,6 +150,7 @@
     <Compile Include="Models\Cart.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
@@ -190,6 +191,8 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +228,7 @@
     <Content Include="Content\Images\banner3.jpg" />
     <Content Include="Content\Images\hero_1.jpg" />
     <Content Include="Content\Images\hero_2.jpg" />
+    <Content Include="Content\Images\how_to_size.png" />
     <Content Include="Content\Images\NewArrival\shoes21.jpg" />
     <Content Include="Content\Images\NewArrival\shoes22.jpg" />
     <Content Include="Content\Images\NewArrival\shoes23.jpg" />
@@ -260,12 +264,7 @@
     <Content Include="Content\Images\ProductImg\shoe7.jpg" />
     <Content Include="Content\Images\ProductImg\shoe8.jpg" />
     <Content Include="Content\Images\ProductImg\shoe9.jpg" />
-    <Content Include="Content\Images\undraw_posting_photo.svg" />
-    <Content Include="Content\Images\undraw_profile.svg" />
-    <Content Include="Content\Images\undraw_profile_1.svg" />
-    <Content Include="Content\Images\undraw_profile_2.svg" />
-    <Content Include="Content\Images\undraw_profile_3.svg" />
-    <Content Include="Content\Images\undraw_rocket.svg" />
+    <Content Include="Content\Images\size_chart.jpg" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -392,7 +391,7 @@
     <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_RegisterLayout.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ProductManagePage.cshtml" />
     <Content Include="Views\Admin\RemoveProduct.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
     <Content Include="Views\Admin\EditProduct.cshtml" />
@@ -401,10 +400,6 @@
     <Content Include="Views\Products\Shop.cshtml" />
     <Content Include="Views\Products\Search.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Category\Men.cshtml" />
     <Content Include="Views\Category\Woman.cshtml" />
     <Content Include="Views\Category\Accessories.cshtml" />
@@ -414,6 +409,11 @@
     <Content Include="Views\Products\SizeFilter.cshtml" />
     <Content Include="Views\Products\ColorFilter.cshtml" />
     <Content Include="Views\Shared\_SideBar.cshtml" />
+    <Content Include="Views\Admin\ShowCart.cshtml" />
+    <Content Include="Views\Admin\ShowOrder.cshtml" />
+    <Content Include="Views\Admin\ShowUser.cshtml" />
+    <Content Include="Views\Admin\AdminProfile.cshtml" />
+    <Content Include="Views\Shared\_SizeChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

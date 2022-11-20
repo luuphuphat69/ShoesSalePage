@@ -12,7 +12,7 @@ namespace ShoesSalePage.Models
         public double Price { get; set; }
         public string Brand { get; set; }
         public string Image { get; set; }
-        public int? Size { get; set; }
+        public string Size { get; set; }
         public bool IsAvailable { get; set; }
         public string Color { get; set; }
     }
