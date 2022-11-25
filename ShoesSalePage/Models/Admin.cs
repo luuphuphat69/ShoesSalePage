@@ -21,15 +21,20 @@ namespace ShoesSalePage.Models
         public int AdminID { get; set; }
         [Required(ErrorMessage = "This can not be null")]
         [Display(Name = "Account")]
+        [MaxLength(20, ErrorMessage = "Length is over 20. Try again")]
         public string AdminName { get; set; }
         [Required(ErrorMessage = "This can not be null")]
         [Display(Name = "Full Name")]
+        [MaxLength(100, ErrorMessage = "Length is over 100. Try again")]
         public string FullName { get; set; }
         [Required(ErrorMessage = "This can not be null")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
+        [MinLength(1, ErrorMessage ="Length is below 1. Try again")]
+        [MaxLength(20, ErrorMessage = "Length is over 20. Try again")]
         public string AdminPassword { get; set; }
         [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
         [NotMapped] // not create corresponding columns in the database
         [Required(ErrorMessage = "This can not be null")]
@@ -37,8 +42,5 @@ namespace ShoesSalePage.Models
         [Display(Name = "Confirm password")]
         [DataType(DataType.Password)]
         public string ConfirmPass { get; set; }
-        public Nullable<int> RoleId { get; set; }
-
-        public virtual Role Role { get; set; }
     }
 }

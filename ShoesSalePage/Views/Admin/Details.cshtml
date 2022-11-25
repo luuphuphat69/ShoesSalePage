@@ -28,22 +28,15 @@
                                 <span>@String.Format("{0:n0}", Model.Price) VND</span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <span>Size:</span>
+                                <span>Category:</span>
                                 <span>
-                                    @foreach (var item in Model.Stocks)
-                                    {
-                                        <strong>@item.Size </strong>
-                                    }
+                                    @Model.Category.CategoryName
                                 </span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <span>Số lượng:</span>
+                                <span>Sub-Category:</span>
                                 <span>
-                                    @foreach (var item in Model.Stocks)
-                                    {
-                                        <strong>Size: @item.Size - Số lượng: @item.Stock1</strong>
-                                        <br />
-                                    }
+                                    @Model.SubCategory.SubCategoryName
                                 </span>
                             </div>
                         </div>

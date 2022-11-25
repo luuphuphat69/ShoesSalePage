@@ -50,7 +50,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="~/Admin/ShowUser">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-user-circle"></i>
                     <span>Customer</span>
                 </a>
             </li>
@@ -58,7 +58,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="~/Admin/AdminProfile">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Admin</span>
                 </a>
             </li>
@@ -71,15 +71,22 @@
                 Properties
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Products -->
             <li class="nav-item">
                 <a class="nav-link" href="~/Admin/ProductManagePage">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-tags"></i>
                     <span>Products</span>
                 </a>
             </li>
+            <!-- Nav Item - Stocks -->
+            <li class="nav-item">
+                <a class="nav-link" href="~/Admin/ProductStocks">
+                    <i class="fas fa-fw fa-store"></i>
+                    <span>Stocks</span>
+                </a>
+            </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Orders -->
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("ShowOrder", "Admin")">
                     <i class="fas fa-fw fa-chart-area"></i>
@@ -87,7 +94,7 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Carts -->
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("ShowCart", "Admin")">
                     <i class="fas fa-fw fa-table"></i>

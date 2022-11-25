@@ -1,0 +1,66 @@
+﻿@model PagedList.IPagedList<ShoesSalePage.Models.Stock>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ProductStocks";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("ProductStocks", "Admin", FormMethod.Get))
+ {
+    <input type="text" name="input" placeholder="Nhập từ cần tìm kiếm"/>
+    <input type="submit" value="Search"/>
+ }
+<table class="table align-middle mt-4 mb-4 bg-white">
+    <thead class="bg-light">
+        <tr>
+            <th>Stock Id</th>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Size</th>
+            <th>Stock</th>
+            <th>Color</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StockId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    <img src="~/Content/Images/ProductImg/@Url.Content(item.Product.Image)" height="50" width="50" />
+                </td>
+                <td>
+                    <i class="fas fa-pencil-alt">
+                        @Html.ActionLink("Edit", "EditStock", new { id = item.StockId })
+                    </i>
+                    <i class="fas fa-trash-alt">
+                        @Html.ActionLink("Delete", "RemoveStock", new { StockId = item.StockId })
+                    </i>
+                </td>
+            </tr>
+                }
+        </tbody>
+    </table>
+<a href="@Url.Action("AddProduct_ToStock", "Admin")" class="btn btn-outline-dark">Create New</a>
+<div class="text-md-center">
+    @Html.PagedListPager(Model, pageNumber => Url.Action("ProductStocks", "Admin", new { page = pageNumber, input = ViewBag.StockSearch }))
+</div>

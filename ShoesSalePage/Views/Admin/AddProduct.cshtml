@@ -19,15 +19,19 @@
                             <div class="form-horizontal">
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+                                        @if (ViewBag.AddError != null)
+                                        {
+                                            <span class="text-bg-danger" style="background-color:black; color:red">@ViewBag.AddError</span>
+                                        }
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -35,7 +39,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -43,7 +47,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
@@ -51,7 +55,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
@@ -59,23 +63,41 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "control-label col-md-5" })
+                                    <div class="col-md-10">
+                                        <select class="form-group" id="CategoryId" name="CategoryId">
+                                            <option value="1">Men</option>
+                                            <option value="2">Woman</option>
+                                            <option value="3">Accessories</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.IsAvailable, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SubCategoryId, "Sub-Category", htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
+                                        @Html.DropDownList("SubCategoryId", null, htmlAttributes: new { @class = "form-group" })
+                                        @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsAvailable, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-5">
                                         <div class="checkbox">
                                             @Html.EditorFor(model => model.IsAvailable)
                                             @Html.ValidationMessageFor(model => model.IsAvailable, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-10">
                                     <label for="file">Upload Image:</label>
                                     <input type="file" name="file" id="file" style="width: 100%; color:white" />
                                 </div>
@@ -90,9 +112,32 @@
                             <i class="fas fa-cloud-upload-alt tm-upload-icon">
                             </i>
                         </div>
+                        <ul class="fas fa-sticky-note mt-2">
+                            Category ID
+                            <li>1 (Men)</li>
+                            <li>2 (Woman)</li>
+                            <li>3 (Accessories)</li>
+                        </ul>
+                        <br />
+                        <ul class="fas fa-sticky-note mt-2">
+                            Sub-Category ID
+                            <li>1 (Giày Lười Nam)</li>
+                            <li>2 (Giày Da Nam)</li>
+                            <li>3 (Giày Boot Nam)</li>
+                            <li>4 (Giày Tây Nam)</li>
+                            <li>5 (Giày Công Sở)</li>
+                            <li>6 (Giày Búp Bê)</li>
+                            <li>7 (Giày Cao Gót)</li>
+                            <li>8 (Giày Lười Nữ)</li>
+                            <li>9 (Giày Sandal)</li>
+                            <li>10 (Thắt Lưng)</li>
+                            <li>11 (Ví Da)</li>
+                            <li>12 (Mắt Kính)</li>
+                            <li>13 (Túi xách)</li>
+                        </ul>
                     </div>
                     <div>
-                        @Html.ActionLink("Back to List", "Index")
+                        @Html.ActionLink("Back to List", "ProductManagePage", "Admin")
                     </div>
 
                 </div>

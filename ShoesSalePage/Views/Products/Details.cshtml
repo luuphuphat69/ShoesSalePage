@@ -11,6 +11,7 @@
                 <img src="~/Content/Images/ProductImg/@Model.Image" alt="Image" class="img-fluid">
             </div>
             <div class="col-md-6">
+                <p class="text-black">@Model.Category.CategoryName / @Model.SubCategory.SubCategoryName</p>
                 <h2 class="text-black"><i>@Model.Name</i></h2>
                 <p><strong class="text-primary h4">@String.Format("{0:n0}", Model.Price) VND</strong></p>
                 <p><strong class="text-primary h5">@Model.Color /</strong></p>
@@ -27,56 +28,56 @@
                                     <ul>
                                         @foreach (var item in Model.Stocks)
                                         {
-                                            switch (item.Size.Trim())
+                                            switch (item.Size)
                                             {
-                                                case "1":
+                                                case 1:
                                                     <li><a class="text-decoration-none showSingle" target="1">36</a></li>
                                                     break;
-                                                case "2":
+                                                case 2:
                                                     <li><a class="text-decoration-none showSingle" target="2">37</a></li>
                                                     break;
-                                                case "3":
+                                                case 3:
                                                     <li><a class="text-decoration-none showSingle" target="3">38</a></li>
                                                     break;
-                                                case "4":
+                                                case 4:
                                                     <li><a class="text-decoration-none showSingle" target="4">39</a></li>
                                                     <br />
                                                     break;
-                                                case "5":
+                                                case 5:
                                                     <li><a class="text-decoration-none showSingle" target="5">40</a></li>
                                                     break;
-                                                case "6":
+                                                case 6:
                                                     <li><a class="text-decoration-none showSingle" target="6">41</a></li>
                                                     break;
-                                                case "7":
+                                                case 7:
                                                     <li><a class="text-decoration-none showSingle" target="7">42</a></li>
                                                     break;
-                                                case "8":
+                                                case 8:
                                                     <li><a class="text-decoration-none showSingle" target="8">43</a></li>
                                                     break;
-                                                case "9":
+                                                case 9:
                                                     <li><a class="text-decoration-none showSingle" target="1">S</a></li>
                                                     break;
-                                                case "10":
+                                                case 10:
                                                     <li><a class="text-decoration-none showSingle" target="2">M</a></li>
                                                     break;
-                                                case "11":
+                                                case 11:
                                                     <li><a class="text-decoration-none showSingle" target="3">L</a></li>
                                                     break;
-                                                case "12":
+                                                case 12:
                                                     <li><a class="text-decoration-none showSingle" target="4">XL</a></li>
                                                     <br />
                                                     break;
-                                                case "13":
+                                                case 13:
                                                     <li><a class="text-decoration-none showSingle" target="5">2XL</a></li>
                                                     break;
-                                                case "14":
+                                                case 14:
                                                     <li><a class="text-decoration-none showSingle" target="6">3XL</a></li>
                                                     break;
-                                                case "15":
+                                                case 15:
                                                     <li><a class="text-decoration-none showSingle" target="7">4XL</a></li>
                                                     break;
-                                                case "16":
+                                                case 16:
                                                     <li><a class="text-decoration-none showSingle" target="8">5XL</a></li>
                                                     break;
                                             }
@@ -98,54 +99,54 @@
                                         <select class="form-control" name="size">
                                             @foreach (var item in Model.Stocks)
                                             {
-                                                switch (item.Size.Trim())
+                                                switch (item.Size)
                                                 {
-                                                    case "1":
+                                                    case 1:
                                                         <option value="36">36 (22,6 - 23 cm)</option>
                                                         break;
-                                                    case "2":
+                                                    case 2:
                                                         <option value="37">37 (22,6 - 23 cm)</option>
                                                         break;
-                                                    case "3":
+                                                    case 3:
                                                         <option value="38">38 (23,1 - 23,5 cm)</option>
                                                         break;
-                                                    case "4":
+                                                    case 4:
                                                         <option value="39">39 (23,6 - 24 cm)</option>
                                                         break;
-                                                    case "5":
+                                                    case 5:
                                                         <option value="40">40 (24,6 - 25 cm)</option>
                                                         break;
-                                                    case "6":
+                                                    case 6:
                                                         <option value="41">41 (25,1 - 25,5 cm)</option>
                                                         break;
-                                                    case "7":
+                                                    case 7:
                                                         <option value="42">42 (25,6 - 26 cm)</option>
                                                         break;
-                                                    case "8":
+                                                    case 8:
                                                         <option value="43">43 (22,6 - 23 cm)</option>
                                                         break;
-                                                    case "9":
+                                                    case 9:
                                                         <option value="S">S</option>
                                                         break;
-                                                    case "10":
+                                                    case 10:
                                                         <option value="M">M</option>
                                                         break;
-                                                    case "11":
+                                                    case 11:
                                                         <option value="L">L</option>
                                                         break;
-                                                    case "12":
+                                                    case 12:
                                                         <option value="XL">XL</option>
                                                         break;
-                                                    case "13":
+                                                    case 13:
                                                         <option value="2XL">2XL</option>
                                                         break;
-                                                    case "14":
+                                                    case 14:
                                                         <option value="3XL">3XL</option>
                                                         break;
-                                                    case "15":
+                                                    case 15:
                                                         <option value="4XL">4XL</option>
                                                         break;
-                                                    case "16":
+                                                    case 16:
                                                         <option value="5XL">5XL</option>
                                                         break;
                                                 }
@@ -172,7 +173,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                   
+
                                 </div>
                             </div>
                         </div>

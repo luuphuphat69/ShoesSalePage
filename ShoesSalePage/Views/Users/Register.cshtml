@@ -52,18 +52,18 @@
                         @Html.LabelFor(m => m.PhoneNumber)
                         @Html.TextBoxFor(m => m.PhoneNumber, "", new { @class = "form-control", @placeholder = "Số điện thoại" })
                         @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
-                        @if (ViewBag.PhoneError != null)
+                        @if (ViewBag.UserPhoneNumberError != null)
                         {
-                            <span class="text-bg-danger">@ViewBag.PhoneError</span>
+                            <span class="text-bg-danger">@ViewBag.UserPhoneNumberError</span>
                         }
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Email)
                         @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        @if (ViewBag.MailError != null)
+                        @if (ViewBag.UserEmailError != null)
                         {
-                            <span class="text-bg-danger">@ViewBag.MailError</span>
+                            <span class="text-bg-danger">@ViewBag.UserEmailError</span>
                         }
                     </div>
                     <div class="form-group">

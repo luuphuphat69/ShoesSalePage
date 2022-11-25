@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ShoesSalePage.Models;
 
 namespace ShoesSalePage.Controllers
@@ -38,7 +39,7 @@ namespace ShoesSalePage.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.Users.FirstOrDefault(s => s.UserName == user.UserName);
+                var check = db.Users.FirstOrDefault(s => s.UserName == user.UserName || s.PhoneNumber == user.PhoneNumber || s.Email == user.Email);
                 if (check == null)
                 {
                     user.Password = GetMD5(user.Password);
@@ -49,7 +50,9 @@ namespace ShoesSalePage.Controllers
                 }
                 else
                 {
-                    ViewBag.UserMessage = "User name is used. Try another name";
+                    ViewBag.UserNameError = "User name is used or invalid. Try another name";
+                    ViewBag.UserPhoneNumberError = "Phonenumber is used or invalid. Try another phonenumber";
+                    ViewBag.UserEmailError = "Email is used or invalid. Try another email";
                     return View();
                 }
             }
@@ -113,6 +116,32 @@ namespace ShoesSalePage.Controllers
         {
             Session.Clear();
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult OrderHistory(int? userId, int? page)
+        {
+            int pageNumber = page ?? 1;
+            int pageSize = 4;
+            if (Session["UserID"] != null)
+            {
+                var orderHistory = from s in db.Carts
+                                   join k in db.Products on s.ProductID
+                                   equals k.ProductId
+                                   orderby s.OrderId
+                                   where userId == s.Order.UserId
+                                   select new CartViewModel
+                                   {
+                                       OrderId = s.OrderId,
+                                       ProductId = s.ProductID,
+                                       ProductName = k.Name,
+                                       Size = s.Size,
+                                       Brand = k.Brand,
+                                       Price = k.Price,
+                                       Quantity = s.Quantity,
+                                       CreatedDate = s.CreatedDate
+                                   };
+                return View(orderHistory.ToPagedList(pageNumber, pageSize));
+            }
+            return RedirectToAction("Login", "User");
         }
     }
 }

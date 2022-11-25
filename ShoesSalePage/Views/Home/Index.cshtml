@@ -9,7 +9,7 @@
             <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
                 <h1 class="mb-2">Finding Your Perfect Shoes</h1>
                 <div class="intro-text text-center text-md-left">
-                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
+                    <p class="mb-4">Bạn đang chật vật tìm những đôi giày phù hợp với bản thân? Đừng lo, vì đã có NABATI, bạn đồng hành của mọi nhà. Chúng tôi luôn mang đến cho bạn những đôi giày tuyệt vời nhất mà giá cả lại phải chăng. Còn chờ gì nữa mà không ấn nút ở bên dưới!</p>
                     <p>
                         <a href="~/Products/Shop" class="btn btn-sm btn-primary">Shop Now</a>
                     </p>
@@ -24,7 +24,7 @@
             <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
                 <h1 class="mb-2">Finding Your Perfect Shoes</h1>
                 <div class="intro-text text-center text-md-left">
-                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
+                    <p class="mb-4">Bạn đang chật vật tìm những đôi giày phù hợp với bản thân? Đừng lo, vì đã có NABATI, bạn đồng hành của mọi nhà. Chúng tôi luôn mang đến cho bạn những đôi giày tuyệt vời nhất mà giá cả lại phải chăng. Còn chờ gì nữa mà không ấn nút ở bên dưới!</p>
                     <p>
                         <a href="~/Products/Shop" class="btn btn-sm btn-primary">Shop Now</a>
                     </p>
@@ -128,27 +128,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7 site-section-heading text-center pt-4">
-                <h2>New Products</h2>
+                <h2>New Product</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="nonloop-block-3 owl-carousel">
-                    @foreach (var item in Model.Where(p => p.ProductId >= 12 && p.ProductId <= 16))
-                    {
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" alt="Image placeholder" class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="~/Products/Details?id=@item.ProductId">@item.Name</a></h3>
-                                    <p class="mb-0">@item.Brand</p>
-                                    <p class="text-primary font-weight-bold">@String.Format("{0:n0}", item.Price) VND</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
+                    @{Html.RenderAction("NewProduct", "Products");}
                 </div>
             </div>
         </div>
@@ -203,7 +189,7 @@
                 <h2><a href="#" class="text-decoration-none">50% less in all items</a></h2>
                 <p class="post-meta mb-4">By <a href="#">KhauTrangYTe</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
                 <p class="fw-bold" style="color:black">SALE 10.10 BẮT ĐẦU: HƯỞNG ƯU ĐÃI ĐẾN 50% MẶT HÀNG OUTLET</p>
-                <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+                <p><a href="~/Products/Shop" class="btn btn-primary btn-sm">Shop Now</a></p>
             </div>
         </div>
     </div>

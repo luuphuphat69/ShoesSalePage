@@ -2,7 +2,7 @@
 @using ShoesSalePage.Models;
 @{
     ViewBag.Title = "Cart";
-    double total = 0;
+    double? total = 0;
 }
 <div class="card">
     <div class="card-body">
@@ -102,19 +102,15 @@
     <a class="btn btn-outline-primary mb-4" href="~/Products/Shop">
         Tiếp tục mua hàng
     </a>
-    <a class="btn btn-outline-danger mb-4" href="@Url.Action("ConfirmOrder", "Carts")" onclick="ConfirmFunc()">
-        Xác nhận đơn hàng
-    </a>
+    <input type="button" class="btn btn-outline-danger mb-4" onclick="ConfirmFunc()" value="Xác nhận đơn hàng"/>
 </div>
-@section scripts{
-    <script type="text/javascript">
-        function ConfirmFunc() {
-            var status = confirm("Bạn có muốn xác nhận đơn hàng?")
-            if (status == true) {
-                window.location.href = "..Carts/ThankYou"
-            } else {
-                window.location.href = "../Products/Shop"
-            }
-        }
-    </script>
-}
+ <script type="text/javascript">
+     function ConfirmFunc() {
+         var status = confirm("Bạn có muốn xác nhận đơn hàng?")
+         if (status == true) {
+             window.location.href = "/Carts/ConfirmOrder"
+         } else {
+             window.location.href= "/Carts/Cart"
+         }
+     }  
+ </script>

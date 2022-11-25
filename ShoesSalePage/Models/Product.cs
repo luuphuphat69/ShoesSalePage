@@ -22,21 +22,31 @@ namespace ShoesSalePage.Models
         }
 
         [Key]
+        [Required(ErrorMessage = "This filed can not be null")]
+        [Display(Name = "ID")]
         public int ProductId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This filed can not be null")]
+        [Display(Name = "Product Name")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This filed can not be null")]
+        [Display(Name = "Product Price")]
         public double Price { get; set; }
+        [Required(ErrorMessage = "This filed can not be null")]
         public string Size { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This filed can not be null")]
         public string Brand { get; set; }
         public string Color { get; set; }
         public string Image { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This filed can not be null")]
         public bool IsAvailable { get; set; }
+        [Required(ErrorMessage = "This filed can not be null")]
+        [Display(Name = "Category ID")]
         public Nullable<int> CategoryId { get; set; }
+        [Required(ErrorMessage = "This filed can not be null")]
+        [Display(Name = "Subcategory ID")]
         public Nullable<int> SubCategoryId { get; set; }
-    
+
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
         public virtual Category Category { get; set; }
         public virtual SubCategory SubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
