@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing.Printing;
 using Microsoft.SqlServer.Server;
 using System.Data.SqlTypes;
+using System.Data.Entity.SqlServer;
 
 namespace ShoesSalePage.Controllers
 {
@@ -147,19 +148,21 @@ namespace ShoesSalePage.Controllers
             }
             return RedirectToAction("Shop", "Products");
         }
-        public ActionResult DetailsAddToCart(int id, string size, int quantity)
+        public ActionResult DetailsAddToCart(int id, string size, int? quantity)
         {
-            var check = db.Stocks.Where(x => x.ProductId == id && x.Size.Equals(size) && quantity <= x.Stock1);
+            var check = db.Stocks.Where(x => x.ProductId == id).FirstOrDefault();
+            if(quantity > check.Stock1)
+                return RedirectToAction("Details", "Products", new { id = id });
             if (check == null)
-                return RedirectToAction("Shop", "Products");
-            if (Session["Cart"] == null && check != null)
+                return RedirectToAction("Details", "Products", new {id = id});
+            if (Session["Cart"] == null && check != null & quantity <= check.Stock1)
             {
                 List<Cart> list = new List<Cart>();
                 list.Add(new Cart { Product = db.Products.Find(id), Size = size, Quantity = quantity, CreatedDate = DateTime.Now }) ;
                 Session["Cart"] = list;     // Store cart list to a session
                 Session["Count"] = quantity;
             }
-            else if (Session["Cart"] != null && check != null)
+            else if (Session["Cart"] != null && check != null && quantity <= check.Stock1)
             {
                 List<Cart> list = (List<Cart>)Session["Cart"];
                 int index = CheckExist(id);
@@ -183,34 +186,6 @@ namespace ShoesSalePage.Controllers
                     return i - 1;
             }
             return -1;
-        }
-        public ActionResult SizeFilter(int? page, string size)
-        {
-            int pageSize, pageNumber;
-            var product =  (from s in db.Stocks
-                           where s.Size.Equals(size)
-                           join u in db.Products on s.ProductId
-                           equals u.ProductId
-                           orderby u.ProductId
-                           select new ProductViewModel
-                           {
-                               Name = u.Name,
-                               Id = u.ProductId,
-                               Size = s.Size,
-                               Price = u.Price,
-                               Brand = u.Brand,
-                               Color = u.Color,
-                               Image = u.Image,
-                               IsAvailable = u.IsAvailable,
-                           }).ToList();
-            if (page == null || product != null)
-            {
-                page = 1;
-                pageSize = 9;
-                pageNumber = page ?? 1;
-                return View(product.ToPagedList(pageNumber, pageSize));
-            }
-            return RedirectToAction("Shop", "Products");
         }
         public ActionResult ColorFilter(int? page, string color, string filter)
         {
@@ -238,6 +213,14 @@ namespace ShoesSalePage.Controllers
         public ActionResult SizeChart()
         {
             return PartialView("_SizeChart");
+        }
+        public ActionResult NewProduct()
+        {
+            var product = from s in db.Products
+                          where SqlFunctions.DateDiff("day", DateTime.Now, s.CreatedDate) <= 7
+                          orderby s.Price descending
+                          select s;
+            return PartialView("_NewProduct", product.Take(5).ToList());
         }
     }
 }

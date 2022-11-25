@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("ShowUser", "Admin", FormMethod.Get))
+ {
+    <input type="text" name="input" placeholder="Tìm kiếm"/>
+    <input type="submit" value="Tìm kiếm" />
+ }
 <table class="table align-middle mt-4 mb-4 bg-white">
     <thead class="bg-light">
         <tr>
@@ -40,11 +45,11 @@
                     @Html.DisplayFor(modelItem => item.UserPhoneNumber)
                 </td>
             </tr>
-        }
+                }
         </tbody>
     </table>
     <div class="text-md-center">
-        @Html.PagedListPager(Model, pageNumber => Url.Action("ShowUser", new { page = pageNumber }))
+        @Html.PagedListPager(Model, pageNumber => Url.Action("ShowUser", new { page = pageNumber, input = ViewBag.SearchUser}))
     </div>
 
 

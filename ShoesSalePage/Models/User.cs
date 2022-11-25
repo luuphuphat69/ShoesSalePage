@@ -16,39 +16,57 @@ namespace ShoesSalePage.Models
 
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
+        [Display(Name = "First Name")]
+        [MaxLength(20, ErrorMessage = "Length is over 20. Try again")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
+        [Display(Name = "Last Name")]
+        [MaxLength(20, ErrorMessage = "Length is over 20. Try again")]
         public string LastName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; } = DateTime.Now;
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
+        [Display(Name = "Account")]
+        [MaxLength(20, ErrorMessage = "Length is over 20. Try again")]
         public string UserName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
         [DataType(DataType.Password)]
+        [MaxLength(20, ErrorMessage ="Length is over 20. Try again")]
+        [MinLength(1, ErrorMessage ="Length is below 1. Try again")]
         public string Password { get; set; }
         [NotMapped]
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
         [Compare("Password", ErrorMessage = "Password not match")]
         public string ConfirmPass { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
+        [Display(Name = "Address")]
+        [MaxLength(50, ErrorMessage = "Length is over 50. Try again")]
         public string Address { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "This field can not be null")]
+        [StringLength(50, ErrorMessage = "Length is over 50. Try again")]
         [Display(Name = "City")]
         public string City { get; set; }
         public string PostalCode { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This field can not be null")]
         [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Telephone")]
+        [MaxLength(11, ErrorMessage = "Phonenumber is invalid. Try again")]
         public string PhoneNumber { get; set; }
-        public Nullable<int> RoleId { get; set; }
-    
-        public virtual Role Role { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ShoesSalePage.Models.Product>
+@foreach (var item in Model)
+{
+    <div class="item">
+        <div class="block-4 text-center">
+            <figure class="block-4-image">
+                <img src="~/Content/Images/ProductImg/@Url.Content(item.Image)" alt="Image placeholder" class="img-fluid">
+            </figure>
+            <div class="block-4-text p-4">
+                <h3><a href="~/Products/Details?id=@item.ProductId">@item.Name</a></h3>
+                <p class="mb-0">@item.Brand</p>
+                <p class="text-primary font-weight-bold">@String.Format("{0:n0}", item.Price) VND</p>
+            </div>
+        </div>
+    </div>
+}

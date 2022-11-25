@@ -5,6 +5,20 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("ShowCart", "Admin", FormMethod.Get))
+{
+    <input type="number" id="OrderId" name="OrderId" placeholder="Enter Order ID" />
+    <button type="submit">Search</button>
+}
+<br />
+@using (Html.BeginForm("ShowCart", "Admin", FormMethod.Get))
+{
+    <select name="DateFilter">
+        <option value="Lastest">Lastest</option>
+        <option value="Oldest">Oldest</option>
+    </select>
+    <input type="submit" value="Submit" />
+}
 <table class="table align-middle mt-4 mb-4 bg-white">
     <thead class="bg-light">
         <tr>
@@ -53,6 +67,6 @@
         </tbody>
     </table>
     <div class="text-md-center">
-        @Html.PagedListPager(Model, pageNumber => Url.Action("ShowCart", new { page = pageNumber }))
+        @Html.PagedListPager(Model, pageNumber => Url.Action("ShowCart", new { page = pageNumber, CartId = ViewBag.CartId, DateFilter = ViewBag.DateFilter }))
     </div>
 

@@ -27,7 +27,7 @@ namespace ShoesSalePage.Controllers
         }
         public ActionResult RemoveCart(int id)
         {
-            int count = 0;
+            int? count = 0;
 
             List<Cart> list = (List<Cart>)Session["Cart"];
             int index = CheckExist(id);
@@ -52,6 +52,10 @@ namespace ShoesSalePage.Controllers
         }
         public ActionResult ConfirmOrder()
         {
+            if ((int)Session["Count"] == 0)
+            {
+                return RedirectToAction("Cart", "Carts");
+            }
             if (ModelState.IsValid)
             {
                 if (Session["UserID"] != null)
@@ -76,7 +80,7 @@ namespace ShoesSalePage.Controllers
                             db.Carts.Add(cart);
 
                             string size = ChangeSize(item.Size);
-                            stock = db.Stocks.Where(p => p.ProductId == item.Product.ProductId && p.Size.Equals(size)).FirstOrDefault();
+                            stock = db.Stocks.Where(p => p.ProductId == item.Product.ProductId && p.Size.ToString().Equals(size)).FirstOrDefault();
                             stock.Stock1 -= item.Quantity;
                             
                             db.SaveChanges();

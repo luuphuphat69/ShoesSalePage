@@ -1,51 +1,49 @@
-﻿@model ShoesSalePage.Models.Product
+﻿@model ShoesSalePage.Models.Stock
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "RemoveStock";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<h3 class="mt-4">Are you sure you want to delete this?</h3>
+
+<h2>Remove Stock</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<h4>Stock ID @Model.StockId</h4>
+
 <section style="background-color: #eee;">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-4">
                 <div class="card text-black">
-                    <img src="~/Content/Images/ProductImg/@Url.Content(Model.Image)"
+                    <img src="~/Content/Images/ProductImg/@Url.Content(Model.Product.Image)"
                          class="card-img-top" alt="Product" />
                     <div class="card-body">
                         <div class="text-center">
                             <h5 class="card-title">Chi tiết sản phẩm</h5>
-                            <p class="text-muted mb-4">@Model.Name</p>
+                            <p class="text-muted mb-4">@Model.Product.Name</p>
                         </div>
                         <div>
                             <div class="d-flex justify-content-between">
                                 <span>Tên sản phẩm:</span>
-                                <span>@Model.Name</span>
+                                <span>@Model.Product.Name</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span>Hãng:</span>
-                                <span>@Model.Brand</span>
+                                <span>@Model.Product.Brand</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span>Giá:</span>
-                                <span>@String.Format("{0:n0}", Model.Price) VND</span>
+                                <span>@String.Format("{0:n0}", Model.Product.Price) VND</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span>Size:</span>
                                 <span>
-                                    @foreach (var item in Model.Stocks)
-                                    {
-                                        <strong>@item.Size </strong>
-                                    }
+                                    @Model.Size
                                 </span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span>Số lượng:</span>
                                 <span>
-                                    @foreach (var item in Model.Stocks)
-                                    {
-                                        <strong>Size: @item.Size - Số lượng: @item.Stock1</strong>
-                                        <br />
-                                    }
+                                    @Model.Stock1
                                 </span>
                             </div>
                         </div>
@@ -55,12 +53,12 @@
         </div>
     </div>
 </section>
-    @using (Html.BeginForm("RemoveProduct", "Admin", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "ProductManagePage", "Admin")
-        </div>
-    }
+@using (Html.BeginForm("RemoveStock", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.StockId)
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @Html.ActionLink("Back to List", "ProductStocks", "Admin")
+    </div>
+}

@@ -14,7 +14,6 @@
           <Property Name="FullName" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="AdminPassword" Type="char" MaxLength="100" Nullable="false" />
           <Property Name="PhoneNumber" Type="char" MaxLength="10" />
-          <Property Name="RoleId" Type="int" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -55,13 +54,7 @@
           <Property Name="IsAvailable" Type="bit" Nullable="false" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="SubCategoryId" Type="int" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="int" Nullable="false" />
-          <Property Name="RoleName" Type="nchar" MaxLength="20" />
+          <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Size">
           <Key>
@@ -76,7 +69,7 @@
           </Key>
           <Property Name="StockId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="int" />
-          <Property Name="Size" Type="char" MaxLength="10" />
+          <Property Name="Size" Type="int" />
           <Property Name="Stock" Type="int" />
           <Property Name="Color" Type="char" MaxLength="50" />
         </EntityType>
@@ -99,12 +92,10 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="UserName" Type="char" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="char" MaxLength="100" Nullable="false" />
-          <Property Name="ConfirmPass" Type="char" MaxLength="100" />
           <Property Name="Address" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="City" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="PostalCode" Type="char" MaxLength="10" />
           <Property Name="PhoneNumber" Type="char" MaxLength="11" Nullable="false" />
-          <Property Name="RoleId" Type="int" />
         </EntityType>
         <Association Name="FK__Cart__OrderId__71D1E811">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
@@ -115,6 +106,18 @@
             </Principal>
             <Dependent Role="Cart">
               <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserId__0D7A0286">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -154,6 +157,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Stock__Size__0C85DE4D">
+          <End Role="Size" Type="Self.Size" Multiplicity="0..1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SizeId" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SubCatego__Categ__403A8C7D">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
@@ -166,37 +181,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoleId">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="Admins">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RoleIds">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ShoesSalePageEnityModelStoreContainer">
           <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
@@ -204,6 +225,10 @@
           <AssociationSet Name="FK__Cart__OrderId__71D1E811" Association="Self.FK__Cart__OrderId__71D1E811">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserId__0D7A0286" Association="Self.FK__Orders__UserId__0D7A0286">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK__Products__Catego__4316F928" Association="Self.FK__Products__Catego__4316F928">
             <End Role="Category" EntitySet="Category" />
@@ -217,35 +242,19 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
+          <AssociationSet Name="FK__Stock__Size__0C85DE4D" Association="Self.FK__Stock__Size__0C85DE4D">
+            <End Role="Size" EntitySet="Size" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
           <AssociationSet Name="FK__SubCatego__Categ__403A8C7D" Association="Self.FK__SubCatego__Categ__403A8C7D">
             <End Role="Category" EntitySet="Category" />
             <End Role="SubCategory" EntitySet="SubCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RoleId" Association="Self.FK_RoleId">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Admins" EntitySet="Admins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RoleIds" Association="Self.FK_RoleIds">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShoesSalePageEnityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Admin">
-          <Key>
-            <PropertyRef Name="AdminID" />
-          </Key>
-          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AdminName" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="AdminPassword" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_RoleId" FromRole="Admins" ToRole="Role" />
-        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -272,15 +281,7 @@
           <NavigationProperty Name="Category" Relationship="Self.FK__Products__Catego__4316F928" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="SubCategory" Relationship="Self.FK__Products__SubCat__440B1D61" FromRole="Products" ToRole="SubCategory" />
           <NavigationProperty Name="Stocks" Relationship="ShoesSalePageEnityModel.FK__Stock__ProductId__49C3F6B7" FromRole="Product" ToRole="Stock" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Admins" Relationship="Self.FK_RoleId" FromRole="Role" ToRole="Admins" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_RoleIds" FromRole="Role" ToRole="Users" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="SubCategory">
           <Key>
@@ -292,37 +293,6 @@
           <NavigationProperty Name="Category" Relationship="Self.FK__SubCatego__Categ__403A8C7D" FromRole="SubCategory" ToRole="Category" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Products__SubCat__440B1D61" FromRole="SubCategory" ToRole="Products" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="ConfirmPass" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_RoleIds" FromRole="Users" ToRole="Role" />
-        </EntityType>
-        <Association Name="FK_RoleId">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Admins" Type="Self.Admin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="Admins">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Products__Catego__4316F928">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Product" Multiplicity="*" />
@@ -359,29 +329,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoleIds">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ShoesSalePageEnityEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_RoleId" Association="Self.FK_RoleId">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Admins" EntitySet="Admins" />
-          </AssociationSet>
           <AssociationSet Name="FK__Products__Catego__4316F928" Association="Self.FK__Products__Catego__4316F928">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
@@ -394,21 +345,57 @@
             <End Role="SubCategory" EntitySet="SubCategories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoleIds" Association="Self.FK_RoleIds">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <EntitySet Name="Orders" EntityType="ShoesSalePageEnityModel.Order" />
           <EntitySet Name="Carts" EntityType="ShoesSalePageEnityModel.Cart" />
           <AssociationSet Name="FK__Cart__OrderId__71D1E811" Association="ShoesSalePageEnityModel.FK__Cart__OrderId__71D1E811">
             <End Role="Order" EntitySet="Orders" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ShoesSalePageEnityModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ShoesSalePageEnityModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="Sizes" EntityType="ShoesSalePageEnityModel.Size" />
           <EntitySet Name="Stocks" EntityType="ShoesSalePageEnityModel.Stock" />
           <AssociationSet Name="FK__Stock__ProductId__49C3F6B7" Association="ShoesSalePageEnityModel.FK__Stock__ProductId__49C3F6B7">
             <End Role="Product" EntitySet="Products" />
             <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__Size__0C85DE4D" Association="ShoesSalePageEnityModel.FK__Stock__Size__0C85DE4D">
+            <End Role="Size" EntitySet="Sizes" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <EntitySet Name="Admins" EntityType="ShoesSalePageEnityModel.Admin" />
+          <EntitySet Name="Users" EntityType="ShoesSalePageEnityModel.User" />
+          <AssociationSet Name="FK__Orders__UserId__0D7A0286" Association="ShoesSalePageEnityModel.FK__Orders__UserId__0D7A0286">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Order">
@@ -418,6 +405,7 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" />
           <NavigationProperty Name="Carts" Relationship="ShoesSalePageEnityModel.FK__Cart__OrderId__71D1E811" FromRole="Order" ToRole="Cart" />
+          <NavigationProperty Name="User" Relationship="ShoesSalePageEnityModel.FK__Orders__UserId__0D7A0286" FromRole="Order" ToRole="User" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -443,12 +431,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Size">
           <Key>
             <PropertyRef Name="SizeId" />
           </Key>
           <Property Name="SizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Size1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Stocks" Relationship="ShoesSalePageEnityModel.FK__Stock__Size__0C85DE4D" FromRole="Size" ToRole="Stock" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -456,10 +456,11 @@
           </Key>
           <Property Name="StockId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="Int32" />
-          <Property Name="Size" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Size" Type="Int32" />
           <Property Name="Stock1" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="ShoesSalePageEnityModel.FK__Stock__ProductId__49C3F6B7" FromRole="Stock" ToRole="Product" />
           <Property Name="Color" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="ShoesSalePageEnityModel.FK__Stock__ProductId__49C3F6B7" FromRole="Stock" ToRole="Product" />
+          <NavigationProperty Name="Size1" Relationship="ShoesSalePageEnityModel.FK__Stock__Size__0C85DE4D" FromRole="Stock" ToRole="Size" />
         </EntityType>
         <Association Name="FK__Stock__ProductId__49C3F6B7">
           <End Type="ShoesSalePageEnityModel.Product" Role="Product" Multiplicity="0..1" />
@@ -473,24 +474,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Stock__Size__0C85DE4D">
+          <End Type="ShoesSalePageEnityModel.Size" Role="Size" Multiplicity="0..1" />
+          <End Type="ShoesSalePageEnityModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SizeId" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="AdminPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="ShoesSalePageEnityModel.FK__Orders__UserId__0D7A0286" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK__Orders__UserId__0D7A0286">
+          <End Type="ShoesSalePageEnityModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ShoesSalePageEnityModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ShoesSalePageEnityModelStoreContainer" CdmEntityContainer="ShoesSalePageEnityEntities">
-          <EntitySetMapping Name="Admins">
-            <EntityTypeMapping TypeName="ShoesSalePageEnityModel.Admin">
-              <MappingFragment StoreEntitySet="Admins">
-                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
-                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="ShoesSalePageEnityModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -502,6 +542,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ShoesSalePageEnityModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -515,39 +556,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="ShoesSalePageEnityModel.Role">
-              <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SubCategories">
             <EntityTypeMapping TypeName="IsTypeOf(ShoesSalePageEnityModel.SubCategory)">
               <MappingFragment StoreEntitySet="SubCategory">
                 <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="IsTypeOf(ShoesSalePageEnityModel.User)">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ConfirmPass" ColumnName="ConfirmPass" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -571,6 +585,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ShoesSalePageEnityModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ShoesSalePageEnityModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ShoesSalePageEnityModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ShoesSalePageEnityModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoesSalePageEnityModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ShoesSalePageEnityModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoesSalePageEnityModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ShoesSalePageEnityModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ShoesSalePageEnityModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="Sizes">
             <EntityTypeMapping TypeName="ShoesSalePageEnityModel.Size">
               <MappingFragment StoreEntitySet="Size">
@@ -587,6 +625,34 @@
                 <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="StockId" ColumnName="StockId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ShoesSalePageEnityModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ShoesSalePageEnityModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

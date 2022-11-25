@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-<a href="@Url.Action("AddProduct", "Admin")" class="btn btn-outline-dark">Create New</a>
+@using (Html.BeginForm("ProductManagePage", "Admin"))
+ {
+    <input type="text" name="input" placeholder="Tìm kiếm"/>
+    <input type="submit" value="Tìm kiếm" />
+ }
 <table class="table align-middle mt-4 mb-4 bg-white">
     <thead class="bg-light">
         <tr>
@@ -55,9 +59,10 @@
                     @Html.ActionLink("Delete", "RemoveProduct", new { id = item.ProductId })
                 </td>
             </tr>
-        }
+                }
         </tbody>
     </table>
+    <a href="@Url.Action("AddProduct", "Admin")" class="btn btn-outline-dark">Create New</a>
     <div class="text-md-center">
         @Html.PagedListPager(Model, pageNumber => Url.Action("ProductManagePage", "Admin", new { page = pageNumber }))
     </div>

@@ -22,10 +22,9 @@ namespace ShoesSalePage.Models
         public Nullable<int> ProductID { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> OrderId { get; set; }
-        public int Quantity { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public string Size { get; set; }
-    
+        public virtual Product Product { get;set ; }
         public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
     }
 }
