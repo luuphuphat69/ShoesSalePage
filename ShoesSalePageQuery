@@ -20,7 +20,7 @@ CREATE TABLE Users(
     [PhoneNumber] CHAR (11)		  NOT NULL,
 )
 CREATE TABLE Products(
-	[ProductId]   INT PRIMARY KEY NOT NULL,
+    [ProductId]   INT PRIMARY KEY NOT NULL,
     [Name]        NVARCHAR		  (MAX) NOT NULL,
     [Price]       FLOAT			  NOT NULL,
     [Size]        INT             	  NOT NULL,
@@ -35,14 +35,15 @@ CREATE TABLE Products(
 )
 CREATE TABLE Orders(
 	[OrderID] INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	[UserID]  INT			  
+	[UserID]  INT,
+	FOREIGN KEY(UserID) REFERENCES Users(UserId)
 )
 CREATE TABLE Cart(
 	[CartID]	  INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	[Quantity]	  INT NOT NULL,
 	[CreatedDate] DATETIME NULL,
 	[ProductID]	  INT NOT NULL,
-	[Size]		  CHAR,
+	[Size]		  CHAR(10),
 	[OrderID]	INT,
 	FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 )
@@ -63,9 +64,10 @@ CREATE TABLE SubCategory(
 CREATE TABLE Stock(
 	[StockId] INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	[ProductId] INT,
-	[Size] CHAR,
+	[Size] INT,
 	[Stock] INT,
-	FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
+	FOREIGN KEY (ProductId) REFERENCES Products(ProductId),
+	FOREIGN KEY (Size) REFERENCES Size(SizeId)
 )
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
 VALUES(1, N'Giày da nam công sở NL83', 490000, 38, 'Sunview', 'Black', 'shoe1.jpg', 1);
@@ -112,18 +114,16 @@ VALUES(22, N'Thắt lưng Golden Royal', 1490000, 38, 'Golden Royal', 'Black', '
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
 VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item2.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item3.jpg', 1)
+VALUES(24, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item3.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item4.jpg', 1)
+VALUES(25, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item4.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item5.jpg', 1)
+VALUES(26, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item5.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item6.jpg', 1)
+VALUES(27, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item6.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item7.jpg', 1)
+VALUES(28, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item7.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item8.jpg', 1)
+VALUES(29, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item8.jpg', 1)
 INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item9.jpg', 1)
-INSERT INTO Products(ProductId, Name, Price, Size, Brand, Color, Image, IsAvailable) 
-VALUES(23, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item10.jpg', 1)
+VALUES(30, N'Túi đeo mini Vercase', 490000, 38, 'Vercase', 'Black', 'item9.jpg', 1)
