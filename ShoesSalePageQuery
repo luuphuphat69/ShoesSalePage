@@ -23,7 +23,6 @@ CREATE TABLE Products(
     [ProductId]   INT PRIMARY KEY NOT NULL,
     [Name]        NVARCHAR		  (MAX) NOT NULL,
     [Price]       FLOAT			  NOT NULL,
-    [Size]        INT             	  NOT NULL,
     [Brand]       NVARCHAR        	  (MAX) NOT NULL,
     [Color]       NVARCHAR        	  (MAX) NULL,
     [Image]       NVARCHAR        	  (MAX) NULL,
