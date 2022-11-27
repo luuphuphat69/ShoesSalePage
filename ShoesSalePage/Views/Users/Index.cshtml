@@ -60,7 +60,7 @@
                                             </div>
                                             <div class="col-6 mb-3">
                                                 <h6>Order History</h6>
-                                                <a href="@Url.Action("OrderHistory", "Users", new {userId = Model.UserId})">Order history</a>
+                                                <a href="@Url.Action("OrderHistory", "Users", new {userId = Session["UserID"]})">Order history</a>
                                             </div>
                                         </div>
                                     </div>

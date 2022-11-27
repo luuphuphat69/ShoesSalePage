@@ -186,22 +186,20 @@
         </div>
     </div>
 </div>
-@section scripts{
-    <script>
-        $(function () {
-            $('.showSingle').click(function () {
-                $('.targetDiv').not('#div' + $(this).attr('target')).hide();
-                $('#div' + $(this).attr('target')).toggle();
-            });
+<script>
+    $(function () {
+        $('.showSingle').click(function () {
+            $('.targetDiv').not('#div' + $(this).attr('target')).hide();
+            $('#div' + $(this).attr('target')).toggle();
         });
+    });
 
-        function SizeChart() {
-            $.get("@Url.Action("SizeChart","Products")/",
-                function (data) {
-                    $('.modal-body').html(data);
-                });
+    function SizeChart() {
+        $.get("@Url.Action("SizeChart","Products")/",
+            function (data) {
+                $('.modal-body').html(data);
+            });
 
-                $("#myModal").modal("show");
-        }
-    </script>
-}
+            $("#myModal").modal("show");
+    }
+</script>
