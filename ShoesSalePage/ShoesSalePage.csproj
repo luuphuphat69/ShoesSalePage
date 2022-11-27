@@ -137,7 +137,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -160,7 +159,6 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>ShoesSalePageEnity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\ShoesSalePageEnity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -403,9 +401,6 @@
     <Content Include="Views\Products\Shop.cshtml" />
     <Content Include="Views\Products\Search.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
-    <Content Include="Views\Category\Men.cshtml" />
-    <Content Include="Views\Category\Woman.cshtml" />
-    <Content Include="Views\Category\Accessories.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Carts\ThankYou.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />

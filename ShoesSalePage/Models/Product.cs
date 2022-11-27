@@ -31,8 +31,7 @@ namespace ShoesSalePage.Models
         [Required(ErrorMessage = "This filed can not be null")]
         [Display(Name = "Product Price")]
         public double Price { get; set; }
-        [Required(ErrorMessage = "This filed can not be null")]
-        public string Size { get; set; }
+
         [Required(ErrorMessage = "This filed can not be null")]
         public string Brand { get; set; }
         public string Color { get; set; }

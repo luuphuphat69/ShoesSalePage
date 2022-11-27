@@ -141,7 +141,7 @@ namespace ShoesSalePage.Controllers
                                    };
                 return View(orderHistory.ToPagedList(pageNumber, pageSize));
             }
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Login", "Users");
         }
     }
 }

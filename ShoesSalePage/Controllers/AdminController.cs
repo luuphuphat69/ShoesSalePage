@@ -446,7 +446,7 @@ namespace ShoesSalePage.Controllers
                 {
                     var stockProduct = from s in db.Stocks
                                        where s.Product.Name.Contains(word) || s.ProductId.ToString().Contains(word)
-                                       orderby s.StockId
+                                       orderby s.ProductId
                                        select s;
                     return View(stockProduct.ToPagedList(pageNumber, pageSize));
                 }
@@ -458,6 +458,8 @@ namespace ShoesSalePage.Controllers
         public ActionResult AddProduct_ToStock(Stock StockProduct)
         {
             var check = db.Stocks.Where(p => p.ProductId == StockProduct.ProductId);
+            if (StockProduct.Stock1 < 0)
+                return View();
             if (check != null)
             {
                 ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", StockProduct.ProductId);
@@ -472,7 +474,7 @@ namespace ShoesSalePage.Controllers
         [HttpGet]
         public ActionResult AddProduct_ToStock()
         {
-            ViewBag.ProductID = new SelectList(db.Products, "ProductId", "Name");
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name");
             return View();
         }
         [HttpGet]
@@ -486,16 +488,18 @@ namespace ShoesSalePage.Controllers
         public ActionResult EditStock(Stock stock)
         {
             var stocks = db.Stocks.Where(p => p.StockId == stock.StockId && p.ProductId == stock.ProductId).FirstOrDefault();
+            if (stock.Stock1 < 0)
+                return View(stock);
             if(stocks != null)
             {   
                 stocks.ProductId = stock.ProductId;
                 stocks.Stock1 = stock.Stock1;
-                stock.Color = stock.Color;
+                stocks.Color = stock.Color;
                 db.Entry(stocks).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ProductStocks", "Admin");
             }
-            return View();
+            return View(stock);
         }
         [HttpGet]
         public ActionResult RemoveStock(int? StockId)

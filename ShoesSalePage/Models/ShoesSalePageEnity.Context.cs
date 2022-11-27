@@ -28,7 +28,6 @@ namespace ShoesSalePage.Models
         }
     
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
@@ -36,6 +35,8 @@ namespace ShoesSalePage.Models
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        
+        public virtual DbSet<Product> Products { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
